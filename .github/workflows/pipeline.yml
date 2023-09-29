@@ -18,4 +18,5 @@ jobs:
         - name: Test frontend
           working-directory: ./application/frontend
           run: |
+            pwd
             npm run test:unit
