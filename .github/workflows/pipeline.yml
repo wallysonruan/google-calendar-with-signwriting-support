@@ -1,21 +1,18 @@
 name: GitHub Actions Demo
 on: [push]
 jobs:
-  Apply-lint-and-format-code-syntax:
-    runs-on: ubunt-latest
-    steps:
-      - name: Run Eslint and Prettier
-        working-directory: ./application/frontend
-        run: | 
-          npm i
-          npm run lint
-          npm run format
   Test-application:
     runs-on: ubuntu-latest
     steps:
         - name: Check out repository code
           uses: actions/checkout@v4
+        - name: Run Eslint and Prettier
+          working-directory: ./application/frontend
+          run: | 
+            npm run lint
+            npm run format
         - name: Test frontend
           working-directory: ./application/frontend
           run: |
+            npm i
             npm run test:unit
