@@ -9,6 +9,7 @@ jobs:
         - name: Run Eslint and Prettier
           working-directory: ./application/frontend
           run: | 
+            npm i
             npm run lint
             npm run format
         - name: Test frontend
