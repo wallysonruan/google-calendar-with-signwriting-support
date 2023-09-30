@@ -1,9 +1,17 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import NavBar from './components/NavBar.vue';
+import Footer from './components/Footer.vue';
 </script>
 
 <template>
-  <RouterView />
+  <v-app>
+    <NavBar />
+    <v-layout>
+      <RouterView />
+    </v-layout>
+      <Footer />
+  </v-app>
 </template>
 
 <style scoped>
