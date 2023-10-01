@@ -1,5 +1,5 @@
 <script setup lang="ts"></script>
 <template>
-  <v-app-bar> </v-app-bar>
+  <v-main class="d-flex align-center justify-center"> </v-main>
 </template>
 <style scoped></style>

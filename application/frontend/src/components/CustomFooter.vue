@@ -1,5 +1,7 @@
 <script setup lang="ts"></script>
 <template>
-  <v-app-bar> </v-app-bar>
+  <v-footer app>
+    <p>2023</p>
+  </v-footer>
 </template>
 <style scoped></style>

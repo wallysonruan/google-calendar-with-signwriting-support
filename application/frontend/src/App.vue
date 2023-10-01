@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import NavBar from './components/NavBar.vue';
-import Footer from './components/Footer.vue';
+import NavBar from './components/NavBar.vue'
+import Footer from './components/CustomFooter.vue'
 </script>
 
 <template>
@@ -10,12 +10,11 @@ import Footer from './components/Footer.vue';
     <v-layout>
       <RouterView />
     </v-layout>
-      <Footer />
+    <Footer />
   </v-app>
 </template>
 
 <style scoped>
 @media (min-width: 1024px) {
-
 }
 </style>
