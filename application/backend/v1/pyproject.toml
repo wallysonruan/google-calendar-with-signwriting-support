@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "sign-language-school-management"
+version = "0.1.0"
+description = ""
+authors = ["wallyson ruan <wallysonruan@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.103.2"
+bandit = "^1.7.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
