@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import Activities from '@/components/ActivitiesList.vue'
+import ActivitiesCalendar from '@/views/ActivitiesCalendar.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -9,7 +9,7 @@ const router = createRouter({
       path: '/',
       name: 'home',
       // Temporary
-      component: Activities
+      component: ActivitiesCalendar
     },
     {
       path: '/about',

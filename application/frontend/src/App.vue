@@ -6,7 +6,7 @@ import Footer from './components/CustomFooter.vue'
 
 <template>
   <v-app>
-    <NavBar />
+    <!-- <NavBar /> -->
     <v-layout>
       <RouterView />
     </v-layout>
