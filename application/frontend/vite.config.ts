@@ -14,7 +14,7 @@ export default defineConfig({
   },
   build: {
     emptyOutDir: true, // force destroy of bundled assets when outside of project dir
-    outDir: '../../dist', // delete everything, only the output will remain
+    outDir: '../../', // delete everything, only the output will remain
     sourcemap: true,
     rollupOptions: {
       output: {
