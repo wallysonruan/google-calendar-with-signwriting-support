@@ -9,6 +9,7 @@
     <div class="day-container">
         <div class="day-bar">
             <div class="day-ball">
+                <img class="day-ball-sw" src="../assets/signs_svg/SEGUNDA_FEIRA.svg" alt="">
                 <p>{{ props.day }}</p>
             </div>
         </div>
@@ -33,6 +34,15 @@
                             </div>
                         </div>
                         <div class="activities">
+                            <div class="activity-item">
+                                <v-card class="sw-card course-title-sw">
+                                    <img class="sw-img" src="../assets/signs_svg/ATIVIDADE.svg" alt="">
+                                    <img class="sw-img" src="../assets/signs_svg/ATIVIDADE.svg" alt="">
+                                    <img class="sw-img" src="../assets/signs_svg/ATIVIDADE.svg" alt="">
+                                    <img class="sw-img" src="../assets/signs_svg/ATIVIDADE.svg" alt="">
+                                    <img class="sw-img" src="../assets/signs_svg/ATIVIDADE.svg" alt="">
+                                </v-card>
+                            </div>
                             <div class="activity-item">
                                 <v-card class="sw-card course-title-sw">
                                     <img class="sw-img" src="../assets/signs_svg/ATIVIDADE.svg" alt="">
@@ -88,13 +98,23 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
+    flex-wrap: wrap;
     padding: 0.3rem;
+    max-height: 160px;
+    width: auto;
+}
+
+.sw-card img {
+    margin: 0.5rem 0;
 }
 
 .day-container {
     display: flex;
     flex-direction: column;
+}
+
+.day-ball-sw {
+    width: 20px;
 }
 
 .day-ball {
@@ -104,7 +124,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
     font-size: larger;
     font-weight: bolder;
 }
@@ -121,7 +140,7 @@
 }
 
 .classes-container {
-    width: 100%;
+    width: 300px;
 }
 
 .class-item {
@@ -147,7 +166,9 @@
 
 .activities {
     display: flex;
-    gap: 3px;
+    width: 100%;
+    overflow: auto;
+    white-space: nowrap;
 }
 
 .activities-title {
@@ -156,5 +177,9 @@
     justify-content: center;
     width: 100%;
     padding: 0.5rem 0;
+}
+
+.activities {
+    background-color: red;
 }
 </style>

@@ -6,7 +6,7 @@ const days = [2,3,4,5,6,7,8,9]
 
 <template>
   <div class="calendar">
-    <CalendarDay class="calendar-day" v-for="day in days" :day="day"/>
+    <CalendarDay class="calendar-day" :day="2"/>
   </div>
 </template>
 
