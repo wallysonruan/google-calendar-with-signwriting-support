@@ -11,5 +11,16 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  }
+  },
+  build: {
+    emptyOutDir: true, // force destroy of bundled assets when outside of project dir
+    outDir: '../../dist', // delete everything, only the output will remain
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        assetFileNames: "assets/[name][extname]",
+        entryFileNames: "assets/[name].js",
+      },
+    },
+  },
 })
