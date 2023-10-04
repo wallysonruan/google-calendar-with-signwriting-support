@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# Get the latest commit hash
+# git log -1 | grep -Eo '[A-Za-z0-9]{40}'
+
+# https://gist.github.com/mohanpedala/1e2ff5661761d3abd0385e8223e16425
+set -euxo pipefail
+
+# Runs commands only if there are changes in the frontend folder.
+if [ $(git diff --staged | grep -c "frontend/") -gt 0 ]; then
+    cd application/frontend
+    npm run lint
+    npx prettier . --check
+
+    # Go back to the root folder
+    cd ../../
+fi
+
+# Runs commands only if there are changes in the backend folder.
+if [ $(git diff --staged | grep -c "backend/") -gt 0 ]; then
+    cd application/backend
+    #
+
+    # Go back to the root folder
+    cd ../../
+fi
