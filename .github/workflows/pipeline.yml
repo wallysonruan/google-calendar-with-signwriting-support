@@ -21,7 +21,7 @@ jobs:
         - name: setup git auth
           env:
             email: ${{ secrets.EMAIL }}
-            username: ${{ secrets.USER }}
+            username: $GITHUB_ACTOR
             access_token: ${{ secrets.TOKEN }}
           run: |
             git config --global credential.helper store
@@ -36,4 +36,4 @@ jobs:
             cd ../..
             git add -A
             git commit -m "🚀 Deploy id ${GITHUB_RUN_ID}"
-            git push origin ${GITHUB_REF##*/}:gh-pages
+            git push origin ${GITHUB_REF##*/}:gh-pages --force
