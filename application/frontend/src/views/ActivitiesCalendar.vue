@@ -6,9 +6,12 @@ const days = [2,3,4,5,6,7,8,9]
 
 <template>
   <div class="calendar">
-    <CalendarDay v-for="day in days" :day="day"/>
+    <CalendarDay class="calendar-day" v-for="day in days" :day="day"/>
   </div>
 </template>
 
 <style scoped>
+.calendar-day {
+  margin-bottom: 1rem;
+}
 </style>

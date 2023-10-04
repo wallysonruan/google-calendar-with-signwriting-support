@@ -5,19 +5,14 @@ import Footer from './components/CustomFooter.vue'
 </script>
 
 <template>
-  <v-app class="root">
+  <v-app>
     <!-- <NavBar /> -->
-    <v-layout>
-      <RouterView/>
-    </v-layout>
+    <RouterView />
     <Footer />
   </v-app>
 </template>
 
 <style scoped>
-.root {
-  background-color: gainsboro;
-}
-@media (min-width: 1024px) {
-}
+
+@media (min-width: 1024px) {}
 </style>

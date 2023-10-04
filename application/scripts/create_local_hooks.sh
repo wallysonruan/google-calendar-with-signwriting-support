@@ -14,3 +14,4 @@ set -euxo pipefail
 
 find . -maxdepth 1 -type f ! -name "*.sh" -exec cp {} ../../.git/hooks/ \;
 
+# TODO: Make the new files executable
