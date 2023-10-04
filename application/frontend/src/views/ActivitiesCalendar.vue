@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import CalendarDay from '@/components/CalendarDay.vue';
+import { SIGNS } from '@/assets/signs';
 </script>
 
 <template>

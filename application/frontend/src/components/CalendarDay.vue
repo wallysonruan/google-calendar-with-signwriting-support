@@ -1,4 +1,6 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { SIGNS } from '@/assets/signs';
+</script>
 <template>
     <div class="day-container">
         <div class="day-bar">
@@ -8,9 +10,7 @@
         </div>
         <div class="course-container">
             <div class="course-title">
-                <p>
-                    COURSE TITLE
-                </p>
+                <div v-html="SIGNS.ATIVIDADE.SVG"></div>
             </div>
             <div class="classes-container">
                 <div class="class-item">
