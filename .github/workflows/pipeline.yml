@@ -30,6 +30,7 @@ jobs:
             git config --global user.name $username
         - name: deploy to gh-pages
           run: |
+            cd application/frontend
             npm i
             NODE_ENV=production npm run build
             cd dist
