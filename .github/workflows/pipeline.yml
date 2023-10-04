@@ -18,7 +18,6 @@ jobs:
           working-directory: ./application/frontend
           run: |
             npm run test:unit
-            steps:
         - name: setup git auth
           env:
             email: ${{ secrets.EMAIL }}
