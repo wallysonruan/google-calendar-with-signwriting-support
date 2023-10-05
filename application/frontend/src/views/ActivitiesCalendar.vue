@@ -26,13 +26,19 @@ const days = [
   {
     number: 7,
     activity: true
-  },
+  }
 ]
 </script>
 
 <template>
   <div class="calendar">
-    <CalendarDay class="calendar-day" v-for="day in days" :number="day.number" v-bind:key="day.number" :activity="day.activity" />
+    <CalendarDay
+      class="calendar-day"
+      v-for="day in days"
+      :number="day.number"
+      v-bind:key="day.number"
+      :activity="day.activity"
+    />
   </div>
 </template>
 
