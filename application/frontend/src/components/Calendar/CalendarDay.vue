@@ -3,7 +3,7 @@ import { useLanguageStore } from '@/stores/language'
 // https://www.signbank.org/signpuddle2.0/glyphogram.php?font=svg1&bound=t&text=
 type day = {
   number: number
-  activity?: boolean,
+  activity?: boolean
   name: string
 }
 const props = defineProps<day>()
@@ -12,8 +12,12 @@ const languageStore = useLanguageStore()
 <template>
   <div class="day">
     <div class="day__bar">
-      <img class="day__name-sw" src="../../assets/signs_svg/SEGUNDA_FEIRA.svg" alt=""
-        v-show="languageStore.signwriting" />
+      <img
+        class="day__name-sw"
+        src="../../assets/signs_svg/SEGUNDA_FEIRA.svg"
+        alt=""
+        v-show="languageStore.signwriting"
+      />
       <p class="day__name-pt" v-show="languageStore.portuguese">{{ props.name }}</p>
       <p class="day__number">{{ props.number }}</p>
     </div>
@@ -206,7 +210,8 @@ const languageStore = useLanguageStore()
   width: 20px;
 }
 
-.activities__activity {}
+.activities__activity {
+}
 
 .activities__activity-sw {
   display: flex;

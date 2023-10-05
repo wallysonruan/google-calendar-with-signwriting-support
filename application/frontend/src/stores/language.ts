@@ -11,14 +11,14 @@ export const useLanguageStore = defineStore({
     portuguese: true
   }),
   actions: {
-    showSignWriting(){
-        if(!this.signwriting){
-            this.signwriting = true
-            this.portuguese = false
-        }else{
-            this.signwriting = false
-            this.portuguese = true
-        }
+    showSignWriting() {
+      if (!this.signwriting) {
+        this.signwriting = true
+        this.portuguese = false
+      } else {
+        this.signwriting = false
+        this.portuguese = true
+      }
     }
   }
 })

@@ -1,22 +1,25 @@
 <script setup lang="ts">
-import { useLanguageStore } from '@/stores/language';
+import { useLanguageStore } from '@/stores/language'
 const languageStore = useLanguageStore()
 </script>
 <template>
-  <v-app-bar scroll-behavior="hide" class="nav">
-    <label class="switch">
-      <input type="checkbox" @click="languageStore.showSignWriting">
-      <span class="slider round"></span>
-    </label>
+  <v-app-bar scroll-behavior="hide">
+    <div class="nav">
+      <label class="switch">
+        <input type="checkbox" @click="languageStore.showSignWriting" />
+        <span class="slider round"></span>
+      </label>
+    </div>
   </v-app-bar>
 </template>
 <style scoped>
 .nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: right;
+  width: 100%;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   visibility: hidden;
 }
 
@@ -31,7 +34,7 @@ input[type="checkbox"] {
 
 .switch::before {
   position: absolute;
-  content: "PT";
+  content: 'PT';
   height: 26px;
   width: 26px;
   left: 4px;
@@ -41,7 +44,7 @@ input[type="checkbox"] {
 
 .switch::after {
   position: absolute;
-  content: "SW";
+  content: 'SW';
   height: 26px;
   width: 26px;
   right: 3px;
@@ -51,18 +54,18 @@ input[type="checkbox"] {
 
 .slider:before {
   position: absolute;
-  content: "";
+  content: '';
   height: 26px;
   width: 26px;
   left: 4px;
   bottom: 2px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
   z-index: 1;
 }
 
-input:checked+.slider:before {
+input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
