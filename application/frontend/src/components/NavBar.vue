@@ -1,5 +1,78 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useLanguageStore } from '@/stores/language';
+const languageStore = useLanguageStore()
+</script>
 <template>
-  <v-app-bar scroll-behavior="hide"></v-app-bar>
+  <v-app-bar scroll-behavior="hide" class="nav">
+    <label class="switch">
+      <input type="checkbox" @click="languageStore.showSignWriting">
+      <span class="slider round"></span>
+    </label>
+  </v-app-bar>
 </template>
-<style scoped></style>
+<style scoped>
+.nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.switch {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  margin-right: 0.5rem;
+  background-color: rgb(159, 152, 152);
+  border-radius: 50%/25px;
+}
+
+.switch::before {
+  position: absolute;
+  content: "PT";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 2px;
+  border-radius: 50%;
+}
+
+.switch::after {
+  position: absolute;
+  content: "SW";
+  height: 26px;
+  width: 26px;
+  right: 3px;
+  bottom: 2px;
+  border-radius: 50%;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  z-index: 1;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+</style>

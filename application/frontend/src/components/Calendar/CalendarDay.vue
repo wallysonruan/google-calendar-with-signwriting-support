@@ -1,98 +1,93 @@
 <script lang="ts" setup>
+import { useLanguageStore } from '@/stores/language'
 // https://www.signbank.org/signpuddle2.0/glyphogram.php?font=svg1&bound=t&text=
 type day = {
   number: number
-  activity?: boolean
+  activity?: boolean,
+  name: string
 }
 const props = defineProps<day>()
+const languageStore = useLanguageStore()
 </script>
 <template>
   <div class="day">
     <div class="day__bar">
-      <img class="day__name-sw" src="../../assets/signs_svg/SEGUNDA_FEIRA.svg" alt="" />
+      <img class="day__name-sw" src="../../assets/signs_svg/SEGUNDA_FEIRA.svg" alt=""
+        v-show="languageStore.signwriting" />
+      <p class="day__name-pt" v-show="languageStore.portuguese">{{ props.name }}</p>
       <p class="day__number">{{ props.number }}</p>
     </div>
     <!---->
     <div class="course">
       <div class="course__title">
-        <v-card class="sw-card course__title-sw">
+        <v-card class="sw-card course__title-sw" v-show="languageStore.signwriting">
           <img class="sw-img" src="../../assets/signs_svg/CURSO.svg" alt="" />
           <img class="sw-img" src="../../assets/signs_svg/TRADUCAO.svg" alt="" />
+        </v-card>
+        <v-card>
+          <p class="course__title" v-show="languageStore.portuguese">Curso de Tradução</p>
         </v-card>
       </div>
       <!---->
       <div class="classes">
         <div class="classes__class">
           <div class="class__title">
-            <v-card class="sw-card class__title-sw">
+            <v-card class="sw-card class__title-sw" v-show="languageStore.signwriting">
               <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
             </v-card>
+            <p class="class__title" v-show="languageStore.portuguese">Aula</p>
           </div>
           <!---->
           <div class="activities">
             <div class="activities-title">
-              <div class="activities__title-sw">
+              <div class="activities__title-sw" v-show="languageStore.signwriting">
                 <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
               </div>
+              <p class="activities__title" v-show="languageStore.portuguese">Atividade</p>
             </div>
             <!---->
             <div class="activities__list">
               <div class="activities__list-on" v-if="props.activity">
-                <div class="activities__list-sw">
+                <div class="activities__list-sw" v-show="languageStore.signwriting">
+                  <v-card class="activities__activity activities__activity-sw sw-card">
+                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
+                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
+                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
+                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
+                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
+                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
+                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
+                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
+                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
+                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
+                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
+                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
+                  </v-card>
+                </div>
+                <div class="activities__list-pt" v-show="languageStore.portuguese">
                   <div class="activities__activity">
-                    <v-card class="activities__activity-sw sw-card">
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
+                    <v-card>
+                      <p>Atividade</p>
                     </v-card>
-                  </div>
-                  <div class="activities__activity">
-                    <v-card class="activities__activity-sw sw-card">
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
+                    <v-card>
+                      <p>Atividade</p>
                     </v-card>
-                  </div>
-                  <div class="activities__activity">
-                    <v-card class="activities__activity-sw sw-card">
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                      <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
+                    <v-card>
+                      <p>Atividade</p>
+                    </v-card>
+                    <v-card>
+                      <p>Atividade</p>
                     </v-card>
                   </div>
                 </div>
               </div>
               <!---->
               <div class="activities__list-off" v-else>
-                <div class="activities__list-sw">
+                <div class="activities__list-sw sw" v-show="languageStore.signwriting">
                   <img class="sw-img" src="../../assets/signs_svg/TER-NAO.svg" alt="" />
+                </div>
+                <div class="activities__list-pt" v-show="languageStore.portuguese">
+                  <p>Nenhuma atividade encontrada.</p>
                 </div>
               </div>
             </div>
@@ -211,15 +206,14 @@ const props = defineProps<day>()
   width: 20px;
 }
 
-.activities__activity {
-}
+.activities__activity {}
 
 .activities__activity-sw {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   width: max-content;
-  max-height: 350px;
+  max-height: 250px;
   padding: 0.5rem;
   gap: 5px;
 }

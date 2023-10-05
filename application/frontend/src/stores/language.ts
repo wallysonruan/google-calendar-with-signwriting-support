@@ -5,8 +5,20 @@ import { defineStore } from 'pinia'
 // and `Store` (e.g. `useUserStore`, `useCartStore`, `useProductStore`)
 // the first argument is a unique id of the store across your application
 export const useLanguageStore = defineStore({
-    id: 'useLanguageStore',
-    state: () => ({
-        showSW: false
-    })
+  id: 'useLanguageStore',
+  state: () => ({
+    signwriting: false,
+    portuguese: true
+  }),
+  actions: {
+    showSignWriting(){
+        if(!this.signwriting){
+            this.signwriting = true
+            this.portuguese = false
+        }else{
+            this.signwriting = false
+            this.portuguese = true
+        }
+    }
+  }
 })
