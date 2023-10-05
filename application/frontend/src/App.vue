@@ -15,10 +15,13 @@ import Footer from './components/CustomFooter.vue'
 </template>
 
 <style scoped>
-@media (min-width: 1024px) {}
+@media (min-width: 1024px) {
+}
 </style>
 <style>
-  body, #app, #main {
-    background-color: gainsboro;
-  }
+body,
+#app,
+#main {
+  background-color: gainsboro;
+}
 </style>

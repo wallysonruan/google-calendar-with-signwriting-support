@@ -12,16 +12,16 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  base: "/sign-language-school-management/",
+  base: '/sign-language-school-management/',
   build: {
     emptyOutDir: true, // force destroy of bundled assets when outside of project dir
     outDir: '../../', // delete everything, only the output will remain
     sourcemap: true,
     rollupOptions: {
       output: {
-        assetFileNames: "assets/[name][extname]",
-        entryFileNames: "assets/[name].js",
-      },
-    },
-  },
+        assetFileNames: 'assets/[name][extname]',
+        entryFileNames: 'assets/[name].js'
+      }
+    }
+  }
 })
