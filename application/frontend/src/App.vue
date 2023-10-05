@@ -7,7 +7,7 @@ import Footer from './components/CustomFooter.vue'
 <template>
   <v-app>
     <NavBar />
-    <v-main>
+    <v-main id="main">
       <RouterView />
       <Footer />
     </v-main>
@@ -16,4 +16,9 @@ import Footer from './components/CustomFooter.vue'
 
 <style scoped>
 @media (min-width: 1024px) {}
+</style>
+<style>
+  body, #app, #main {
+    background-color: gainsboro;
+  }
 </style>
