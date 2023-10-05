@@ -6,13 +6,14 @@ import Footer from './components/CustomFooter.vue'
 
 <template>
   <v-app>
-    <!-- <NavBar /> -->
-    <RouterView />
-    <Footer />
+    <NavBar />
+    <v-main>
+      <RouterView />
+      <Footer />
+    </v-main>
   </v-app>
 </template>
 
 <style scoped>
-@media (min-width: 1024px) {
-}
+@media (min-width: 1024px) {}
 </style>
