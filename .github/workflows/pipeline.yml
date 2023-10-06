@@ -28,13 +28,16 @@ jobs:
             echo "https://${access_token}:x-oauth-basic@github.com" > ~/.git-credentials
             git config --global user.email $email
             git config --global user.name $username
-        - name: deploy to gh-pages
+        - name: Build application
           run: |
             cd application/frontend
             npm i
+            REPOSITORY_NAME="${$GITHUB_REPOSITORY#*/}"
             NODE_ENV=production
             npm run build
             cd ../..
+        - name: deploy to gh-pages
+          run: |
             git add -A
             git commit -m "🚀 Deploy id ${GITHUB_RUN_ID}"
             git push origin ${GITHUB_REF##*/}:gh-pages --force

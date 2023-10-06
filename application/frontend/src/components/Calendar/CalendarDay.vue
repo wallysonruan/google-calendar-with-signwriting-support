@@ -12,8 +12,12 @@ const languageStore = useLanguageStore()
 <template>
   <div class="day" :sw="languageStore.signwriting">
     <div class="day__bar" :sw="languageStore.signwriting">
-      <img class="day__name-sw" src="../../assets/signs_svg/SEGUNDA_FEIRA.svg" alt=""
-        v-show="languageStore.signwriting" />
+      <img
+        class="day__name-sw"
+        src="../../assets/signs_svg/SEGUNDA_FEIRA.svg"
+        alt=""
+        v-show="languageStore.signwriting"
+      />
       <p class="day__name-pt" v-show="languageStore.portuguese">{{ props.name }}</p>
       <p class="day__number" :sw="languageStore.signwriting">{{ props.number }}</p>
     </div>
@@ -25,7 +29,13 @@ const languageStore = useLanguageStore()
           <img class="sw-img" src="../../assets/signs_svg/TRADUCAO.svg" alt="" />
         </v-card>
         <v-card>
-          <p class="course__title" :sw="languageStore.signwriting" v-show="languageStore.portuguese">Curso de Tradução</p>
+          <p
+            class="course__title"
+            :sw="languageStore.signwriting"
+            v-show="languageStore.portuguese"
+          >
+            Curso de Tradução
+          </p>
         </v-card>
       </div>
       <!---->
@@ -114,7 +124,7 @@ const languageStore = useLanguageStore()
   display: flex;
 }
 
-.day[sw="true"] {
+.day[sw='true'] {
   flex-direction: column;
 }
 
@@ -123,7 +133,7 @@ const languageStore = useLanguageStore()
   width: 3rem;
 }
 
-.day__bar[sw="true"] {
+.day__bar[sw='true'] {
   display: flex;
   margin-bottom: 0.3rem;
   align-items: center;
@@ -145,12 +155,12 @@ const languageStore = useLanguageStore()
   flex-direction: column;
 }
 
-.course[sw="true"] {
+.course[sw='true'] {
   display: flex;
   flex-direction: row;
 }
 
-.course__title[sw="true"] {
+.course__title[sw='true'] {
   margin-right: 0.2rem;
 }
 
@@ -174,7 +184,7 @@ const languageStore = useLanguageStore()
   border-radius: 10px;
 }
 
-.classes__class[sw="true"] {
+.classes__class[sw='true'] {
   display: flex;
   width: 100%;
   height: 100%;
@@ -227,7 +237,8 @@ const languageStore = useLanguageStore()
   width: 20px;
 }
 
-.activities__activity {}
+.activities__activity {
+}
 
 .activities__activity-sw {
   display: flex;
