@@ -32,7 +32,7 @@ jobs:
           run: |
             cd application/frontend
             npm i
-            REPOSITORY_NAME="${$GITHUB_REPOSITORY#*/}"
+            REPOSITORY_NAME="/${GITHUB_REPOSITORY#*/}"
             NODE_ENV=production
             npm run build
             cd ../..
