@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import SignWriting from '../SignWriting.vue'
+import CalendarActivity from '@/components/Calendar/CalendarActivity.vue'
 import { useLanguageStore } from '@/stores/language'
 // https://www.signbank.org/signpuddle2.0/glyphogram.php?font=svg1&bound=t&text=
 type day = {
@@ -12,93 +14,79 @@ const languageStore = useLanguageStore()
 <template>
   <div class="day" :sw="languageStore.signwriting">
     <div class="day__bar" :sw="languageStore.signwriting">
-      <img
-        class="day__name-sw"
-        src="../../assets/signs_svg/SEGUNDA_FEIRA.svg"
-        alt=""
+      <SignWriting
+        src="src/assets/signs_svg/SEGUNDA_FEIRA.svg"
+        :width="30"
+        :height="26"
         v-show="languageStore.signwriting"
       />
-      <p class="day__name-pt" v-show="languageStore.portuguese">{{ props.name }}</p>
+      <!---->
+      <p v-show="languageStore.portuguese">{{ props.name }}</p>
+      <!---->
       <p class="day__number" :sw="languageStore.signwriting">{{ props.number }}</p>
     </div>
     <!---->
     <div class="course" :sw="languageStore.signwriting">
-      <div class="course__title" :sw="languageStore.signwriting">
-        <v-card class="sw-card course__title-sw" v-show="languageStore.signwriting">
-          <img class="sw-img" src="../../assets/signs_svg/CURSO.svg" alt="" />
-          <img class="sw-img" src="../../assets/signs_svg/TRADUCAO.svg" alt="" />
-        </v-card>
-        <v-card>
-          <p
-            class="course__title"
-            :sw="languageStore.signwriting"
-            v-show="languageStore.portuguese"
-          >
-            Curso de Tradução
-          </p>
-        </v-card>
-      </div>
+      <v-card class="course__title" :sw="languageStore.signwriting">
+        <SignWriting
+          src="src/assets/signs_svg/CURSO.svg"
+          :width="40"
+          v-show="languageStore.signwriting"
+        />
+        <SignWriting
+          src="src/assets/signs_svg/TRADUCAO.svg"
+          :width="40"
+          v-show="languageStore.signwriting"
+        />
+        <!---->
+        <p v-show="languageStore.portuguese">Curso de Tradução</p>
+      </v-card>
       <!---->
       <div class="classes">
         <div class="classes__class" :sw="languageStore.signwriting">
-          <div class="class__title">
-            <v-card class="sw-card class__title-sw" v-show="languageStore.signwriting">
-              <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-            </v-card>
+          <v-card class="class__title" :sw="languageStore.signwriting">
+            <SignWriting
+              src="src/assets/signs_svg/ATIVIDADE.svg"
+              :width="35"
+              :height="35"
+              v-show="languageStore.signwriting"
+            />
+            <!---->
             <p class="class__title" v-show="languageStore.portuguese">Aula</p>
-          </div>
+          </v-card>
           <!---->
           <div class="activities">
             <div class="activities-title">
-              <div class="activities__title-sw" v-show="languageStore.signwriting">
-                <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-              </div>
+              <SignWriting
+                src="src/assets/signs_svg/ATIVIDADE.svg"
+                :width="35"
+                :height="35"
+                v-show="languageStore.signwriting"
+              />
+              <!---->
               <p class="activities__title" v-show="languageStore.portuguese">Atividade</p>
             </div>
             <!---->
             <div class="activities__list">
-              <div class="activities__list-on" v-if="props.activity">
-                <div class="activities__list-sw" v-show="languageStore.signwriting">
-                  <v-card class="activities__activity activities__activity-sw sw-card">
-                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                    <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
-                  </v-card>
-                </div>
-                <div class="activities__list-pt" v-show="languageStore.portuguese">
-                  <div class="activities__activity">
-                    <v-card>
-                      <p>Atividade</p>
-                    </v-card>
-                    <v-card>
-                      <p>Atividade</p>
-                    </v-card>
-                    <v-card>
-                      <p>Atividade</p>
-                    </v-card>
-                    <v-card>
-                      <p>Atividade</p>
-                    </v-card>
-                  </div>
-                </div>
+              <div
+                class="activities__list-on"
+                :sw="languageStore.signwriting"
+                v-if="props.activity"
+              >
+                <CalendarActivity class="activities__item" :show_sw="languageStore.signwriting" />
+                <CalendarActivity class="activities__item" :show_sw="languageStore.signwriting" />
+                <CalendarActivity class="activities__item" :show_sw="languageStore.signwriting" />
               </div>
               <!---->
               <div class="activities__list-off" v-else>
-                <div class="activities__list-sw sw" v-show="languageStore.signwriting">
-                  <img class="sw-img" src="../../assets/signs_svg/TER-NAO.svg" alt="" />
-                </div>
-                <div class="activities__list-pt" v-show="languageStore.portuguese">
-                  <p>Nenhuma atividade encontrada.</p>
-                </div>
+                <SignWriting
+                  src="src/assets/signs_svg/TER-NAO.svg"
+                  :width="23"
+                  :height="55"
+                  v-show="languageStore.signwriting"
+                />
+                <!---->
+                <p v-show="languageStore.portuguese">Nenhuma atividade encontrada.</p>
               </div>
             </div>
           </div>
@@ -108,18 +96,6 @@ const languageStore = useLanguageStore()
   </div>
 </template>
 <style scoped>
-/* Write a SW Wrapper */
-/* Define constraints for all signs */
-.sw-img {
-  width: 40px;
-}
-
-.course__title-sw .sw-img {
-  width: 35px;
-}
-
-/*  */
-
 .day {
   display: flex;
 }
@@ -140,11 +116,6 @@ const languageStore = useLanguageStore()
   gap: 5px;
 }
 
-.day__name-sw {
-  width: 30px;
-  height: 26px;
-}
-
 .day__number {
   font-size: larger;
   font-weight: 600;
@@ -153,24 +124,22 @@ const languageStore = useLanguageStore()
 .course {
   display: flex;
   flex-direction: column;
+  width: fit-content;
 }
 
 .course[sw='true'] {
-  display: flex;
   flex-direction: row;
 }
 
 .course__title[sw='true'] {
   margin-right: 0.2rem;
-}
-
-.course__title-sw {
   display: flex;
   flex-direction: column;
   align-content: center;
   height: fit-content;
   padding: 0.5rem;
   gap: 10px;
+  width: fit-content;
 }
 
 .classes {
@@ -192,7 +161,7 @@ const languageStore = useLanguageStore()
   border-radius: 10px;
 }
 
-.class__title-sw {
+.class__title[sw='true'] {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -219,38 +188,17 @@ const languageStore = useLanguageStore()
   width: 100%;
   padding: 0.3rem;
   border-radius: 10px;
+  overflow: scroll;
 }
 
-.activities__list-sw {
+.activities__list-on[sw='true'] {
   display: flex;
-  overflow-y: scroll;
+  width: fit-content;
   gap: 5px;
 }
 
-.activities__list-off .activities__list-sw {
+.activities__list-off {
   display: flex;
   justify-content: center;
-}
-
-/* FIX BELOW */
-.activities__list-off .activities__list-sw .sw-img {
-  width: 20px;
-}
-
-.activities__activity {
-}
-
-.activities__activity-sw {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: max-content;
-  max-height: 250px;
-  padding: 0.5rem;
-  gap: 5px;
-}
-
-.activities__activity-sw .sw-img {
-  width: 35px;
 }
 </style>
