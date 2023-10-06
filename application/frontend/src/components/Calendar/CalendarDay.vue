@@ -10,31 +10,27 @@ const props = defineProps<day>()
 const languageStore = useLanguageStore()
 </script>
 <template>
-  <div class="day">
-    <div class="day__bar">
-      <img
-        class="day__name-sw"
-        src="../../assets/signs_svg/SEGUNDA_FEIRA.svg"
-        alt=""
-        v-show="languageStore.signwriting"
-      />
+  <div class="day" :sw="languageStore.signwriting">
+    <div class="day__bar" :sw="languageStore.signwriting">
+      <img class="day__name-sw" src="../../assets/signs_svg/SEGUNDA_FEIRA.svg" alt=""
+        v-show="languageStore.signwriting" />
       <p class="day__name-pt" v-show="languageStore.portuguese">{{ props.name }}</p>
-      <p class="day__number">{{ props.number }}</p>
+      <p class="day__number" :sw="languageStore.signwriting">{{ props.number }}</p>
     </div>
     <!---->
-    <div class="course">
-      <div class="course__title">
+    <div class="course" :sw="languageStore.signwriting">
+      <div class="course__title" :sw="languageStore.signwriting">
         <v-card class="sw-card course__title-sw" v-show="languageStore.signwriting">
           <img class="sw-img" src="../../assets/signs_svg/CURSO.svg" alt="" />
           <img class="sw-img" src="../../assets/signs_svg/TRADUCAO.svg" alt="" />
         </v-card>
         <v-card>
-          <p class="course__title" v-show="languageStore.portuguese">Curso de Tradução</p>
+          <p class="course__title" :sw="languageStore.signwriting" v-show="languageStore.portuguese">Curso de Tradução</p>
         </v-card>
       </div>
       <!---->
       <div class="classes">
-        <div class="classes__class">
+        <div class="classes__class" :sw="languageStore.signwriting">
           <div class="class__title">
             <v-card class="sw-card class__title-sw" v-show="languageStore.signwriting">
               <img class="sw-img" src="../../assets/signs_svg/ATIVIDADE.svg" alt="" />
@@ -116,10 +112,18 @@ const languageStore = useLanguageStore()
 
 .day {
   display: flex;
+}
+
+.day[sw="true"] {
   flex-direction: column;
 }
 
 .day__bar {
+  text-align: center;
+  width: 3rem;
+}
+
+.day__bar[sw="true"] {
   display: flex;
   margin-bottom: 0.3rem;
   align-items: center;
@@ -138,16 +142,22 @@ const languageStore = useLanguageStore()
 
 .course {
   display: flex;
-  /* background-color: blueviolet; */
+  flex-direction: column;
 }
 
-.course__title {
+.course[sw="true"] {
+  display: flex;
+  flex-direction: row;
+}
+
+.course__title[sw="true"] {
   margin-right: 0.2rem;
 }
 
 .course__title-sw {
   display: flex;
   flex-direction: column;
+  align-content: center;
   height: fit-content;
   padding: 0.5rem;
   gap: 10px;
@@ -158,6 +168,13 @@ const languageStore = useLanguageStore()
 }
 
 .classes__class {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(196, 194, 194);
+  border-radius: 10px;
+}
+
+.classes__class[sw="true"] {
   display: flex;
   width: 100%;
   height: 100%;
@@ -210,8 +227,7 @@ const languageStore = useLanguageStore()
   width: 20px;
 }
 
-.activities__activity {
-}
+.activities__activity {}
 
 .activities__activity-sw {
   display: flex;

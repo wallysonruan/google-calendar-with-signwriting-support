@@ -9,14 +9,13 @@ import Footer from './components/CustomFooter.vue'
     <NavBar />
     <v-main id="main">
       <RouterView />
-      <Footer />
     </v-main>
+    <!-- <Footer /> -->
   </v-app>
 </template>
 
 <style scoped>
-@media (min-width: 1024px) {
-}
+@media (min-width: 1024px) {}
 </style>
 <style>
 body,
