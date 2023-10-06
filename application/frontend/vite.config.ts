@@ -12,7 +12,8 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  base: process.env.REPOSITORY_NAME, // This will prevent the resources disappearing when they change from one GitHub repository to another
+  // base: process.env.REPOSITORY_NAME, // This will prevent the resources disappearing when they change from one GitHub repository to another
+  base: '/sign-language-school-management/',
   build: {
     emptyOutDir: true, // force destroy of bundled assets when outside of project dir
     outDir: '../../', // delete everything, only the output will remain

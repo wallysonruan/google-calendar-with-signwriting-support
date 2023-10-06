@@ -31,7 +31,7 @@ jobs:
         - name: Build application
           run: |
             cd application/frontend
-            REPOSITORY_NAME="'/${GITHUB_REPOSITORY#*/}/'"
+            # REPOSITORY_NAME="'/${GITHUB_REPOSITORY#*/}/'"
             NODE_ENV=production
             npm i
             npm run build
