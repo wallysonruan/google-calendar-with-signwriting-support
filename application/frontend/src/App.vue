@@ -16,12 +16,19 @@ import Footer from './components/CustomFooter.vue'
 
 <style scoped>
 @media only screen and (min-width: 600px) {
+  #main {
+    margin-top: 2rem;
+  }
 }
 </style>
 <style>
 body,
 #app,
 #main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-color: gainsboro;
+  width: 100%;
 }
 </style>
