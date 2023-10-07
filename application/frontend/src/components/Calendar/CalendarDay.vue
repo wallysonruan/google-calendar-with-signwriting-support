@@ -14,7 +14,7 @@ const languageStore = useLanguageStore()
 <template>
   <div class="day" :sw="languageStore.signwriting">
     <div class="day__bar" :sw="languageStore.signwriting">
-      <SignWriting src="src/assets/signs_svg/SEGUNDA_FEIRA.svg" :width="30" :height="26"
+      <SignWriting src="src/assets/SEGUNDA_FEIRA.svg" :width="30" :height="26"
         v-show="languageStore.signwriting" />
       <!---->
       <p v-show="languageStore.portuguese">{{ props.name }}</p>
@@ -24,8 +24,8 @@ const languageStore = useLanguageStore()
     <!---->
     <div class="course" :sw="languageStore.signwriting">
       <v-card class="course__title" :sw="languageStore.signwriting">
-        <SignWriting src="src/assets/signs_svg/CURSO.svg" :width="40" v-show="languageStore.signwriting" />
-        <SignWriting src="src/assets/signs_svg/TRADUCAO.svg" :width="40" v-show="languageStore.signwriting" />
+        <SignWriting src="src/assets/CURSO.svg" :width="40" v-show="languageStore.signwriting" />
+        <SignWriting src="src/assets/TRADUCAO.svg" :width="40" v-show="languageStore.signwriting" />
         <!---->
         <p v-show="languageStore.portuguese">Curso de Tradução</p>
       </v-card>
@@ -33,7 +33,7 @@ const languageStore = useLanguageStore()
       <div class="classes">
         <div class="classes__class" :sw="languageStore.signwriting">
           <v-card class="class__title" :sw="languageStore.signwriting">
-            <SignWriting src="src/assets/signs_svg/ATIVIDADE.svg" :width="35" :height="35"
+            <SignWriting src="src/assets/ATIVIDADE.svg" :width="35" :height="35"
               v-show="languageStore.signwriting" />
             <!---->
             <p class="class__title" v-show="languageStore.portuguese">Aula</p>
@@ -41,7 +41,7 @@ const languageStore = useLanguageStore()
           <!---->
           <div class="activities">
             <div class="activities-title">
-              <SignWriting src="src/assets/signs_svg/ATIVIDADE.svg" :width="35" :height="35"
+              <SignWriting src="src/assets/ATIVIDADE.svg" :width="35" :height="35"
                 v-show="languageStore.signwriting" />
               <!---->
               <p class="activities__title" v-show="languageStore.portuguese">Atividade</p>
@@ -55,7 +55,7 @@ const languageStore = useLanguageStore()
               </div>
               <!---->
               <div class="activities__list-off" v-else>
-                <SignWriting src="src/assets/signs_svg/TER-NAO.svg" :width="23" :height="55"
+                <SignWriting src="src/assets/TER-NAO.svg" :width="23" :height="55"
                   v-show="languageStore.signwriting" />
                 <!---->
                 <p v-show="languageStore.portuguese">Nenhuma atividade encontrada.</p>
@@ -145,6 +145,7 @@ const languageStore = useLanguageStore()
 
 .activities {
   display: flex;
+  width: 100%;
   flex-direction: column;
   padding: 0.2rem;
   overflow: hidden;

@@ -9,37 +9,37 @@ const props = defineProps<{
     <SignWriting
       :width="35"
       :height="35"
-      src="src/assets/signs_svg/ATIVIDADE.svg"
+      src="src/assets/ATIVIDADE.svg"
       v-show="show_sw"
     />
     <SignWriting
       :width="35"
       :height="35"
-      src="src/assets/signs_svg/ATIVIDADE.svg"
+      src="src/assets/ATIVIDADE.svg"
       v-show="show_sw"
     />
     <SignWriting
       :width="35"
       :height="35"
-      src="src/assets/signs_svg/ATIVIDADE.svg"
+      src="src/assets/ATIVIDADE.svg"
       v-show="show_sw"
     />
     <SignWriting
       :width="35"
       :height="35"
-      src="src/assets/signs_svg/ATIVIDADE.svg"
+      src="src/assets/ATIVIDADE.svg"
       v-show="show_sw"
     />
     <SignWriting
       :width="35"
       :height="35"
-      src="src/assets/signs_svg/ATIVIDADE.svg"
+      src="src/assets/ATIVIDADE.svg"
       v-show="show_sw"
     />
     <SignWriting
       :width="35"
       :height="35"
-      src="src/assets/signs_svg/ATIVIDADE.svg"
+      src="src/assets/ATIVIDADE.svg"
       v-show="show_sw"
     />
     <!---->
