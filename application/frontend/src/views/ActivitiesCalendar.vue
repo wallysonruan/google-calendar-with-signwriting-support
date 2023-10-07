@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import CalendarDay from '@/components/Calendar/CalendarDay.vue'
-
-// const days = [2, 3, 4, 5, 6, 7, 8, 9]
 const days = [
   {
     number: 2,
@@ -47,5 +45,13 @@ const days = [
 <style scoped>
 .calendar-day {
   margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 600px) {
+  .calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 </style>

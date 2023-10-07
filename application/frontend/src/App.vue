@@ -15,7 +15,7 @@ import Footer from './components/CustomFooter.vue'
 </template>
 
 <style scoped>
-@media (min-width: 1024px) {
+@media only screen and (min-width: 600px) {
 }
 </style>
 <style>

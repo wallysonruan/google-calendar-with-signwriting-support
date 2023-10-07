@@ -14,12 +14,8 @@ const languageStore = useLanguageStore()
 <template>
   <div class="day" :sw="languageStore.signwriting">
     <div class="day__bar" :sw="languageStore.signwriting">
-      <SignWriting
-        src="src/assets/signs_svg/SEGUNDA_FEIRA.svg"
-        :width="30"
-        :height="26"
-        v-show="languageStore.signwriting"
-      />
+      <SignWriting src="src/assets/signs_svg/SEGUNDA_FEIRA.svg" :width="30" :height="26"
+        v-show="languageStore.signwriting" />
       <!---->
       <p v-show="languageStore.portuguese">{{ props.name }}</p>
       <!---->
@@ -28,16 +24,8 @@ const languageStore = useLanguageStore()
     <!---->
     <div class="course" :sw="languageStore.signwriting">
       <v-card class="course__title" :sw="languageStore.signwriting">
-        <SignWriting
-          src="src/assets/signs_svg/CURSO.svg"
-          :width="40"
-          v-show="languageStore.signwriting"
-        />
-        <SignWriting
-          src="src/assets/signs_svg/TRADUCAO.svg"
-          :width="40"
-          v-show="languageStore.signwriting"
-        />
+        <SignWriting src="src/assets/signs_svg/CURSO.svg" :width="40" v-show="languageStore.signwriting" />
+        <SignWriting src="src/assets/signs_svg/TRADUCAO.svg" :width="40" v-show="languageStore.signwriting" />
         <!---->
         <p v-show="languageStore.portuguese">Curso de Tradução</p>
       </v-card>
@@ -45,46 +33,30 @@ const languageStore = useLanguageStore()
       <div class="classes">
         <div class="classes__class" :sw="languageStore.signwriting">
           <v-card class="class__title" :sw="languageStore.signwriting">
-            <SignWriting
-              src="src/assets/signs_svg/ATIVIDADE.svg"
-              :width="35"
-              :height="35"
-              v-show="languageStore.signwriting"
-            />
+            <SignWriting src="src/assets/signs_svg/ATIVIDADE.svg" :width="35" :height="35"
+              v-show="languageStore.signwriting" />
             <!---->
             <p class="class__title" v-show="languageStore.portuguese">Aula</p>
           </v-card>
           <!---->
           <div class="activities">
             <div class="activities-title">
-              <SignWriting
-                src="src/assets/signs_svg/ATIVIDADE.svg"
-                :width="35"
-                :height="35"
-                v-show="languageStore.signwriting"
-              />
+              <SignWriting src="src/assets/signs_svg/ATIVIDADE.svg" :width="35" :height="35"
+                v-show="languageStore.signwriting" />
               <!---->
               <p class="activities__title" v-show="languageStore.portuguese">Atividade</p>
             </div>
             <!---->
             <div class="activities__list">
-              <div
-                class="activities__list-on"
-                :sw="languageStore.signwriting"
-                v-if="props.activity"
-              >
+              <div class="activities__list-on" :sw="languageStore.signwriting" v-if="props.activity">
                 <CalendarActivity class="activities__item" :show_sw="languageStore.signwriting" />
                 <CalendarActivity class="activities__item" :show_sw="languageStore.signwriting" />
                 <CalendarActivity class="activities__item" :show_sw="languageStore.signwriting" />
               </div>
               <!---->
               <div class="activities__list-off" v-else>
-                <SignWriting
-                  src="src/assets/signs_svg/TER-NAO.svg"
-                  :width="23"
-                  :height="55"
-                  v-show="languageStore.signwriting"
-                />
+                <SignWriting src="src/assets/signs_svg/TER-NAO.svg" :width="23" :height="55"
+                  v-show="languageStore.signwriting" />
                 <!---->
                 <p v-show="languageStore.portuguese">Nenhuma atividade encontrada.</p>
               </div>
@@ -144,6 +116,7 @@ const languageStore = useLanguageStore()
 
 .classes {
   width: 300px;
+  max-width: 17rem;
 }
 
 .classes__class {
@@ -173,7 +146,6 @@ const languageStore = useLanguageStore()
 .activities {
   display: flex;
   flex-direction: column;
-  width: 100%;
   padding: 0.2rem;
   overflow: hidden;
 }
@@ -188,7 +160,11 @@ const languageStore = useLanguageStore()
   width: 100%;
   padding: 0.3rem;
   border-radius: 10px;
-  overflow: scroll;
+  overflow-x: scroll;
+}
+
+.activities__list[sw="true"] {
+  overflow-y: scroll;
 }
 
 .activities__list-on[sw='true'] {
@@ -200,5 +176,26 @@ const languageStore = useLanguageStore()
 .activities__list-off {
   display: flex;
   justify-content: center;
+}
+
+@media only screen and (min-width: 600px) {
+  .day {
+    width: 80vw;
+  }
+
+  .course {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .classes {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .activities {
+    width: 100%;
+  }
 }
 </style>
