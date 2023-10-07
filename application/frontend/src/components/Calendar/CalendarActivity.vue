@@ -6,42 +6,14 @@ const props = defineProps<{
 </script>
 <template>
   <v-card class="activity" :sw="show_sw">
-    <SignWriting
-      :width="35"
-      :height="35"
-      src="src/assets/ATIVIDADE.svg"
-      v-show="show_sw"
-    />
-    <SignWriting
-      :width="35"
-      :height="35"
-      src="src/assets/ATIVIDADE.svg"
-      v-show="show_sw"
-    />
-    <SignWriting
-      :width="35"
-      :height="35"
-      src="src/assets/ATIVIDADE.svg"
-      v-show="show_sw"
-    />
-    <SignWriting
-      :width="35"
-      :height="35"
-      src="src/assets/ATIVIDADE.svg"
-      v-show="show_sw"
-    />
-    <SignWriting
-      :width="35"
-      :height="35"
-      src="src/assets/ATIVIDADE.svg"
-      v-show="show_sw"
-    />
-    <SignWriting
-      :width="35"
-      :height="35"
-      src="src/assets/ATIVIDADE.svg"
-      v-show="show_sw"
-    />
+    <img src="../../assets/ATIVIDADE.svg" width="35" height="35" alt="" v-show="show_sw" />
+    <img src="../../assets/ATIVIDADE.svg" width="35" height="35" alt="" v-show="show_sw" />
+    <img src="../../assets/ATIVIDADE.svg" width="35" height="35" alt="" v-show="show_sw" />
+    <img src="../../assets/ATIVIDADE.svg" width="35" height="35" alt="" v-show="show_sw" />
+    <img src="../../assets/ATIVIDADE.svg" width="35" height="35" alt="" v-show="show_sw" />
+    <img src="../../assets/ATIVIDADE.svg" width="35" height="35" alt="" v-show="show_sw" />
+    <img src="../../assets/ATIVIDADE.svg" width="35" height="35" alt="" v-show="show_sw" />
+    <img src="../../assets/ATIVIDADE.svg" width="35" height="35" alt="" v-show="show_sw" />
     <!---->
     <div v-show="!show_sw">
       <p>Atividade</p>

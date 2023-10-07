@@ -14,8 +14,13 @@ const languageStore = useLanguageStore()
 <template>
   <div class="day" :sw="languageStore.signwriting">
     <div class="day__bar" :sw="languageStore.signwriting">
-      <SignWriting src="src/assets/SEGUNDA_FEIRA.svg" :width="30" :height="26"
-        v-show="languageStore.signwriting" />
+      <img
+        src="../../assets/SEGUNDA_FEIRA.svg"
+        width="30"
+        height="26"
+        alt=""
+        v-show="languageStore.signwriting"
+      />
       <!---->
       <p v-show="languageStore.portuguese">{{ props.name }}</p>
       <!---->
@@ -24,8 +29,13 @@ const languageStore = useLanguageStore()
     <!---->
     <div class="course" :sw="languageStore.signwriting">
       <v-card class="course__title" :sw="languageStore.signwriting">
-        <SignWriting src="src/assets/CURSO.svg" :width="40" v-show="languageStore.signwriting" />
-        <SignWriting src="src/assets/TRADUCAO.svg" :width="40" v-show="languageStore.signwriting" />
+        <img
+          src="../../assets/SEGUNDA_FEIRA.svg"
+          width="40"
+          alt=""
+          v-show="languageStore.signwriting"
+        />
+        <img src="../../assets/TRADUCAO.svg" width="40" alt="" v-show="languageStore.signwriting" />
         <!---->
         <p v-show="languageStore.portuguese">Curso de Tradução</p>
       </v-card>
@@ -33,30 +43,49 @@ const languageStore = useLanguageStore()
       <div class="classes">
         <div class="classes__class" :sw="languageStore.signwriting">
           <v-card class="class__title" :sw="languageStore.signwriting">
-            <SignWriting src="src/assets/ATIVIDADE.svg" :width="35" :height="35"
-              v-show="languageStore.signwriting" />
+            <img
+              src="../../assets/ATIVIDADE.svg"
+              width="35"
+              height="35"
+              alt=""
+              v-show="languageStore.signwriting"
+            />
             <!---->
             <p class="class__title" v-show="languageStore.portuguese">Aula</p>
           </v-card>
           <!---->
           <div class="activities">
             <div class="activities-title">
-              <SignWriting src="src/assets/ATIVIDADE.svg" :width="35" :height="35"
-                v-show="languageStore.signwriting" />
+              <img
+                src="../../assets/ATIVIDADE.svg"
+                width="35"
+                height="35"
+                alt=""
+                v-show="languageStore.signwriting"
+              />
               <!---->
               <p class="activities__title" v-show="languageStore.portuguese">Atividade</p>
             </div>
             <!---->
             <div class="activities__list">
-              <div class="activities__list-on" :sw="languageStore.signwriting" v-if="props.activity">
+              <div
+                class="activities__list-on"
+                :sw="languageStore.signwriting"
+                v-if="props.activity"
+              >
                 <CalendarActivity class="activities__item" :show_sw="languageStore.signwriting" />
                 <CalendarActivity class="activities__item" :show_sw="languageStore.signwriting" />
                 <CalendarActivity class="activities__item" :show_sw="languageStore.signwriting" />
               </div>
               <!---->
               <div class="activities__list-off" v-else>
-                <SignWriting src="src/assets/TER-NAO.svg" :width="23" :height="55"
-                  v-show="languageStore.signwriting" />
+                <img
+                  src="../../assets/TER-NAO.svg"
+                  width="23"
+                  height="55"
+                  alt=""
+                  v-show="languageStore.signwriting"
+                />
                 <!---->
                 <p v-show="languageStore.portuguese">Nenhuma atividade encontrada.</p>
               </div>
@@ -164,7 +193,7 @@ const languageStore = useLanguageStore()
   overflow-x: scroll;
 }
 
-.activities__list[sw="true"] {
+.activities__list[sw='true'] {
   overflow-y: scroll;
 }
 
