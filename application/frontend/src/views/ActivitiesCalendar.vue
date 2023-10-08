@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import CalendarDay from '@/components/Calendar/CalendarDay.vue'
+import { useCourseStore } from '@/stores/course';
+
 const days = [
   {
     number: 2,
