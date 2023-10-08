@@ -15,6 +15,7 @@ const languageStore = useLanguageStore()
   <div class="day" :sw="languageStore.signwriting">
     <div class="day__bar" :sw="languageStore.signwriting">
       <img
+        loading="lazy"
         src="../../assets/SEGUNDA_FEIRA.svg"
         width="30"
         height="26"
@@ -30,20 +31,28 @@ const languageStore = useLanguageStore()
     <div class="course" :sw="languageStore.signwriting">
       <v-card class="course__title" :sw="languageStore.signwriting">
         <img
+          loading="lazy"
           src="../../assets/SEGUNDA_FEIRA.svg"
           width="40"
           alt=""
           v-show="languageStore.signwriting"
         />
-        <img src="../../assets/TRADUCAO.svg" width="40" alt="" v-show="languageStore.signwriting" />
+        <img
+          loading="lazy"
+          src="../../assets/TRADUCAO.svg"
+          width="40"
+          alt=""
+          v-show="languageStore.signwriting"
+        />
         <!---->
         <p v-show="languageStore.portuguese">Curso de Tradução</p>
       </v-card>
       <!---->
-      <div class="classes">
+      <div class="classes" :sw="languageStore.signwriting">
         <div class="classes__class" :sw="languageStore.signwriting">
           <v-card class="class__title" :sw="languageStore.signwriting">
             <img
+              loading="lazy"
               src="../../assets/ATIVIDADE.svg"
               width="35"
               height="35"
@@ -57,6 +66,7 @@ const languageStore = useLanguageStore()
           <div class="activities">
             <div class="activities-title">
               <img
+                loading="lazy"
                 src="../../assets/ATIVIDADE.svg"
                 width="35"
                 height="35"
@@ -80,6 +90,7 @@ const languageStore = useLanguageStore()
               <!---->
               <div class="activities__list-off" v-else>
                 <img
+                  loading="lazy"
                   src="../../assets/TER-NAO.svg"
                   width="23"
                   height="55"
@@ -99,6 +110,7 @@ const languageStore = useLanguageStore()
 <style scoped>
 .day {
   display: flex;
+  width: 100%;
 }
 
 .day[sw='true'] {
@@ -107,7 +119,7 @@ const languageStore = useLanguageStore()
 
 .day__bar {
   text-align: center;
-  width: 3rem;
+  width: 20%;
 }
 
 .day__bar[sw='true'] {
@@ -125,7 +137,7 @@ const languageStore = useLanguageStore()
 .course {
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  width: 100%;
 }
 
 .course[sw='true'] {
@@ -136,7 +148,6 @@ const languageStore = useLanguageStore()
   margin-right: 0.2rem;
   display: flex;
   flex-direction: column;
-  align-content: center;
   height: fit-content;
   padding: 0.5rem;
   gap: 10px;
@@ -144,8 +155,11 @@ const languageStore = useLanguageStore()
 }
 
 .classes {
-  width: 300px;
-  max-width: 17rem;
+  width: 100%;
+}
+
+.classes[sw='true'] {
+  width: 80%;
 }
 
 .classes__class {
@@ -157,10 +171,12 @@ const languageStore = useLanguageStore()
 
 .classes__class[sw='true'] {
   display: flex;
-  width: 100%;
-  height: 100%;
   background-color: rgb(196, 194, 194);
   border-radius: 10px;
+}
+
+.class__title {
+  width: 100%;
 }
 
 .class__title[sw='true'] {
@@ -170,6 +186,7 @@ const languageStore = useLanguageStore()
   justify-content: center;
   height: 100%;
   padding: 0.3rem;
+  width: fit-content;
 }
 
 .activities {
@@ -222,6 +239,10 @@ const languageStore = useLanguageStore()
   .classes {
     width: 100%;
     max-width: 100%;
+  }
+
+  .classes[sw='true'] {
+    width: 100%;
   }
 
   .activities {
