@@ -1,11 +1,23 @@
 # sign-language-school-management
-Should be mobile first.
+As the name states, it's a school management platfortm. What set this appart of all others is the native support to the Signwriting Sutton system.
 
-# First business target
-Tertulias. The platform will be focused on sign language schools, so it must accept the SIGN WRITING SUTTON system.
+It'll be developed with the mobile first approach.
 
-# Reference links
-## Design
-- [School In - School Management System](https://www.behance.net/gallery/162914225/School-In-School-Management-System?tracking_source=search_projects|School+Management+System)
-- [Edu Center - Dashboard | Education Management System](https://www.behance.net/gallery/134274771/Edu-Center-Dashboard-Education-Management-System?tracking_source=search_projects|School+Management+System)
-- [School Management Application with Bus Tracking System](https://www.behance.net/gallery/180014471/School-Management-Application-with-Bus-Tracking-System?tracking_source=search_projects|School+Management+System)
+## Tecnologies
+### Frontend
+- Typescript
+- Vue
+
+### Backend
+- Python
+- FastAPI
+
+### Infra
+#### CI/CD
+- GitHub Actions
+
+#### Host
+- GitHub Pages (initially, paid hoster to be chosen later)
+
+## Road Map
+- [] Limit the month to be shown by the default, all others should be shown only if asked. E.g.: Current month being the default, all others would be loaded if the user requested by scrolling all the way up or down and beyond.
