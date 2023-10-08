@@ -5,26 +5,37 @@ export const useCourseStore = defineStore({
   state: () => ({
     courses: [
       {
-        day: "10/07/2000",
+        day: '10/07/2000',
         classess: [
           {
-            name: "Aula 1",
+            name: {
+              pt: 'Aula 1',
+              libras: ''
+            },
             activities: {
               id: 1,
-              title: "Teste"
+              title: {
+                pt: 'Teste',
+                libras: ''
+              }
             }
           },
           {
-            name: "Aula 2",
+            name: {
+              pt: 'Aula 2',
+              libras: ''
+            },
             activities: {
               id: 2,
-              title: "Teste"
+              title: {
+                pt: 'Teste',
+                libras: ''
+              }
             }
           }
         ]
-      },
+      }
     ]
   }),
-  actions: {
-  }
+  actions: {}
 })
