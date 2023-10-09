@@ -175,6 +175,10 @@ const props = defineProps<course>()
   justify-content: center;
 }
 
+.activities__list-on[sw='false'] .activities__item:not(:last-of-type) {
+  margin-bottom: 0.3rem;
+}
+
 @media only screen and (min-width: 600px) {
   .course {
     display: flex;
