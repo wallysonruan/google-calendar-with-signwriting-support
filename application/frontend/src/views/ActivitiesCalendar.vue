@@ -6,7 +6,7 @@ const courses = useCourseStore()
 
 <template>
   <div class="calendar">
-    <CalendarMonth v-for="month in 12" :key="month" :month-number="month" />
+    <CalendarMonth :month-number="10" />
   </div>
 </template>
 
