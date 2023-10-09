@@ -63,6 +63,7 @@ const props = defineProps<course>()
               <CalendarActivity class="activities__item" :show_sw="languageStore.signwriting" />
               <CalendarActivity class="activities__item" :show_sw="languageStore.signwriting" />
               <CalendarActivity class="activities__item" :show_sw="languageStore.signwriting" />
+              <CalendarActivity class="activities__item" :show_sw="languageStore.signwriting" />
             </div>
             <!---->
             <div class="activities__list-off" v-else>
@@ -110,7 +111,7 @@ const props = defineProps<course>()
 }
 
 .classes[sw='true'] {
-  width: 80%;
+  max-width: 85%;
 }
 
 .classes__class {
@@ -144,7 +145,6 @@ const props = defineProps<course>()
   display: flex;
   width: 100%;
   flex-direction: column;
-  padding: 0.2rem;
   overflow: hidden;
 }
 

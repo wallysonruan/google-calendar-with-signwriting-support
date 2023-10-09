@@ -2,5 +2,6 @@
 export type languages = {
   pt: string
   libras: string
+  eng: string
 }
 </script>
