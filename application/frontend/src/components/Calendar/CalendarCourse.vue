@@ -10,7 +10,7 @@ const props = defineProps<course>()
 </script>
 <template>
   <div class="course" :sw="languageStore.signwriting">
-    <v-card class="course__title" :sw="languageStore.signwriting">
+    <div class="course__title custom-card" :sw="languageStore.signwriting">
       <img
         loading="lazy"
         src="../../assets/SEGUNDA_FEIRA.svg"
@@ -27,11 +27,11 @@ const props = defineProps<course>()
       />
       <!---->
       <p v-show="languageStore.portuguese">Curso de Tradução</p>
-    </v-card>
+    </div>
     <!---->
     <div class="classes" :sw="languageStore.signwriting">
       <div class="classes__class" :sw="languageStore.signwriting">
-        <v-card class="class__title" :sw="languageStore.signwriting">
+        <div class="class__title custom-card" :sw="languageStore.signwriting">
           <img
             loading="lazy"
             src="../../assets/ATIVIDADE.svg"
@@ -42,7 +42,7 @@ const props = defineProps<course>()
           />
           <!---->
           <p class="class__title" v-show="languageStore.portuguese">Aula</p>
-        </v-card>
+        </div>
         <!---->
         <div class="activities">
           <div class="activities-title">
@@ -84,6 +84,7 @@ const props = defineProps<course>()
   </div>
 </template>
 <style scoped>
+@import '../../assets/main.css';
 .course {
   display: flex;
   flex-direction: column;

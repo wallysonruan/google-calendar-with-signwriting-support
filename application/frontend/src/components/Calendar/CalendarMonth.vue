@@ -105,7 +105,7 @@ const month: Record<number, monthData> = {
 </script>
 <template>
   <div>
-    <v-sheet height="100" class="banner">
+    <div height="100" class="banner">
       <span v-show="language.portuguese">{{ month[props.monthNumber].name.pt }}</span>
       <img
         v-show="language.signwriting"
@@ -113,7 +113,7 @@ const month: Record<number, monthData> = {
         alt=""
         loading="lazy"
       />
-    </v-sheet>
+    </div>
     <div>
       <CalendarDay
         v-for="day in month[props.monthNumber].total_days"
@@ -132,7 +132,9 @@ const month: Record<number, monthData> = {
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-bottom: 1rem;
+  height: 8rem;
+  margin-bottom: 2rem;
+  background-color: white;
 }
 
 .calendar__day {
