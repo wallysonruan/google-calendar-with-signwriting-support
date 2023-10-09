@@ -85,7 +85,9 @@ const SIGNWRITING_SVG_BASE_URL: string =
         v-show="languageStore.signwriting"
       />
       <!---->
-      <p v-show="languageStore.portuguese">{{ dayName.name.pt.slice(0, 3).toLowerCase() }}</p>
+      <p class="day__name" :sw="languageStore.signwriting" v-show="languageStore.portuguese">
+        {{ dayName.name.pt.slice(0, 3).toLowerCase() }}
+      </p>
       <!---->
       <p class="day__number" :sw="languageStore.signwriting">{{ props.day_number }}</p>
     </div>
@@ -105,7 +107,7 @@ const SIGNWRITING_SVG_BASE_URL: string =
 
 .day__bar {
   text-align: center;
-  width: 20%;
+  width: max-content;
 }
 
 .day__bar[sw='true'] {
@@ -115,9 +117,13 @@ const SIGNWRITING_SVG_BASE_URL: string =
   gap: 5px;
 }
 
+.day__name[sw='false'] {
+  width: 3rem;
+}
+
 .day__name[sw='true'] {
-  width: 35%;
-  height: 45%;
+  max-width: 30px;
+  max-height: 35px;
   margin-right: 0.3rem;
 }
 

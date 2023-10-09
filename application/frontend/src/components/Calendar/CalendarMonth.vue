@@ -147,7 +147,7 @@ const monthToShow = props.monthNumber ? props.monthNumber : current_month
   align-items: center;
   width: 100%;
   height: 8rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   background-color: white;
 }
 
