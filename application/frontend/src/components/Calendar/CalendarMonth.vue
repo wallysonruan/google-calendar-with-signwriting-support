@@ -7,7 +7,7 @@ const SIGNWRITING_SVG_BASE_URL: string =
   'https://www.signbank.org/signpuddle2.0/glyphogram.php?font=svg1&bound=t&text='
 const language = useLanguageStore()
 const props = defineProps<{
-  monthNumber: number
+  monthNumber?: number
 }>()
 
 type monthData = {
@@ -102,21 +102,24 @@ const month: Record<number, monthData> = {
     total_days: 31
   }
 }
+// Date().getMonth() considers January as the month 0.
+const current_month = new Date().getMonth() + 1
+const monthToShow = props.monthNumber ? props.monthNumber : current_month
 </script>
 <template>
   <div>
     <div height="100" class="banner">
-      <span v-show="language.portuguese">{{ month[props.monthNumber].name.pt }}</span>
+      <span v-show="language.portuguese">{{ month[monthToShow].name.pt }}</span>
       <img
         v-show="language.signwriting"
-        :src="SIGNWRITING_SVG_BASE_URL + month[props.monthNumber].name.libras"
+        :src="SIGNWRITING_SVG_BASE_URL + month[monthToShow].name.libras"
         alt=""
         loading="lazy"
       />
     </div>
     <div>
       <CalendarDay
-        v-for="day in month[props.monthNumber].total_days"
+        v-for="day in month[monthToShow].total_days"
         :key="day"
         class="calendar__day"
         :number="day"

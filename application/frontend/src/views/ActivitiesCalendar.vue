@@ -6,7 +6,7 @@ const courses = useCourseStore()
 
 <template>
   <div class="calendar">
-    <CalendarMonth :month-number="10" />
+    <CalendarMonth />
   </div>
 </template>
 
