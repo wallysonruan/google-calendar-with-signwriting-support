@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useLanguageStore } from '@/stores/language'
-import CalendarDay from './CalendarDay.vue'
+import CalendarDay, { type activity } from './CalendarDay.vue'
 import type { languages } from '../GlobalTypes.vue'
 
 const SIGNWRITING_SVG_BASE_URL: string =
@@ -114,6 +114,38 @@ const month: Record<number, monthData> = {
     total_days: 31
   }
 }
+
+const activities: activity[] = [
+  {
+    title: {
+      libras: 'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
+      pt: 'Atividade 1',
+      eng: ''
+    }
+  },
+  {
+    title: {
+      libras: 'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
+      pt: 'Atividade 2',
+      eng: ''
+    }
+  },
+  {
+    title: {
+      libras: 'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
+      pt: 'Atividade 3',
+      eng: ''
+    }
+  },
+  {
+    title: {
+      libras: 'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
+      pt: 'Atividade 4',
+      eng: ''
+    }
+  }
+]
+
 // Date().getMonth() considers January as the month 0.
 const current_month = new Date().getMonth() + 1
 const monthToShow = props.monthNumber ? props.monthNumber : current_month
@@ -133,7 +165,7 @@ const monthToShow = props.monthNumber ? props.monthNumber : current_month
       v-for="day in month[monthToShow].total_days"
       :key="day"
       class="calendar__day"
-      activity
+      :activities="activities"
       :month_name="month[monthToShow].name.eng"
       :day_number="day"
       :year_number="2023"

@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { useLanguageStore } from '@/stores/language'
 import CalendarActivity from '@/components/Calendar/CalendarActivity.vue'
+import type { activity } from './CalendarDay.vue'
 const languageStore = useLanguageStore()
 
 type course = {
-  activity: boolean
+  activities: activity[]
 }
 const props = defineProps<course>()
 </script>
@@ -59,11 +60,18 @@ const props = defineProps<course>()
           </div>
           <!---->
           <div class="activities__list">
-            <div class="activities__list-on" :sw="languageStore.signwriting" v-if="props.activity">
-              <CalendarActivity class="activities__item" :show_sw="languageStore.signwriting" />
-              <CalendarActivity class="activities__item" :show_sw="languageStore.signwriting" />
-              <CalendarActivity class="activities__item" :show_sw="languageStore.signwriting" />
-              <CalendarActivity class="activities__item" :show_sw="languageStore.signwriting" />
+            <div
+              class="activities__list-on"
+              :sw="languageStore.signwriting"
+              v-if="props.activities"
+            >
+              <CalendarActivity
+                v-for="(activity, index) in activities"
+                :key="index"
+                :title="activity.title"
+                class="activities__item"
+                :show_sw="languageStore.signwriting"
+              />
             </div>
             <!---->
             <div class="activities__list-off" v-else>

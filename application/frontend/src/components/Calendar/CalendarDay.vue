@@ -2,8 +2,13 @@
 import { useLanguageStore } from '@/stores/language'
 import CalendarCourse from './CalendarCourse.vue'
 import type { languages } from '../GlobalTypes.vue'
+
+export type activity = {
+  title: languages
+}
+
 type dayProps = {
-  activity?: boolean
+  activities: activity[]
   month_name: string
   day_number: number
   year_number: number
@@ -92,7 +97,7 @@ const SIGNWRITING_SVG_BASE_URL: string =
       <p class="day__number" :sw="languageStore.signwriting">{{ props.day_number }}</p>
     </div>
     <!---->
-    <CalendarCourse activity />
+    <CalendarCourse :activities="activities" />
   </div>
 </template>
 <style scoped>

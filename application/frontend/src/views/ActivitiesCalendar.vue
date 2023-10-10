@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import CalendarMonth from '@/components/Calendar/CalendarMonth.vue'
-import { useCourseStore } from '@/stores/course'
-const courses = useCourseStore()
 </script>
 
 <template>
