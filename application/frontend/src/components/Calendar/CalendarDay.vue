@@ -2,16 +2,10 @@
 import { useLanguageStore } from '@/stores/language'
 import CalendarCourse from './CalendarCourse.vue'
 import type { languages } from '../GlobalTypes.vue'
-
-export type activity = {
-  date: Date
-  course: languages
-  title: languages
-  className: languages
-}
+import type { classItem } from '@/views/ActivitiesCalendar.vue'
 
 type dayProps = {
-  activities: activity[]
+  classes: classItem[]
   date: Date
 }
 
@@ -97,7 +91,7 @@ const dayNumber = props.date.getUTCDate()
       <p class="number" :sw="languageStore.signwriting">{{ dayNumber }}</p>
     </div>
     <!---->
-    <CalendarCourse :activities="activities" />
+    <CalendarCourse :title="classes[0].course" :classes="classes" />
   </div>
 </template>
 

@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { useLanguageStore } from '@/stores/language'
-import CalendarDay, { type activity } from './CalendarDay.vue'
+import CalendarDay from './CalendarDay.vue'
 import type { languages } from '../GlobalTypes.vue'
+import type { classItem } from '@/views/ActivitiesCalendar.vue'
 
 const SIGNWRITING_SVG_BASE_URL: string =
   'https://www.signbank.org/signpuddle2.0/glyphogram.php?font=svg1&bound=t&text='
 const language = useLanguageStore()
 const props = defineProps<{
   monthNumber?: number
-  activities: activity[]
+  classes: classItem[]
 }>()
 
 type monthData = {
@@ -133,10 +134,10 @@ const monthToShow = props.monthNumber ? props.monthNumber + 1 : current_month
       />
     </div>
     <CalendarDay
-      v-for="(activity, index) in activities"
+      v-for="(classItem, index) in classes"
       :key="index"
-      :date="activity.date"
-      :activities="props.activities"
+      :date="classItem.date"
+      :classes="classes"
     />
   </div>
 </template>

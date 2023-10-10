@@ -1,37 +1,37 @@
 <script setup lang="ts">
 import { useLanguageStore } from '@/stores/language'
 import CalendarActivity from '@/components/Calendar/CalendarActivity.vue'
-import type { activity } from './CalendarDay.vue'
 import SignWriting from '../SignWriting.vue'
+import type { classItem } from '@/views/ActivitiesCalendar.vue'
+import type { languages } from '../GlobalTypes.vue'
 const languageStore = useLanguageStore()
 
 type course = {
-  activities: activity[]
+  title: languages
+  classes: classItem[]
 }
 const props = defineProps<course>()
 </script>
 <template>
   <div class="course" :sw="languageStore.signwriting">
     <div class="course__title custom-card" :sw="languageStore.signwriting">
-      <SignWriting
-        :sign="props.activities[0].course.libras"
-        :width="40"
-        :display="languageStore.signwriting"
-      />
+      <SignWriting :sign="props.title.libras" :width="40" :display="languageStore.signwriting" />
       <!---->
-      <p v-show="languageStore.portuguese">{{ props.activities[0].course.pt }}</p>
+      <p v-show="languageStore.portuguese">{{ props.title.pt }}</p>
     </div>
     <!---->
     <div class="classes" :sw="languageStore.signwriting">
       <div class="classes__class" :sw="languageStore.signwriting">
         <div class="class__title custom-card" :sw="languageStore.signwriting">
           <SignWriting
-            :sign="props.activities[0].className.libras"
+            :sign="props.classes[0].name.libras"
             :width="35"
             :display="languageStore.signwriting"
           />
           <!---->
-          <p class="class__title" v-show="languageStore.portuguese">{{ props.activities[0].className.pt }}</p>
+          <p class="class__title" v-show="languageStore.portuguese">
+            {{ props.classes[0].name.pt }}
+          </p>
         </div>
         <!---->
         <div class="activities">
@@ -52,10 +52,10 @@ const props = defineProps<course>()
             <div
               class="activities__list-on"
               :sw="languageStore.signwriting"
-              v-if="props.activities"
+              v-if="props.classes[0].activities"
             >
               <CalendarActivity
-                v-for="(activity, index) in activities"
+                v-for="(activity, index) in classes[0].activities"
                 :key="index"
                 :title="activity.title"
                 class="activities__item"
