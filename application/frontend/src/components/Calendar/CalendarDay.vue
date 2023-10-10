@@ -4,6 +4,7 @@ import CalendarCourse from './CalendarCourse.vue'
 import type { languages } from '../GlobalTypes.vue'
 
 export type activity = {
+  date: Date
   course: languages
   title: languages
   className: languages
@@ -11,16 +12,19 @@ export type activity = {
 
 type dayProps = {
   activities: activity[]
-  month_name: string
-  day_number: number
-  year_number: number
+  date: Date
 }
 
 type dayData = {
   name: languages
 }
 
-const day: Record<number, dayData> = {
+const props = defineProps<dayProps>()
+const languageStore = useLanguageStore()
+const SIGNWRITING_SVG_BASE_URL: string =
+  'https://www.signbank.org/signpuddle2.0/glyphogram.php?font=svg1&bound=t&text='
+
+const name_of_the_week_days: Record<number, dayData> = {
   1: {
     name: {
       pt: 'Segunda-feira',
@@ -71,20 +75,14 @@ const day: Record<number, dayData> = {
     }
   }
 }
-const props = defineProps<dayProps>()
-const languageStore = useLanguageStore()
-const dayOfTheWeekNumber = new Date(
-  props.month_name + ' ' + props.day_number + ', ' + props.year_number + ' 00:00:00'
-).getDay()
-const dayName = day[dayOfTheWeekNumber]
-const SIGNWRITING_SVG_BASE_URL: string =
-  'https://www.signbank.org/signpuddle2.0/glyphogram.php?font=svg1&bound=t&text='
+const dayName = name_of_the_week_days[props.date.getDay()]
+const dayNumber = props.date.getUTCDate()
 </script>
 <template>
   <div class="day" :sw="languageStore.signwriting">
-    <div class="day__bar" :sw="languageStore.signwriting">
+    <div class="bar" :sw="languageStore.signwriting">
       <img
-        class="day__name"
+        class="name"
         :sw="languageStore.signwriting"
         loading="lazy"
         :src="SIGNWRITING_SVG_BASE_URL + dayName.name.libras"
@@ -92,51 +90,57 @@ const SIGNWRITING_SVG_BASE_URL: string =
         v-show="languageStore.signwriting"
       />
       <!---->
-      <p class="day__name" :sw="languageStore.signwriting" v-show="languageStore.portuguese">
+      <p class="name" :sw="languageStore.signwriting" v-show="languageStore.portuguese">
         {{ dayName.name.pt.slice(0, 3).toLowerCase() }}
       </p>
       <!---->
-      <p class="day__number" :sw="languageStore.signwriting">{{ props.day_number }}</p>
+      <p class="number" :sw="languageStore.signwriting">{{ dayNumber }}</p>
     </div>
     <!---->
     <CalendarCourse :activities="activities" />
   </div>
 </template>
-<style scoped>
+
+<style scoped lang="scss">
 .day {
   display: flex;
   width: 100%;
-}
+  padding: 1rem;
 
-.day[sw='true'] {
-  flex-direction: column;
-}
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
 
-.day__bar {
-  text-align: center;
-  width: max-content;
-}
+  &[sw='true'] {
+    flex-direction: column;
+  }
 
-.day__bar[sw='true'] {
-  display: flex;
-  margin-bottom: 0.8rem;
-  align-items: center;
-  gap: 5px;
-}
+  .bar {
+    text-align: center;
+    width: max-content;
 
-.day__name[sw='false'] {
-  width: 3rem;
-}
+    &[sw='true'] {
+      display: flex;
+      margin-bottom: 0.8rem;
+      align-items: center;
+      gap: 5px;
+    }
 
-.day__name[sw='true'] {
-  max-width: 30px;
-  max-height: 35px;
-  margin-right: 0.3rem;
-}
+    .name[sw='false'] {
+      width: 3rem;
+    }
 
-.day__number {
-  font-size: larger;
-  font-weight: 600;
+    .name[sw='true'] {
+      max-width: 30px;
+      max-height: 35px;
+      margin-right: 0.3rem;
+    }
+
+    .number {
+      font-size: larger;
+      font-weight: 600;
+    }
+  }
 }
 
 @media only screen and (min-width: 600px) {
