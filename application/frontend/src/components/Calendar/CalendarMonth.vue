@@ -8,6 +8,7 @@ const SIGNWRITING_SVG_BASE_URL: string =
 const language = useLanguageStore()
 const props = defineProps<{
   monthNumber?: number
+  activities: activity[]
 }>()
 
 type monthData = {
@@ -115,31 +116,11 @@ const month: Record<number, monthData> = {
   }
 }
 
-const activities: activity[] = [
-  {
-    course: {
-      libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4',
-      pt: 'Curso de Tradução',
-      eng: ''
-    },
-    className: {
-      libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4',
-      pt: 'Aula de Português',
-      eng: ''
-    },
-    title: {
-      libras:
-        'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-      pt: 'Atividade 1',
-      eng: ''
-    }
-  }
-]
-
 // Date().getMonth() considers January as the month 0.
 const current_month = new Date().getMonth() + 1
-const monthToShow = props.monthNumber ? props.monthNumber : current_month
+const monthToShow = props.monthNumber ? props.monthNumber + 1 : current_month
 </script>
+
 <template>
   <div>
     <div height="100" class="banner">
@@ -152,13 +133,10 @@ const monthToShow = props.monthNumber ? props.monthNumber : current_month
       />
     </div>
     <CalendarDay
-      v-for="day in month[monthToShow].total_days"
-      :key="day"
-      class="calendar__day"
-      :activities="activities"
-      :month_name="month[monthToShow].name.eng"
-      :day_number="day"
-      :year_number="2023"
+      v-for="(activity, index) in activities"
+      :key="index"
+      :date="activity.date"
+      :activities="props.activities"
     />
   </div>
 </template>
@@ -171,13 +149,5 @@ const monthToShow = props.monthNumber ? props.monthNumber : current_month
   height: 8rem;
   margin-bottom: 1rem;
   background-color: white;
-}
-
-.calendar__day {
-  padding: 1rem;
-}
-
-.calendar__day:not(:last-child) {
-  margin-bottom: 1.5rem;
 }
 </style>
