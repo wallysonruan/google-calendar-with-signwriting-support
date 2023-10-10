@@ -59,10 +59,6 @@ const classes: classItem[] = [
 </template>
 
 <style scoped>
-.calendar-day {
-  margin-bottom: 1rem;
-}
-
 @media only screen and (min-width: 600px) {
   .calendar {
     display: flex;
