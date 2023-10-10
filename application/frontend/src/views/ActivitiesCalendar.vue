@@ -6,12 +6,12 @@ const activities: activity[] = [
   {
     date: new Date('2023-07-10'),
     course: {
-      libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4',
+      libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
       pt: 'Curso de Tradução',
       eng: ''
     },
     className: {
-      libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4',
+      libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
       pt: 'Aula de Português',
       eng: ''
     },

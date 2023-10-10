@@ -2,6 +2,7 @@
 import { useLanguageStore } from '@/stores/language'
 import CalendarActivity from '@/components/Calendar/CalendarActivity.vue'
 import type { activity } from './CalendarDay.vue'
+import SignWriting from '../SignWriting.vue'
 const languageStore = useLanguageStore()
 
 type course = {
@@ -12,37 +13,25 @@ const props = defineProps<course>()
 <template>
   <div class="course" :sw="languageStore.signwriting">
     <div class="course__title custom-card" :sw="languageStore.signwriting">
-      <img
-        loading="lazy"
-        src="../../assets/SEGUNDA_FEIRA.svg"
-        width="40"
-        alt=""
-        v-show="languageStore.signwriting"
-      />
-      <img
-        loading="lazy"
-        src="../../assets/TRADUCAO.svg"
-        width="40"
-        alt=""
-        v-show="languageStore.signwriting"
+      <SignWriting
+        :sign="props.activities[0].course.libras"
+        :width="40"
+        :display="languageStore.signwriting"
       />
       <!---->
-      <p v-show="languageStore.portuguese">Curso de Tradução</p>
+      <p v-show="languageStore.portuguese">{{ props.activities[0].course.pt }}</p>
     </div>
     <!---->
     <div class="classes" :sw="languageStore.signwriting">
       <div class="classes__class" :sw="languageStore.signwriting">
         <div class="class__title custom-card" :sw="languageStore.signwriting">
-          <img
-            loading="lazy"
-            src="../../assets/ATIVIDADE.svg"
-            width="35"
-            height="35"
-            alt=""
-            v-show="languageStore.signwriting"
+          <SignWriting
+            :sign="props.activities[0].className.libras"
+            :width="35"
+            :display="languageStore.signwriting"
           />
           <!---->
-          <p class="class__title" v-show="languageStore.portuguese">Aula</p>
+          <p class="class__title" v-show="languageStore.portuguese">{{ props.activities[0].className.pt }}</p>
         </div>
         <!---->
         <div class="activities">
