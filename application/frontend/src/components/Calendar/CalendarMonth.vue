@@ -118,7 +118,8 @@ const month: Record<number, monthData> = {
 const activities: activity[] = [
   {
     title: {
-      libras: 'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
+      libras:
+        'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
       pt: 'Atividade 1',
       eng: ''
     }
