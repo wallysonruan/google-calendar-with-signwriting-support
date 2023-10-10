@@ -28,14 +28,24 @@ const props = defineProps<{
   display: boolean
 }>()
 
-const signs = props.sign.split(' ')
+let signs: string[] = []
+
+if (props.sign.includes(' ')) {
+  signs = props.sign.split(' ')
+}
+
+if (props.sign.includes('%20')) {
+  signs = props.sign.split(' ')
+}
+
 const SIGNWRITING_SVG_BASE_URL: string =
   'https://www.signbank.org/signpuddle2.0/glyphogram.php?font=svg1&bound=t&text='
 </script>
 <template>
   <img
-    v-for="sign in signs"
+    v-for="(sign, index) in signs"
     :src="SIGNWRITING_SVG_BASE_URL + sign"
+    :key="index"
     alt=""
     :width="props.width"
     :height="props.height"

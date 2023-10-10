@@ -4,7 +4,9 @@ import CalendarCourse from './CalendarCourse.vue'
 import type { languages } from '../GlobalTypes.vue'
 
 export type activity = {
+  course: languages
   title: languages
+  className: languages
 }
 
 type dayProps = {
