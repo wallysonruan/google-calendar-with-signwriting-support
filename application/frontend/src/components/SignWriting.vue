@@ -1,5 +1,5 @@
 <script setup lang="ts">
-`
+;`
 I had to stop using this component because I found out that a relative file path can not be passed as
 variable. Either RollUp or WebPack can not or will choose to not try to find the file.
 
