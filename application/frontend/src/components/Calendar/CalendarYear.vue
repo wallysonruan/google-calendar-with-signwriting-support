@@ -18,8 +18,7 @@ const props = defineProps<{
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 8rem;
-  margin-bottom: 1rem;
-  background-color: white;
+  height: 4rem;
+  background-color: rgb(178, 170, 170);
 }
 </style>

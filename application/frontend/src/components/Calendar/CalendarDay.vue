@@ -2,20 +2,20 @@
 import { useLanguageStore } from '@/stores/language'
 import type { languages } from '../GlobalTypes.vue'
 
-type dayProps = {
+type calendarDayProps = {
   date: string
 }
 
-type dayData = {
+type calendarDayData = {
   name: languages
 }
 
-const props = defineProps<dayProps>()
+const props = defineProps<calendarDayProps>()
 const languageStore = useLanguageStore()
 const SIGNWRITING_SVG_BASE_URL: string =
   'https://www.signbank.org/signpuddle2.0/glyphogram.php?font=svg1&bound=t&text='
 
-const name_of_the_week_days: Record<number, dayData> = {
+const name_of_the_week_days: Record<number, calendarDayData> = {
   1: {
     name: {
       pt: 'Segunda-feira',
@@ -89,7 +89,6 @@ const dayNumber = date_to_Date.getUTCDate()
       <p class="number" :sw="languageStore.signwriting">{{ dayNumber }}</p>
     </div>
     <!---->
-    <!-- <CalendarCourse :title="classes[0].course" :classes="classes" /> -->
     <slot> </slot>
   </div>
 </template>

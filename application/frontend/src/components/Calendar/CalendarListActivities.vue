@@ -4,10 +4,10 @@ import CalendarActivity from './CalendarActivity.vue'
 import type { activity } from '@/stores/classes'
 const languageStore = useLanguageStore()
 
-type course = {
+type calendarListActivitiesProps = {
   activities: activity[]
 }
-const props = defineProps<course>()
+const props = defineProps<calendarListActivitiesProps>()
 </script>
 <template>
   <div class="activities">

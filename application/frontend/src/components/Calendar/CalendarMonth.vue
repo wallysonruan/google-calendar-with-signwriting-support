@@ -6,15 +6,15 @@ const SIGNWRITING_SVG_BASE_URL: string =
   'https://www.signbank.org/signpuddle2.0/glyphogram.php?font=svg1&bound=t&text='
 const language = useLanguageStore()
 const props = defineProps<{
-  monthNumber?: number
+  monthNumber: number
 }>()
 
-type monthData = {
+type calendarMonthData = {
   name: languages
   total_days: number
 }
 
-const month: Record<number, monthData> = {
+const month: Record<number, calendarMonthData> = {
   1: {
     name: {
       pt: 'Janeiro',

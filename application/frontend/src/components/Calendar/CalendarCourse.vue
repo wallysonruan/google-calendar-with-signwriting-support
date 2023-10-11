@@ -4,10 +4,10 @@ import SignWriting from '../SignWriting.vue'
 import type { languages } from '../GlobalTypes.vue'
 const languageStore = useLanguageStore()
 
-type course = {
+type calendarCourseProps = {
   title: languages
 }
-const props = defineProps<course>()
+const props = defineProps<calendarCourseProps>()
 </script>
 <template>
   <div class="course" :sw="languageStore.signwriting">
