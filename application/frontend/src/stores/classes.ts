@@ -12,20 +12,14 @@ export type classItem = {
   activities: activity[]
 }
 
-type ActivityTitle = {
-  libras: string
-  pt: string
-  eng: string
-}
-
 type Activity = {
-  title: ActivityTitle
+  title: languages
 }
 
 type Day = {
   date: string
-  course_title: ActivityTitle
-  class_title: ActivityTitle
+  course_title: languages
+  class_title: languages
   activities: Activity[]
 }
 
@@ -39,48 +33,111 @@ type YearClass = {
   months: Month[]
 }
 
-type FrontEndClassModel = {
-  classes: YearClass[]
+const classesData: classItem[] = [
+  {
+    date: new Date('2023-07-10'),
+    class_title: {
+      libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
+      pt: 'Aula de Português',
+      eng: ''
+    },
+    course_title: {
+      libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
+      pt: 'Curso de Tradução',
+      eng: ''
+    },
+    activities: [
+      {
+        title: {
+          libras:
+            'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
+          pt: 'Atividade 1',
+          eng: ''
+        }
+      },
+      {
+        title: {
+          libras:
+            'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
+          pt: 'Atividade 2',
+          eng: ''
+        }
+      }
+    ]
+  }
+]
+
+function convertClassesDataToDesiredFormat(classesData: classItem[]) {
+  const result: YearClass = {
+    year: 0,
+    months: [
+      {
+        number: 0,
+        days: [
+          {
+            date: '2000-01-0',
+            course_title: {
+              pt: '',
+              libras: '',
+              eng: ''
+            },
+            class_title: {
+              pt: '',
+              libras: '',
+              eng: ''
+            },
+            activities: [
+              {
+                title: {
+                  pt: '',
+                  libras: '',
+                  eng: ''
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+
+  classesData.forEach((classItem) => {
+    const year = classItem.date.getFullYear()
+    const month = classItem.date.getMonth() + 1 // Mês base 0, então adicionamos 1
+
+    if (result.year !== year) {
+      result.year = year
+    }
+
+    let monthObj = result.months.find((m) => m.number === month)
+    if (!monthObj) {
+      monthObj = {
+        number: month,
+        days: []
+      }
+      result.months.push(monthObj)
+    }
+
+    const dayObj = {
+      date: classItem.date.toISOString().slice(0, 10),
+      course_title: classItem.course_title,
+      class_title: classItem.class_title,
+      activities: classItem.activities
+    }
+
+    monthObj.days.push(dayObj)
+  })
+
+  return result
 }
 
-// const classesData: classItem = [
-//   {
-//     date: new Date('2023-07-10'),
-//     class_title: {
-//       libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
-//       pt: 'Aula de Português',
-//       eng: ''
-//     },
-//     course_title: {
-//       libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
-//       pt: 'Curso de Tradução',
-//       eng: ''
-//     },
-//     activities: [
-//       {
-//         title: {
-//           libras:
-//             'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-//           pt: 'Atividade 1',
-//           eng: ''
-//         }
-//       },
-//       {
-//         title: {
-//           libras:
-//             'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-//           pt: 'Atividade 2',
-//           eng: ''
-//         }
-//       }
-//     ]
-//   }
-// ]
+const convertedData = convertClassesDataToDesiredFormat(classesData)
+console.log(convertedData)
 
 export const useClassesStore = defineStore({
   id: 'useClassesStore',
-  state: (): FrontEndClassModel => ({
-    classes: [
+  state: () => ({
+    classes: <YearClass[]>[
       {
         year: 2023,
         months: [
@@ -224,10 +281,10 @@ export const useClassesStore = defineStore({
         year: 2022,
         months: [
           {
-            number: 8,
+            number: 6,
             days: [
               {
-                date: '2023-09-10',
+                date: '2023-10-10',
                 course_title: {
                   libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
                   pt: 'Curso de Português',
@@ -361,43 +418,5 @@ export const useClassesStore = defineStore({
       }
     ]
   }),
-  actions: {
-    // months() {
-    //   const allMonths = this.classes
-    //     .map((classItem) => {
-    //       return classItem.date.getMonth()
-    //     })
-    //     .sort()
-    //   console.group('month')
-    //   console.log(allMonths)
-    //   console.groupEnd()
-    // },
-    // years() {
-    //   const sortedYears = this.classes
-    //     .map((classItem) => {
-    //       return classItem.date.getFullYear()
-    //     })
-    //     .sort()
-    //   const noDuplicates = new Set(sortedYears)
-    //   console.group('year')
-    //   console.log(noDuplicates)
-    //   console.groupEnd()
-    // }
-    // teste() {
-    //   this.testedata.forEach((year) => {
-    //     console.log(year.year)
-    //     year.months.forEach((month) => {
-    //       console.log(month.number)
-    //       month.days.forEach((day) => {
-    //         console.log(day.date)
-    //         console.log(day.class_title.pt)
-    //         console.log(day.course_title.pt)
-    //         day.activities.forEach((activity) => {
-    //           console.log(activity.title.pt)
-    //         })
-    //       })
-    //     })
-    //   })
-    // }
-  }
+  actions: {}
 })
