@@ -1,12 +1,9 @@
 <script lang="ts" setup>
 import { useLanguageStore } from '@/stores/language'
-import CalendarCourse from './CalendarCourse.vue'
 import type { languages } from '../GlobalTypes.vue'
-import type { classItem } from '@/stores/classes'
 
 type dayProps = {
-  classes: classItem[]
-  date: Date
+  date: string
 }
 
 type dayData = {
@@ -69,8 +66,9 @@ const name_of_the_week_days: Record<number, dayData> = {
     }
   }
 }
-const dayName = name_of_the_week_days[props.date.getDay()]
-const dayNumber = props.date.getUTCDate()
+const date_to_Date = new Date(props.date)
+const dayName = name_of_the_week_days[date_to_Date.getDay()]
+const dayNumber = date_to_Date.getUTCDate()
 </script>
 <template>
   <div class="day" :sw="languageStore.signwriting">
@@ -91,7 +89,8 @@ const dayNumber = props.date.getUTCDate()
       <p class="number" :sw="languageStore.signwriting">{{ dayNumber }}</p>
     </div>
     <!---->
-    <CalendarCourse :title="classes[0].course" :classes="classes" />
+    <!-- <CalendarCourse :title="classes[0].course" :classes="classes" /> -->
+    <slot> </slot>
   </div>
 </template>
 
