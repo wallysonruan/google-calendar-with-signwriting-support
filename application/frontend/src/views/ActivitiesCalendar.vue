@@ -8,7 +8,7 @@ import CalendarClassItem from '@/components/Calendar/CalendarClassItem.vue'
 import CalendarListActivities from '@/components/Calendar/CalendarListActivities.vue'
 
 const classesStore = useClassesStore()
-const teste = classesStore.testedata
+const teste = classesStore.classes
 </script>
 
 <template>

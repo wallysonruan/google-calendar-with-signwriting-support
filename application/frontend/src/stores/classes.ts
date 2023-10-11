@@ -7,83 +7,80 @@ export type activity = {
 
 export type classItem = {
   date: Date
-  course: languages
   class_title: languages
+  course_title: languages
   activities: activity[]
 }
 
-// type State = {
-//   classes: classItem[]
-// }
+type ActivityTitle = {
+  libras: string
+  pt: string
+  eng: string
+}
+
+type Activity = {
+  title: ActivityTitle
+}
+
+type Day = {
+  date: string
+  course_title: ActivityTitle
+  class_title: ActivityTitle
+  activities: Activity[]
+}
+
+type Month = {
+  number: number
+  days: Day[]
+}
+
+type YearClass = {
+  year: number
+  months: Month[]
+}
+
+type FrontEndClassModel = {
+  classes: YearClass[]
+}
+
+// const classesData: classItem = [
+//   {
+//     date: new Date('2023-07-10'),
+//     class_title: {
+//       libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
+//       pt: 'Aula de Português',
+//       eng: ''
+//     },
+//     course_title: {
+//       libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
+//       pt: 'Curso de Tradução',
+//       eng: ''
+//     },
+//     activities: [
+//       {
+//         title: {
+//           libras:
+//             'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
+//           pt: 'Atividade 1',
+//           eng: ''
+//         }
+//       },
+//       {
+//         title: {
+//           libras:
+//             'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
+//           pt: 'Atividade 2',
+//           eng: ''
+//         }
+//       }
+//     ]
+//   }
+// ]
 
 export const useClassesStore = defineStore({
   id: 'useClassesStore',
-  state: () => ({
+  state: (): FrontEndClassModel => ({
     classes: [
-      {
-        date: new Date('2023-07-10'),
-        class_title: {
-          libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
-          pt: 'Aula de Português',
-          eng: ''
-        },
-        course: {
-          libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
-          pt: 'Curso de Tradução',
-          eng: ''
-        },
-        activities: [
-          {
-            title: {
-              libras:
-                'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-              pt: 'Atividade 1',
-              eng: ''
-            }
-          },
-          {
-            title: {
-              libras:
-                'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-              pt: 'Atividade 2',
-              eng: ''
-            }
-          }
-        ]
-      },
-      {
-        date: new Date('2023-08-10'),
-        class_title: {
-          libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
-          pt: 'Aula de Português',
-          eng: ''
-        },
-        course: {
-          libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
-          pt: 'Curso de Tradução',
-          eng: ''
-        },
-        activities: [
-          {
-            title: {
-              libras:
-                'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-              pt: 'Atividade 3',
-              eng: ''
-            }
-          },
-          {
-            title: {
-              libras:
-                'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-              pt: 'Atividade 4',
-              eng: ''
-            }
-          }
-        ]
-      }
-    ],
-    testedata: [
       {
         year: 2023,
         months: [
