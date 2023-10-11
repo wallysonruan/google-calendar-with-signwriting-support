@@ -2,7 +2,7 @@
 import { useLanguageStore } from '@/stores/language'
 import CalendarCourse from './CalendarCourse.vue'
 import type { languages } from '../GlobalTypes.vue'
-import type { classItem } from '@/views/ActivitiesCalendar.vue'
+import type { classItem } from '@/stores/classes'
 
 type dayProps = {
   classes: classItem[]

@@ -2,8 +2,8 @@
 import { useLanguageStore } from '@/stores/language'
 import CalendarActivity from '@/components/Calendar/CalendarActivity.vue'
 import SignWriting from '../SignWriting.vue'
-import type { classItem } from '@/views/ActivitiesCalendar.vue'
 import type { languages } from '../GlobalTypes.vue'
+import type { classItem } from '@/stores/classes'
 const languageStore = useLanguageStore()
 
 type course = {

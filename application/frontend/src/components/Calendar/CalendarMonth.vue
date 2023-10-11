@@ -2,7 +2,7 @@
 import { useLanguageStore } from '@/stores/language'
 import CalendarDay from './CalendarDay.vue'
 import type { languages } from '../GlobalTypes.vue'
-import type { classItem } from '@/views/ActivitiesCalendar.vue'
+import type { classItem } from '@/stores/classes'
 
 const SIGNWRITING_SVG_BASE_URL: string =
   'https://www.signbank.org/signpuddle2.0/glyphogram.php?font=svg1&bound=t&text='
