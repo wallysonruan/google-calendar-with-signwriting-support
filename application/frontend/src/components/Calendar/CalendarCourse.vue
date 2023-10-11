@@ -24,13 +24,13 @@ const props = defineProps<course>()
       <div class="classes__class" :sw="languageStore.signwriting">
         <div class="class__title custom-card" :sw="languageStore.signwriting">
           <SignWriting
-            :sign="props.classes[0].name.libras"
+            :sign="props.classes[0].class_title.libras"
             :width="35"
             :display="languageStore.signwriting"
           />
           <!---->
           <p class="class__title" v-show="languageStore.portuguese">
-            {{ props.classes[0].name.pt }}
+            {{ props.classes[0].class_title.pt }}
           </p>
         </div>
         <!---->
