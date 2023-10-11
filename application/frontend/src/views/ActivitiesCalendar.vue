@@ -8,12 +8,11 @@ import CalendarClassItem from '@/components/Calendar/CalendarClassItem.vue'
 import CalendarListActivities from '@/components/Calendar/CalendarListActivities.vue'
 
 const classesStore = useClassesStore()
-const teste = classesStore.classes
 </script>
 
 <template>
   <div class="calendar">
-    <CalendarYear v-for="(year, index) in teste" :key="index" :year="year.year">
+    <CalendarYear v-for="(year, index) in classesStore.getClasses()" :key="index" :year="year.year">
       <CalendarMonth
         v-for="(month, index) in year.months"
         :key="index"
