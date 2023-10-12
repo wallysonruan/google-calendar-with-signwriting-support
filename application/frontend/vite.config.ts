@@ -24,5 +24,11 @@ export default defineConfig({
         entryFileNames: 'assets/[name].js'
       }
     }
+  },
+  test: {
+    coverage: {
+      provider: 'v8',
+      reportsDirectory: './src/components/__tests__/unit/coverage'
+    }
   }
 })
