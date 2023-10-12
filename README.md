@@ -22,8 +22,9 @@ It'll be developed with the mobile first approach.
 ## Road Map
 - [X] Limit the month to be shown by the default, all others should be shown only if asked. E.g.: Current month being the default, all others would be loaded if the user requested by scrolling all the way up or down and beyond.
     - Current month is the default shown. I'm thinking about making the previous, the current and the next month available on loading, and all the others on deman.
-- [ ] All activities should come from a store, such as a "ActivitiesStore".
+- [X] All activities should come from a store, such as a "ActivitiesStore".
     - This' not written in stone, the data model is showing up as I progress.
+    - FINAL: Instead of activities, the main entity is CLASS. CLASS > TITLE/DATE/ACTIVITIES
 - [ ] Add multisign layout support. Currently the visual is breaking given each sign size and width. SignWriting component should handle those differences, and I may create helpers (components specialized in specific sign category) for it.
 - [ ] Close this repository and deploy the code in another one, public.
 - [ ] Add tests threshold.
@@ -33,3 +34,4 @@ It'll be developed with the mobile first approach.
 - [ ] Research, Categorize, Design and implement other kinds of useful information to show on the calendar.
 - [ ] Design and implement "status" (done, waiting, ...) to activities.
 - [ ] Bug: When days are sharing day-ball, the latin alphabet layout breaks
+- [ ] Add test coverage.
