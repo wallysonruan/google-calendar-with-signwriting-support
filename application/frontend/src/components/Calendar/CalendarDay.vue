@@ -3,7 +3,7 @@ import { useLanguageStore } from '@/stores/language'
 import type { languages } from '../GlobalTypes.vue'
 
 type calendarDayProps = {
-  date: string
+  date: Date
 }
 
 type calendarDayData = {

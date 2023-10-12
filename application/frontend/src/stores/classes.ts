@@ -12,27 +12,6 @@ export type classItem = {
   activities: activity[]
 }
 
-type Activity = {
-  title: languages
-}
-
-type Day = {
-  date: string
-  course_title: languages
-  class_title: languages
-  activities: Activity[]
-}
-
-type Month = {
-  number: number
-  days: Day[]
-}
-
-type YearClass = {
-  year: number
-  months: Month[]
-}
-
 const classesData: classItem[] = [
   {
     date: new Date('2023-08-10'),
@@ -137,54 +116,14 @@ const classesData: classItem[] = [
   }
 ]
 
-function convertBackendDataModelToFrontendDataModel(classesData: classItem[]): YearClass[] {
-    const result: YearClass[] = [];
-  
-    // Iterate through the input data
-    classesData.forEach((classItem) => {
-      const year = classItem.date.getFullYear();
-      const month = classItem.date.getMonth() + 1; // Month is 0-based, so we add 1
-  
-      // Find the corresponding year in the result
-      let yearObj = result.find((y) => y.year === year);
-  
-      if (!yearObj) {
-        // If the year doesn't exist, create an object for it
-        yearObj = {
-          year: year,
-          months: []
-        };
-        result.push(yearObj);
-      }
-  
-      // Create an object for the month
-      const monthObj: Month = {
-        number: month,
-        days: [
-          {
-            date: classItem.date.toISOString().slice(0, 10),
-            course_title: classItem.course_title,
-            class_title: classItem.class_title,
-            activities: classItem.activities
-          }
-        ]
-      };
-  
-      // Add the month to the corresponding year
-      yearObj.months.push(monthObj);
-    });
-  
-    return result;
-  }
-
 export const useClassesStore = defineStore({
   id: 'useClassesStore',
   state: () => ({
-    classes: convertBackendDataModelToFrontendDataModel(classesData)
+    classes: classesData
   }),
   actions: {
-    getClasses(){
-        return this.classes
+    getClasses() {
+      return this.classes
     }
   }
 })
