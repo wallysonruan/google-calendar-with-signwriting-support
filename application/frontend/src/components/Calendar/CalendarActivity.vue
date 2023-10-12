@@ -15,16 +15,16 @@ const props = defineProps<{
     </div>
   </div>
 </template>
-<style scoped>
+<style scoped lang="scss">
 .activity {
   display: flex;
-}
 
-.activity[sw='true'] {
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: max-content;
-  max-height: 250px;
-  padding: 0.5rem;
+  &[sw='true'] {
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: max-content;
+    max-height: 250px;
+    padding: 0.5rem;
+  }
 }
 </style>

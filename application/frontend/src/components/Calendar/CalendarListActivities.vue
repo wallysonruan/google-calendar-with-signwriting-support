@@ -11,7 +11,7 @@ const props = defineProps<calendarListActivitiesProps>()
 </script>
 <template>
   <div class="activities">
-    <div class="activities-title">
+    <div class="title">
       <img
         loading="lazy"
         src="../../assets/ATIVIDADE.svg"
@@ -21,21 +21,21 @@ const props = defineProps<calendarListActivitiesProps>()
         v-show="languageStore.signwriting"
       />
       <!---->
-      <p class="activities__title" v-show="languageStore.portuguese">Atividade</p>
+      <p class="title" v-show="languageStore.portuguese">Atividade</p>
     </div>
     <!---->
-    <div class="activities__list">
-      <div class="activities__list-on" :sw="languageStore.signwriting" v-if="props.activities">
+    <div class="list">
+      <div class="list-on" :sw="languageStore.signwriting" v-if="props.activities">
         <CalendarActivity
           v-for="(activity, index) in props.activities"
           :key="index"
           :title="activity.title"
-          class="activities__item"
+          class="activity"
           :show_sw="languageStore.signwriting"
         />
       </div>
       <!---->
-      <div class="activities__list-off" v-else>
+      <div class="list-off" v-else>
         <img
           loading="lazy"
           src="../../assets/TER-NAO.svg"
@@ -58,38 +58,38 @@ const props = defineProps<calendarListActivitiesProps>()
   width: 100%;
   flex-direction: column;
   overflow: hidden;
-}
 
-.activities-title {
-  width: 100%;
-  padding: 0.5rem 0;
-}
+  .title {
+    width: 100%;
+    padding: 0.5rem 0;
+  }
 
-.activities__list {
-  background-color: rgb(116, 105, 105);
-  width: 100%;
-  padding: 0.3rem;
-  border-radius: 10px;
-  overflow-x: scroll;
-}
+  .list {
+    background-color: rgb(116, 105, 105);
+    width: 100%;
+    padding: 0.3rem;
+    border-radius: 10px;
+    overflow-x: scroll;
 
-.activities__list[sw='true'] {
-  overflow-y: scroll;
-}
+    &[sw='true'] {
+      overflow-y: scroll;
+    }
+  }
 
-.activities__list-on[sw='true'] {
-  display: flex;
-  width: fit-content;
-  gap: 5px;
-}
+  .list-on[sw='true'] {
+    display: flex;
+    width: fit-content;
+    gap: 5px;
 
-.activities__list-off {
-  display: flex;
-  justify-content: center;
-}
+    &[sw='false'] .activity:not(:last-of-type) {
+      margin-bottom: 0.3rem;
+    }
+  }
 
-.activities__list-on[sw='false'] .activities__item:not(:last-of-type) {
-  margin-bottom: 0.3rem;
+  .list-off {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @media only screen and (min-width: 600px) {
