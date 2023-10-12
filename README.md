@@ -32,3 +32,4 @@ It'll be developed with the mobile first approach.
 - [ ] Design and implement "Create Activity" page.
 - [ ] Research, Categorize, Design and implement other kinds of useful information to show on the calendar.
 - [ ] Design and implement "status" (done, waiting, ...) to activities.
+- [ ] Bug: When days are sharing day-ball, the latin alphabet layout breaks
