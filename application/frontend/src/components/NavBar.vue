@@ -66,12 +66,11 @@ const languageStore = useLanguageStore()
     &.round:before {
       border-radius: 50%;
     }
-
-    input:checked + &:before {
-      -webkit-transform: translateX(26px);
-      -ms-transform: translateX(26px);
-      transform: translateX(26px);
-    }
+  }
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
   }
 }
 </style>
