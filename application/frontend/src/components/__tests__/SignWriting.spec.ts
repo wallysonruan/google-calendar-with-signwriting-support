@@ -39,4 +39,15 @@ describe('SignWriting', () => {
     expect(wrapper.find('img').attributes('style')).toContain('display: none')
     expect(wrapper.find('img').attributes('style')).not.toBe('')
   })
+
+  it('Shoud accept only one sign and render it, instead of just taking two or more.', () => {
+    const wrapper = mount(SignWriting, {
+      props: {
+        sign: 'TEST',
+        display: false
+      }
+    })
+
+    expect(wrapper.find('img').exists()).toBe(true)
+  })
 })
