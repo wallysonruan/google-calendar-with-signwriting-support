@@ -73,7 +73,7 @@ const dayNumber = date_to_Date.getUTCDate()
 </script>
 <template>
   <div class="day" :sw="languageStore.signwriting">
-    <div class="bar" :sw="languageStore.signwriting" v-show="showDayBall">
+    <div class="bar" :sw="languageStore.signwriting" v-if="showDayBall">
       <img
         class="name"
         :sw="languageStore.signwriting"

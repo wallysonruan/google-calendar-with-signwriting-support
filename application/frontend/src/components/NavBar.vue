@@ -1,12 +1,26 @@
 <script setup lang="ts">
 import { useLanguageStore } from '@/stores/language'
 const languageStore = useLanguageStore()
+
+function isKeyDownTypeEnter(event: KeyboardEvent) {
+  if (event.key === 'Enter') {
+    const switchElement = document.querySelector('#switch') as HTMLInputElement
+    const currentStatus = switchElement?.checked
+
+    if (currentStatus) {
+      switchElement.checked = false
+    } else {
+      switchElement.checked = true
+    }
+    languageStore.showSignWriting()
+  }
+}
 </script>
 <template>
   <v-app-bar scroll-behavior="hide">
     <div class="nav">
-      <label class="switch">
-        <input type="checkbox" @click="languageStore.showSignWriting" />
+      <label class="switch" tabindex="0" for="switch" @keydown="isKeyDownTypeEnter">
+        <input id="switch" type="checkbox" @click="languageStore.showSignWriting" />
         <span class="slider round"></span>
       </label>
     </div>
@@ -17,6 +31,7 @@ const languageStore = useLanguageStore()
   display: flex;
   justify-content: right;
   width: 100%;
+
   input[type='checkbox'] {
     visibility: hidden;
   }
@@ -29,6 +44,10 @@ const languageStore = useLanguageStore()
     background-color: rgb(159, 152, 152);
     border-radius: 50%/25px;
 
+    &:hover {
+      cursor: pointer;
+    }
+
     &::before {
       position: absolute;
       content: 'PT';
@@ -38,6 +57,7 @@ const languageStore = useLanguageStore()
       bottom: 2px;
       border-radius: 50%;
     }
+
     &::after {
       position: absolute;
       content: 'SW';
@@ -67,6 +87,7 @@ const languageStore = useLanguageStore()
       border-radius: 50%;
     }
   }
+
   input:checked + .slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);

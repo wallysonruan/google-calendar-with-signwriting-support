@@ -122,7 +122,7 @@ const monthToShow = props.monthNumber ? props.monthNumber + 1 : current_month
 
 <template>
   <div>
-    <div height="100" class="banner" v-show="showBanner">
+    <div height="100" class="banner" v-if="showBanner">
       <span v-show="language.portuguese">{{ month[monthToShow].name.pt }}</span>
       <img
         v-show="language.signwriting"
