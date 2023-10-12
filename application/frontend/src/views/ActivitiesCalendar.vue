@@ -53,7 +53,7 @@ function convertBackendDataModelToFrontendDataModel(classesData: classItem[]): Y
       number: month,
       days: [
         {
-          date: classItem.date.toISOString().slice(0, 10),
+          date: classItem.date,
           course_title: classItem.course_title,
           class_title: classItem.class_title,
           activities: classItem.activities
