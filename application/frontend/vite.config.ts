@@ -28,7 +28,15 @@ export default defineConfig({
   test: {
     coverage: {
       provider: 'v8',
-      reportsDirectory: './src/components/__tests__/unit/coverage'
+      reportsDirectory: './src/components/__tests__/unit/coverage',
+      // https://github.com/vitest-dev/vitest/issues/2674
+      all: true,
+      include: [
+        '**/components/**/**.vue',
+        '**/components/Calendar/*.vue',
+        '**/stores/*.ts',
+        '**/views/*.vue'
+      ]
     }
   }
 })

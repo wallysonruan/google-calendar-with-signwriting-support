@@ -5,10 +5,21 @@ import SignWriting from '../SignWriting.vue'
 import { SIGNWRITING_SVG_BASE_URL } from '../SignWriting.vue'
 
 describe('SignWriting', () => {
+  it('Shoud accept only one sign and render it, instead of just taking two or more.', () => {
+    const wrapper = mount(SignWriting, {
+      props: {
+        sign: 'TEST',
+        display: false
+      }
+    })
+
+    expect(wrapper.find('img').exists()).toBe(true)
+  })
+
   it('Should render no text', () => {
     const wrapper = mount(SignWriting, {
       props: {
-        sign: 'TEST TEST',
+        sign: 'TEST',
         display: true
       }
     })
@@ -19,19 +30,20 @@ describe('SignWriting', () => {
   it('Shoud concatenate baseUrl with sign string', () => {
     const wrapper = mount(SignWriting, {
       props: {
-        sign: 'TEST TEST',
+        sign: 'TEST',
         display: true
       }
     })
 
-    const signs = wrapper.props('sign').split(' ')
-    expect(wrapper.find('img').attributes('src')).toBe(SIGNWRITING_SVG_BASE_URL + signs[0])
+    expect(wrapper.find('img').attributes('src')).toBe(
+      SIGNWRITING_SVG_BASE_URL + wrapper.props('sign')
+    )
   })
 
   it('Shoud NOT display if display is set to false', () => {
     const wrapper = mount(SignWriting, {
       props: {
-        sign: 'TEST TEST',
+        sign: 'TEST',
         display: false
       }
     })
@@ -40,14 +52,35 @@ describe('SignWriting', () => {
     expect(wrapper.find('img').attributes('style')).not.toBe('')
   })
 
-  it('Shoud accept only one sign and render it, instead of just taking two or more.', () => {
+  it('Shoud accept multiple signs separated by SPACES, and iterate over them to generate a SignWriting for each', () => {
     const wrapper = mount(SignWriting, {
       props: {
-        sign: 'TEST',
-        display: false
+        sign: 'TEST TEST TEST',
+        display: true
       }
     })
 
-    expect(wrapper.find('img').exists()).toBe(true)
+    wrapper
+      .props('sign')
+      .split(' ')
+      .forEach((sign: string, index: number) => {
+        expect(wrapper.findAll('img')[index].attributes('src')).toContain(sign)
+      })
+  })
+
+  it('Shoud accept multiple signs separated by "%20", and iterate over them to generate a SignWriting for each', () => {
+    const wrapper = mount(SignWriting, {
+      props: {
+        sign: 'TEST%20TEST%20TEST',
+        display: true
+      }
+    })
+
+    wrapper
+      .props('sign')
+      .split(' ')
+      .forEach((sign: string, index: number) => {
+        expect(wrapper.findAll('img')[index].attributes('src')).toContain(sign)
+      })
   })
 })
