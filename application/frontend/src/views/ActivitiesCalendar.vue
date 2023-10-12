@@ -71,11 +71,34 @@ function convertBackendDataModelToFrontendDataModel(classesData: classItem[]): Y
 const classesToShow: YearClass[] = convertBackendDataModelToFrontendDataModel(allClasses)
 
 function isSameMonthAsPrevious(monthsArray: Month[], index: number): boolean {
-  // Check if it's the first of the array, returns true if so
-  if (index > 0) {
-    // If it's not, returns only the day without the month banner.
-    return monthsArray[index].number != monthsArray[index - 1].number
+  // Check if it's the first month in the array.
+  if (index === 0) {
+    return true // Nothing to compare; the first month is always considered the same.
   }
+
+  const currentMonth = monthsArray[index].number
+  const previousMonth = monthsArray[index - 1].number
+
+  if (currentMonth != previousMonth) {
+    return true
+  }
+  return false
+}
+
+function isSameDate(monthsArray: Month[], index: number): boolean {
+  // Check if it's the first month in the array.
+  if (index === 0) {
+    return true // Nothing to compare.
+  }
+
+  const currentDay = monthsArray[index].days[0].date
+  const previousDay = monthsArray[index - 1].days[0].date
+
+  if (currentDay.getDay() === previousDay.getDay()) {
+    return false
+  }
+
+  // Always true if current and previous day are different.
   return true
 }
 </script>
@@ -84,12 +107,17 @@ function isSameMonthAsPrevious(monthsArray: Month[], index: number): boolean {
   <div class="calendar">
     <CalendarYear v-for="(year, index) in classesToShow" :key="index" :year="year.year">
       <CalendarMonth
-        v-for="(month, index) in year.months"
-        :key="index"
+        v-for="(month, monthIndex) in year.months"
+        :key="monthIndex"
         :month-number="month.number"
-        :show-banner="isSameMonthAsPrevious(year.months, index)"
+        :show-banner="isSameMonthAsPrevious(year.months, monthIndex)"
       >
-        <CalendarDay v-for="(day, index) in month.days" :key="index" :date="day.date">
+        <CalendarDay
+          v-for="(day, index) in month.days"
+          :key="index"
+          :date="day.date"
+          :show-day-ball="isSameDate(year.months, monthIndex)"
+        >
           <CalendarCourse :title="day.course_title">
             <CalendarClassItem :title="day.class_title">
               <CalendarListActivities :activities="day.activities" />

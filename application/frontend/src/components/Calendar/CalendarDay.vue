@@ -4,6 +4,7 @@ import type { languages } from '../GlobalTypes.vue'
 
 type calendarDayProps = {
   date: Date
+  showDayBall: boolean
 }
 
 type calendarDayData = {
@@ -72,7 +73,7 @@ const dayNumber = date_to_Date.getUTCDate()
 </script>
 <template>
   <div class="day" :sw="languageStore.signwriting">
-    <div class="bar" :sw="languageStore.signwriting">
+    <div class="bar" :sw="languageStore.signwriting" v-show="showDayBall">
       <img
         class="name"
         :sw="languageStore.signwriting"
