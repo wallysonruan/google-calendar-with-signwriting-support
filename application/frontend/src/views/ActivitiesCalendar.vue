@@ -69,6 +69,15 @@ function convertBackendDataModelToFrontendDataModel(classesData: classItem[]): Y
 }
 
 const classesToShow: YearClass[] = convertBackendDataModelToFrontendDataModel(allClasses)
+
+function isSameMonthAsPrevious(monthsArray: Month[], index: number): boolean {
+  // Check if it's the first of the array, returns true if so
+  if (index > 0) {
+    // If it's not, returns only the day without the month banner.
+    return monthsArray[index].number != monthsArray[index - 1].number
+  }
+  return true
+}
 </script>
 
 <template>
@@ -78,6 +87,7 @@ const classesToShow: YearClass[] = convertBackendDataModelToFrontendDataModel(al
         v-for="(month, index) in year.months"
         :key="index"
         :month-number="month.number"
+        :show-banner="isSameMonthAsPrevious(year.months, index)"
       >
         <CalendarDay v-for="(day, index) in month.days" :key="index" :date="day.date">
           <CalendarCourse :title="day.course_title">

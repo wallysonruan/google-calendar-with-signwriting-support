@@ -7,6 +7,7 @@ const SIGNWRITING_SVG_BASE_URL: string =
 const language = useLanguageStore()
 const props = defineProps<{
   monthNumber: number
+  showBanner: boolean
 }>()
 
 type calendarMonthData = {
@@ -121,7 +122,7 @@ const monthToShow = props.monthNumber ? props.monthNumber + 1 : current_month
 
 <template>
   <div>
-    <div height="100" class="banner">
+    <div height="100" class="banner" v-show="showBanner">
       <span v-show="language.portuguese">{{ month[monthToShow].name.pt }}</span>
       <img
         v-show="language.signwriting"
