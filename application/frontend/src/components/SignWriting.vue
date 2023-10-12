@@ -1,3 +1,7 @@
+<script lang="ts">
+export const SIGNWRITING_SVG_BASE_URL: string =
+  'https://www.signbank.org/signpuddle2.0/glyphogram.php?font=svg1&bound=t&text='
+</script>
 <script setup lang="ts">
 ;`
 I had to stop using this component because I found out that a relative file path can not be passed as
@@ -37,9 +41,6 @@ if (props.sign.includes(' ')) {
 if (props.sign.includes('%20')) {
   signs = props.sign.split(' ')
 }
-
-const SIGNWRITING_SVG_BASE_URL: string =
-  'https://www.signbank.org/signpuddle2.0/glyphogram.php?font=svg1&bound=t&text='
 </script>
 <template>
   <img
