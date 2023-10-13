@@ -6,11 +6,12 @@ const languageStore = useLanguageStore()
 
 type calendarClassItemProps = {
   title: languages
+  have_day_bar: boolean
 }
 const props = defineProps<calendarClassItemProps>()
 </script>
 <template>
-  <div class="classes" :sw="languageStore.signwriting">
+  <div class="classes" :sw="languageStore.signwriting" :free="have_day_bar">
     <div class="class" :sw="languageStore.signwriting">
       <div class="title custom-card" :sw="languageStore.signwriting">
         <SignWriting :sign="props.title.libras" :width="35" :display="languageStore.signwriting" />
@@ -65,7 +66,11 @@ const props = defineProps<calendarClassItemProps>()
     max-width: 100%;
 
     &[sw='true'] {
-      width: 100%;
+      max-width: 100%;
+
+      &[free='false'] {
+        max-width: 92.5%;
+      }
     }
   }
 }

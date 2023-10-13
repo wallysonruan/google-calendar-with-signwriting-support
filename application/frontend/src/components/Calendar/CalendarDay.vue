@@ -144,7 +144,10 @@ const dayNumber = date_to_Date.getUTCDate()
 
 @media only screen and (min-width: 600px) {
   .day {
-    width: 80vw;
+    display: flex;
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
   }
 }
 </style>

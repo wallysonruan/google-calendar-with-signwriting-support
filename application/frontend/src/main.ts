@@ -9,14 +9,16 @@ import router from './router'
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 
-import { VFooter } from 'vuetify/components/VFooter'
+import { VApp } from 'vuetify/components'
+import { VMain } from 'vuetify/components'
 import { VBottomNavigation } from 'vuetify/components'
 
 // import VueCompositionAPI from '@vue/composition-api'
 
 const vuetify = createVuetify({
   components: {
-    VFooter,
+    VApp,
+    VMain,
     VBottomNavigation
   }
 })

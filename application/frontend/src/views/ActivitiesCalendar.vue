@@ -141,7 +141,16 @@ function isSameDateAndCourseAsPreviousOne(
               )
             "
           >
-            <CalendarClassItem :title="day.class_title">
+            <CalendarClassItem
+              :title="day.class_title"
+              :have_day_bar="
+                !isSameDateAndCourseAsPreviousOne(
+                  isSameDateAsPreviousOne(year.months, monthIndex),
+                  year.months,
+                  monthIndex
+                )
+              "
+            >
               <CalendarListActivities :activities="day.activities" />
             </CalendarClassItem>
           </CalendarCourse>
@@ -152,11 +161,18 @@ function isSameDateAndCourseAsPreviousOne(
 </template>
 
 <style scoped>
+.calendar {
+  width: 100%;
+}
+
 @media only screen and (min-width: 600px) {
   .calendar {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    justify-items: center;
     align-items: center;
+    width: 50%;
   }
 }
 </style>
