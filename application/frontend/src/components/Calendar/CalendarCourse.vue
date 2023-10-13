@@ -6,12 +6,13 @@ const languageStore = useLanguageStore()
 
 type calendarCourseProps = {
   title: languages
+  showCourseTitle: boolean
 }
 const props = defineProps<calendarCourseProps>()
 </script>
 <template>
   <div class="course" :sw="languageStore.signwriting">
-    <div class="title custom-card" :sw="languageStore.signwriting">
+    <div class="title custom-card" :sw="languageStore.signwriting" v-if="showCourseTitle">
       <SignWriting :sign="props.title.libras" :width="40" :display="languageStore.signwriting" />
       <!---->
       <p v-show="languageStore.portuguese">{{ props.title.pt }}</p>
