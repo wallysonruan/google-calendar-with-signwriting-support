@@ -55,8 +55,8 @@ function isKeyDownTypeEnter(event: KeyboardEvent) {
       content: 'PT';
       height: 26px;
       width: 26px;
-      left: 4px;
-      bottom: 2px;
+      left: 12px;
+      top: 5px;
       border-radius: 50%;
     }
 
@@ -66,7 +66,7 @@ function isKeyDownTypeEnter(event: KeyboardEvent) {
       height: 26px;
       width: 26px;
       right: 3px;
-      bottom: 2px;
+      top: 5px;
       border-radius: 50%;
     }
   }
