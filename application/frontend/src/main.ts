@@ -11,7 +11,7 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
-import VueCompositionAPI from '@vue/composition-api'
+// import VueCompositionAPI from '@vue/composition-api'
 
 const vuetify = createVuetify({
   components,

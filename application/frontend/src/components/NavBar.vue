@@ -3,28 +3,29 @@ import { useLanguageStore } from '@/stores/language'
 const languageStore = useLanguageStore()
 
 function isKeyDownTypeEnter(event: KeyboardEvent) {
-  if (event.key === 'Enter') {
+  // They key `enter (windows)|return (MacOs)` can be either Enter or code 13.
+  if (event.key === 'enter' || event.code === '13') {
+    // This type casting is done so Typescript can imply what kind of properties the element will have.
     const switchElement = document.querySelector('#switch') as HTMLInputElement
-    const currentStatus = switchElement?.checked
 
-    if (currentStatus) {
-      switchElement.checked = false
-    } else {
-      switchElement.checked = true
+    // If element is found, invert its value.
+    if (switchElement) {
+      switchElement.checked = !switchElement.checked
     }
+
     languageStore.showSignWriting()
   }
 }
 </script>
 <template>
-  <v-app-bar scroll-behavior="hide">
+  <v-toolbar scroll-behavior="hide">
     <div class="nav">
       <label class="switch" tabindex="0" for="switch" @keydown="isKeyDownTypeEnter">
         <input id="switch" type="checkbox" @click="languageStore.showSignWriting" />
         <span class="slider round"></span>
       </label>
     </div>
-  </v-app-bar>
+  </v-toolbar>
 </template>
 <style scoped lang="scss">
 .nav {
