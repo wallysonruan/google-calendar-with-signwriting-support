@@ -3,10 +3,17 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import vuetify from 'vite-plugin-vuetify'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueJsx()],
+  plugins: [
+    vue(),
+    vuetify({
+      // https://stackoverflow.com/questions/72350551/combination-of-vue-3-vuetify-3-vue-test-utils-results-in-could-not-find-in
+      autoImport: true
+    })
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
@@ -23,20 +30,6 @@ export default defineConfig({
         assetFileNames: 'assets/[name][extname]',
         entryFileNames: 'assets/[name].js'
       }
-    }
-  },
-  test: {
-    coverage: {
-      provider: 'v8',
-      reportsDirectory: './src/components/__tests__/unit/coverage',
-      // https://github.com/vitest-dev/vitest/issues/2674
-      all: true,
-      include: [
-        '**/components/**/**.vue',
-        '**/components/Calendar/*.vue',
-        '**/stores/*.ts',
-        '**/views/*.vue'
-      ]
     }
   }
 })
