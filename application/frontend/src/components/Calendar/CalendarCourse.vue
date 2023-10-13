@@ -30,6 +30,7 @@ const props = defineProps<calendarCourseProps>()
 
   &[sw='true'] {
     flex-direction: row;
+    justify-content: end;
   }
 
   .title[sw='true'] {

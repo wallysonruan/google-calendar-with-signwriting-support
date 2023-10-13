@@ -73,7 +73,7 @@ const dayNumber = date_to_Date.getUTCDate()
 </script>
 <template>
   <div class="day" :sw="languageStore.signwriting">
-    <div class="bar" :sw="languageStore.signwriting" v-if="showDayBall">
+    <div class="bar" :sw="languageStore.signwriting">
       <img
         class="name"
         :sw="languageStore.signwriting"
@@ -81,13 +81,19 @@ const dayNumber = date_to_Date.getUTCDate()
         :src="SIGNWRITING_SVG_BASE_URL + dayName.name.libras"
         alt=""
         v-show="languageStore.signwriting"
+        v-if="showDayBall"
       />
       <!---->
-      <p class="name" :sw="languageStore.signwriting" v-show="languageStore.portuguese">
+      <p
+        class="name"
+        :sw="languageStore.signwriting"
+        v-show="languageStore.portuguese"
+        v-if="showDayBall"
+      >
         {{ dayName.name.pt.slice(0, 3).toLowerCase() }}
       </p>
       <!---->
-      <p class="number" :sw="languageStore.signwriting">{{ dayNumber }}</p>
+      <p class="number" :sw="languageStore.signwriting" v-if="showDayBall">{{ dayNumber }}</p>
     </div>
     <!---->
     <slot> </slot>
@@ -110,7 +116,7 @@ const dayNumber = date_to_Date.getUTCDate()
 
   .bar {
     text-align: center;
-    width: max-content;
+    width: 3.2rem;
 
     &[sw='true'] {
       display: flex;

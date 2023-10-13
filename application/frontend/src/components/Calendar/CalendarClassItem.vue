@@ -30,7 +30,7 @@ const props = defineProps<calendarClassItemProps>()
   width: 100%;
 
   &[sw='true'] {
-    max-width: 85%;
+    max-width: 83%;
   }
   .class {
     width: 100%;
