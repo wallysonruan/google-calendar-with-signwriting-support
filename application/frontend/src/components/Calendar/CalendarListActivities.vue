@@ -25,7 +25,7 @@ const props = defineProps<calendarListActivitiesProps>()
     </div>
     <!---->
     <div class="list">
-      <div class="list-on" :sw="languageStore.signwriting" v-if="props.activities">
+      <div class="list-on" :sw="languageStore.signwriting" v-if="props.activities.length > 0">
         <CalendarActivity
           v-for="(activity, index) in props.activities"
           :key="index"
@@ -39,8 +39,8 @@ const props = defineProps<calendarListActivitiesProps>()
         <img
           loading="lazy"
           src="../../assets/TER-NAO.svg"
-          width="23"
-          height="55"
+          width="25"
+          height="65"
           alt=""
           v-show="languageStore.signwriting"
         />
@@ -69,16 +69,35 @@ const props = defineProps<calendarListActivitiesProps>()
     width: 100%;
     padding: 0.3rem;
     border-radius: 10px;
-    overflow-x: scroll;
-
-    &[sw='true'] {
-      overflow-y: scroll;
-    }
+    overflow: auto;
   }
+
+  .list-on {
+    max-height: 10rem;
+  }
+
+  ::-webkit-scrollbar {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #999;
+    border-radius: 6px;
+  }
+
+  /* For Firefox and other non-WebKit browsers
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
+
+  For all browsers
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent; */
 
   .list-on[sw='true'] {
     display: flex;
     width: fit-content;
+    max-width: 10px;
+    /* Puts a stop to the list, making the parent become scrollable */
     gap: 5px;
 
     &[sw='false'] .activity:not(:last-of-type) {
