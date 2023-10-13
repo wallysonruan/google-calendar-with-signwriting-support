@@ -4,7 +4,7 @@ import NavBar from './components/NavBar.vue'
 </script>
 
 <template>
-  <v-app>
+  <v-app id="v-app">
     <v-main id="main">
       <RouterView />
     </v-main>
@@ -12,9 +12,11 @@ import NavBar from './components/NavBar.vue'
   </v-app>
 </template>
 <style>
+html,
 body,
 #app,
-#main {
+#main,
+#v-app {
   display: flex;
   justify-content: center;
   background-color: gainsboro;
