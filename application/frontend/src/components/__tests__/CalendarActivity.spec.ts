@@ -1,27 +1,14 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect } from 'vitest'
 
 import { mount } from '@vue/test-utils'
 import CalendarActivityVue from '../Calendar/CalendarActivity.vue'
 
-import { createTestingPinia } from '@pinia/testing'
-import { setActivePinia } from 'pinia'
 import { createVuetify } from 'vuetify'
 
 import type { languages } from '../GlobalTypes.vue'
 
 describe('CalendarActivity', () => {
   const vuetify = createVuetify()
-
-  const testingPinia = createTestingPinia({
-    createSpy: vi.fn(),
-    initialState: {
-      signwriting: true
-    }
-  })
-
-  beforeEach(() => {
-    setActivePinia(testingPinia)
-  })
 
   it('Only portuguese element should be visible if show_sw is set to false', () => {
     const wrapper = mount(CalendarActivityVue, {

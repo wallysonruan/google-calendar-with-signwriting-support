@@ -5,10 +5,10 @@ import NavBar from './components/NavBar.vue'
 
 <template>
   <v-app>
-    <NavBar />
     <v-main id="main">
       <RouterView />
     </v-main>
+    <NavBar />
     <!-- <Footer /> -->
   </v-app>
 </template>
@@ -29,5 +29,12 @@ body,
   justify-content: center;
   background-color: gainsboro;
   width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  /* Overriding v-main style */
+  #main {
+    margin-top: 0px !important;
+  }
 }
 </style>

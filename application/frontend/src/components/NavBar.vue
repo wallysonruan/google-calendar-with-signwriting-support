@@ -18,19 +18,20 @@ function isKeyDownTypeEnter(event: KeyboardEvent) {
 }
 </script>
 <template>
-  <v-toolbar scroll-behavior="hide">
+  <v-bottom-navigation>
     <div class="nav">
       <label class="switch" tabindex="0" for="switch" @keydown="isKeyDownTypeEnter">
         <input id="switch" type="checkbox" @click="languageStore.showSignWriting" />
         <span class="slider round"></span>
       </label>
     </div>
-  </v-toolbar>
+  </v-bottom-navigation>
 </template>
 <style scoped lang="scss">
 .nav {
   display: flex;
   justify-content: right;
+  align-items: center;
   width: 100%;
 
   input[type='checkbox'] {
