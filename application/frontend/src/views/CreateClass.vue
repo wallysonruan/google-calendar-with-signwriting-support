@@ -38,7 +38,7 @@ function createClass(newClassItem: classItem) {
 }
 </script>
 <template>
-  <form>
+  <v-form @submit.prevent="createClass(classItemModel)">
     <h2>Nome do Curso:</h2>
     <!-- <label for="course_pt">Português</label> -->
     <v-text-field
@@ -87,8 +87,8 @@ function createClass(newClassItem: classItem) {
       class="input"
     ></v-text-field>
 
-    <v-btn :loading="loading" @click="createClass(classItemModel)" type="submit"> Criar </v-btn>
-  </form>
+    <v-btn :loading="loading" type="submit"> Criar </v-btn>
+  </v-form>
 </template>
 <style scoped lang="scss">
 form {
