@@ -14,7 +14,7 @@ export type classItem = {
 
 const classItemDatalocalStorage_key = 'classes'
 
-function getClassItemsFromLocalStorage(key: string): classItem[] {
+export function getClassItemsFromLocalStorage(key: string): classItem[] {
   const emptyClassItem: classItem[] = []
 
   try {
@@ -35,7 +35,7 @@ function getClassItemsFromLocalStorage(key: string): classItem[] {
   }
 }
 
-function saveClassesToLocalStorage(data: classItem[], key: string) {
+export function saveClassesToLocalStorage(data: classItem[], key: string) {
   try {
     // Converts data to string JSON
     const jsonData = JSON.stringify(data)
@@ -352,6 +352,12 @@ export const useClassesStore = defineStore({
   actions: {
     getClasses() {
       return this.classes
+    },
+    getClassesFromLocalStorage() {
+      return getClassItemsFromLocalStorage(classItemDatalocalStorage_key)
+    },
+    saveClassToLocalStorage(data: classItem[]) {
+      saveClassesToLocalStorage(data, classItemDatalocalStorage_key)
     }
   }
 })

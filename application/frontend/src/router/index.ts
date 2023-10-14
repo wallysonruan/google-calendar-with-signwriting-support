@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import ActivitiesCalendar from '@/views/ActivitiesCalendar.vue'
+import CreateClass from '@/views/CreateClass.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,6 +9,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: ActivitiesCalendar
+    },
+    {
+      path: '/create-activity',
+      name: 'homero',
+      component: CreateClass
     }
   ]
 })
