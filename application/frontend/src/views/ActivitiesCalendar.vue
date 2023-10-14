@@ -26,15 +26,15 @@ type YearClass = {
 }
 
 const classesStore = useClassesStore()
-const allClasses: classItem[] = classesStore.getClasses()
+const allClasses: classItem[] | null = classesStore.getClasses()
 
 function convertBackendDataModelToFrontendDataModel(classesData: classItem[]): YearClass[] {
   const result: YearClass[] = []
 
   // Iterate through the input data
   classesData.forEach((classItem) => {
-    const year = classItem.date.getFullYear()
-    const month = classItem.date.getMonth() + 1 // Month is 0-based, so we add 1
+    const year = new Date(classItem.date).getFullYear()
+    const month = new Date(classItem.date).getMonth() + 1 // Month is 0-based, so we add 1
 
     // Find the corresponding year in the result
     let yearObj = result.find((y) => y.year === year)
@@ -68,7 +68,9 @@ function convertBackendDataModelToFrontendDataModel(classesData: classItem[]): Y
   return result
 }
 
-const classesToShow: YearClass[] = convertBackendDataModelToFrontendDataModel(allClasses)
+const classesToShow: YearClass[] = convertBackendDataModelToFrontendDataModel(
+  allClasses as classItem[]
+)
 
 function isSameMonthAsPrevious(monthsArray: Month[], index: number): boolean {
   // Check if it's the first month in the array.
@@ -91,8 +93,8 @@ function isSameDateAsPreviousOne(monthsArray: Month[], index: number): boolean {
     return false // Nothing to compare.
   }
 
-  const currentDay = monthsArray[index].days[0].date
-  const previousDay = monthsArray[index - 1].days[0].date
+  const currentDay = new Date(monthsArray[index].days[0].date)
+  const previousDay = new Date(monthsArray[index - 1].days[0].date)
 
   // Always true if current and previous day are different.
   return currentDay.getDay() === previousDay.getDay()
@@ -128,7 +130,7 @@ function isSameDateAndCourseAsPreviousOne(
         <CalendarDay
           v-for="(day, index) in month.days"
           :key="index"
-          :date="day.date"
+          :date="new Date(day.date)"
           :show-day-ball="!isSameDateAsPreviousOne(year.months, monthIndex)"
         >
           <CalendarCourse
