@@ -11,8 +11,8 @@ const router = createRouter({
       component: ActivitiesCalendar
     },
     {
-      path: '/create-activity',
-      name: 'homero',
+      path: '/create-class',
+      name: 'createClass',
       component: CreateClass
     }
   ]

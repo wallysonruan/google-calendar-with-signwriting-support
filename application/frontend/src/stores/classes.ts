@@ -1,5 +1,6 @@
 import type { languages } from '@/components/GlobalTypes.vue'
 import { defineStore } from 'pinia'
+import { ref } from 'vue'
 
 export type activity = {
   title: languages
@@ -13,6 +14,14 @@ export type classItem = {
 }
 
 const classItemDatalocalStorage_key = 'classes'
+
+function sortClassesItem(data: classItem[]): classItem[] {
+  return data.sort((a, b) => {
+    const aDate = new Date(a.date)
+    const bDate = new Date(b.date)
+    return aDate.getTime() - bDate.getTime()
+  })
+}
 
 export function getClassItemsFromLocalStorage(key: string): classItem[] {
   const emptyClassItem: classItem[] = []
@@ -328,21 +337,19 @@ function getClassesData(): classItem[] {
 
   const dataRetrievedFromLocalStorage = getClassItemsFromLocalStorage(classItemDatalocalStorage_key)
 
-  if (dataRetrievedFromLocalStorage.length > 0) return dataRetrievedFromLocalStorage
+  if (dataRetrievedFromLocalStorage.length > 0)
+    return sortClassesItem(dataRetrievedFromLocalStorage)
 
   saveClassesToLocalStorage(classesDataFake, classItemDatalocalStorage_key)
 
-  return classesDataFake
+  return sortClassesItem(classesDataFake)
 }
 
-const classesData: classItem[] = getClassesData()
+function updateClasses() {
+  classesData.value = getClassesData()
+}
 
-// Sort date by comparing milliseconds
-classesData.sort((a, b) => {
-  const aDate = new Date(a.date)
-  const bDate = new Date(b.date)
-  return aDate.getTime() - bDate.getTime()
-})
+const classesData = ref<classItem[]>(getClassesData())
 
 export const useClassesStore = defineStore({
   id: 'useClassesStore',
@@ -353,11 +360,13 @@ export const useClassesStore = defineStore({
     getClasses() {
       return this.classes
     },
-    getClassesFromLocalStorage() {
-      return getClassItemsFromLocalStorage(classItemDatalocalStorage_key)
-    },
-    saveClassToLocalStorage(data: classItem[]) {
-      saveClassesToLocalStorage(data, classItemDatalocalStorage_key)
+    async saveClassToLocalStorage(data: classItem) {
+      const dataFromLocalStorage = await getClassItemsFromLocalStorage(
+        classItemDatalocalStorage_key
+      )
+      dataFromLocalStorage.push(data)
+      await saveClassesToLocalStorage(dataFromLocalStorage, classItemDatalocalStorage_key)
+      updateClasses()
     }
   }
 })

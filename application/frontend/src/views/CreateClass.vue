@@ -28,102 +28,70 @@ const classItemModel = ref<classItem>({
   ]
 })
 
-async function create(newClassItem: classItem) {
-  const data = await classStore.getClassesFromLocalStorage()
-  data.push(newClassItem)
-  await classStore.saveClassToLocalStorage(data)
+const loading = ref<boolean>(false)
+
+function createClass(newClassItem: classItem) {
+  loading.value = true
+  classStore.saveClassToLocalStorage(newClassItem)
+  console.log('New class created and uploaded to Local Storage.')
+  loading.value = false
 }
 </script>
 <template>
-  <div>
+  <form>
     <h2>Nome do Curso:</h2>
-    <label for="course_pt">Português</label>
-    <input
-      type="text"
-      id="course_pt"
+    <!-- <label for="course_pt">Português</label> -->
+    <v-text-field
       v-model="classItemModel.course_title.pt"
+      label="Português"
+      id="course_pt"
       class="input"
-      placeholder="Digite aqui"
-    />
-    <br />
-    <label for="course_libras">Libras</label>
-    <input
-      type="text"
-      id="course_libras"
+    ></v-text-field>
+    <!-- <label for="course_libras">Libras</label> -->
+    <v-text-field
       v-model="classItemModel.course_title.libras"
+      label="Libras"
+      id="course_libras"
       class="input"
-      placeholder="Digite aqui"
-    />
-    <br />
-    <label for="course_eng">English</label>
-    <input
-      type="text"
-      id="course_eng"
-      v-model="classItemModel.course_title.eng"
-      class="input"
-      placeholder="Digite aqui"
-    />
+    ></v-text-field>
 
     <h2>Nome da Aula</h2>
-    <label for="class_pt">Português</label>
-    <input
-      type="text"
-      id="class_pt"
+    <!-- <label for="class_pt">Português</label> -->
+    <v-text-field
       v-model="classItemModel.class_title.pt"
+      label="Português"
+      id="class_pt"
       class="input"
-      placeholder="Digite aqui"
-    />
-    <br />
-    <label for="class_libras">Libras</label>
-    <input
-      type="text"
-      id="class_libras"
+    ></v-text-field>
+    <!-- <label for="class_libras">Libras</label> -->
+    <v-text-field
       v-model="classItemModel.class_title.libras"
+      label="Libras"
+      id="class_libras"
       class="input"
-      placeholder="Digite aqui"
-    />
-    <br />
-    <label for="class_eng">English</label>
-    <input
-      type="text"
-      id="class_eng"
-      v-model="classItemModel.class_title.eng"
-      class="input"
-      placeholder="Digite aqui"
-    />
+    ></v-text-field>
 
     <h2>Nome da Atividade</h2>
-    <label for="activity_pt">Português</label>
-    <input
-      type="text"
-      id="activity_pt"
+    <!-- <label for="activity_pt">Português</label> -->
+    <v-text-field
       v-model="classItemModel.activities[0].title.pt"
+      label="Português"
+      id="activity_pt"
       class="input"
-      placeholder="Digite aqui"
-    />
-    <br />
-    <label for="activity_libras">Libras</label>
-    <input
-      type="text"
-      id="activity_libras"
+    ></v-text-field>
+    <!-- <label for="activity_libras">Libras</label> -->
+    <v-text-field
       v-model="classItemModel.activities[0].title.libras"
+      label="Libras"
+      id="activity_libras"
       class="input"
-      placeholder="Digite aqui"
-    />
-    <br />
-    <label for="activity_eng">English</label>
-    <input
-      type="text"
-      id="activity_eng"
-      v-model="classItemModel.activities[0].title.eng"
-      class="input"
-      placeholder="Digite aqui"
-    />
-    <button type="button" @click="create(classItemModel)">Create</button>
-  </div>
+    ></v-text-field>
+
+    <v-btn :loading="loading" @click="createClass(classItemModel)" type="submit"> Criar </v-btn>
+  </form>
 </template>
 <style scoped lang="scss">
-.form {
+form {
   width: 100%;
 
   .input {

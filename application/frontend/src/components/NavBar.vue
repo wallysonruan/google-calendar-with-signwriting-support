@@ -5,10 +5,10 @@ import LanguageSwitcher from './LanguageSwitcher.vue'
   <v-bottom-navigation>
     <div class="nav">
       <v-btn>
-        <RouterLink to="create-activity"> Create Activity </RouterLink>
+        <RouterLink to="create-class"> Criar Aula </RouterLink>
       </v-btn>
       <v-btn>
-        <a href="/"> Home </a>
+        <RouterLink to="/"> Página Inicial </RouterLink>
       </v-btn>
       <LanguageSwitcher />
     </div>
