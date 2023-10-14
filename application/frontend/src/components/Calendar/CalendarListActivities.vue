@@ -74,6 +74,11 @@ const props = defineProps<calendarListActivitiesProps>()
 
   .list-on {
     max-height: 10rem;
+    padding: 0.3rem;
+
+    .activity {
+      margin-bottom: 0.3rem;
+    }
   }
 
   ::-webkit-scrollbar {
