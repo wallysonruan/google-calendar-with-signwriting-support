@@ -19,6 +19,7 @@ const languageStore = useLanguageStore()
 .switcher {
   display: flex;
   align-items: center;
+  width: fit-content;
 
   .switch {
     margin-left: 1rem;
