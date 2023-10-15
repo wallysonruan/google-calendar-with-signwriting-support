@@ -120,32 +120,23 @@ function isSameDateAndCourseAsPreviousOne(
 
 <template>
   <div class="calendar">
-    <CalendarYear v-for="(year, index) in classesToShow" :key="index" :year="year.year">
-      <CalendarMonth
-        v-for="(month, monthIndex) in year.months"
-        :key="monthIndex"
-        :month-number="month.number"
-        :show-banner="!isSameMonthAsPrevious(year.months, monthIndex)"
-      >
-        <CalendarDay
-          v-for="(day, index) in month.days"
-          :key="index"
-          :date="new Date(day.date)"
-          :show-day-ball="!isSameDateAsPreviousOne(year.months, monthIndex)"
+    <div class="content">
+      <CalendarYear v-for="(year, index) in classesToShow" :key="index" :year="year.year">
+        <CalendarMonth
+          v-for="(month, monthIndex) in year.months"
+          :key="monthIndex"
+          :month-number="month.number"
+          :show-banner="!isSameMonthAsPrevious(year.months, monthIndex)"
         >
-          <CalendarCourse
-            :title="day.course_title"
-            :show-course-title="
-              !isSameDateAndCourseAsPreviousOne(
-                isSameDateAsPreviousOne(year.months, monthIndex),
-                year.months,
-                monthIndex
-              )
-            "
+          <CalendarDay
+            v-for="(day, index) in month.days"
+            :key="index"
+            :date="new Date(day.date)"
+            :show-day-ball="!isSameDateAsPreviousOne(year.months, monthIndex)"
           >
-            <CalendarClassItem
-              :title="day.class_title"
-              :have_day_bar="
+            <CalendarCourse
+              :title="day.course_title"
+              :show-course-title="
                 !isSameDateAndCourseAsPreviousOne(
                   isSameDateAsPreviousOne(year.months, monthIndex),
                   year.months,
@@ -153,28 +144,45 @@ function isSameDateAndCourseAsPreviousOne(
                 )
               "
             >
-              <CalendarListActivities :activities="day.activities" />
-            </CalendarClassItem>
-          </CalendarCourse>
-        </CalendarDay>
-      </CalendarMonth>
-    </CalendarYear>
+              <CalendarClassItem
+                :title="day.class_title"
+                :have_day_bar="
+                  !isSameDateAndCourseAsPreviousOne(
+                    isSameDateAsPreviousOne(year.months, monthIndex),
+                    year.months,
+                    monthIndex
+                  )
+                "
+              >
+                <CalendarListActivities :activities="day.activities" />
+              </CalendarClassItem>
+            </CalendarCourse>
+          </CalendarDay>
+        </CalendarMonth>
+      </CalendarYear>
+    </div>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .calendar {
   width: 100%;
+  height: 100%;
+  background-color: gainsboro;
+  .content {
+    width: 100%;
+  }
 }
 
 @media only screen and (min-width: 600px) {
   .calendar {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-    width: 50%;
+    .content {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      margin: auto;
+      background-color: gainsboro;
+    }
   }
 }
 </style>

@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import LanguageSwitcher from './LanguageSwitcher.vue'
+const drawer = ref<boolean>(false)
 </script>
 <template>
-  <v-bottom-navigation>
+  <v-toolbar class="nav">
     <div class="nav">
       <v-btn>
         <RouterLink to="create-class"> Criar Aula </RouterLink>
@@ -12,13 +14,21 @@ import LanguageSwitcher from './LanguageSwitcher.vue'
       </v-btn>
       <LanguageSwitcher />
     </div>
-  </v-bottom-navigation>
+  </v-toolbar>
 </template>
 <style scoped lang="scss">
 .nav {
-  display: flex;
-  justify-content: right;
-  align-items: center;
-  width: 100%;
+  display: none;
+}
+
+@media only screen and (min-width: 600px) {
+  .nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 100%;
+  }
 }
 </style>

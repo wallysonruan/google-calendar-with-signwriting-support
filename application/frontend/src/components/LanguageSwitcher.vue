@@ -29,6 +29,7 @@ input[type='checkbox'] {
 }
 
 .switch {
+  display: block;
   position: relative;
   width: 60px;
   height: 30px;

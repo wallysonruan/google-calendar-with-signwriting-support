@@ -15,6 +15,7 @@ import { VBottomNavigation } from 'vuetify/components'
 import { VTextField } from 'vuetify/components'
 import { VForm } from 'vuetify/components'
 import { VBtn } from 'vuetify/components'
+import { VLayout } from 'vuetify/components'
 
 // import VueCompositionAPI from '@vue/composition-api'
 
@@ -25,7 +26,8 @@ const vuetify = createVuetify({
     VBottomNavigation,
     VForm,
     VTextField,
-    VBtn
+    VBtn,
+    VLayout
   }
 })
 
