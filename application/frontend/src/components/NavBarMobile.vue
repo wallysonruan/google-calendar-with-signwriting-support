@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import LanguageSwitcher from './LanguageSwitcher.vue'
+import { useClassesStore } from '@/stores/classes'
+const classesStore = useClassesStore()
 const drawer = ref<boolean>(false)
-
-function deleteAllClasses() {
-  localStorage.removeItem('classes')
-}
 </script>
 <template>
-  <v-navigation-drawer touchless location="right" class="drawer" v-model="drawer">
+  <v-navigation-drawer location="right" class="drawer" v-model="drawer">
     <v-list>
       <v-list-item>
         <svg
@@ -44,7 +42,7 @@ function deleteAllClasses() {
         <RouterLink to="create-class" @click.stop="drawer = !drawer"> Criar Aula </RouterLink>
       </v-list-item>
       <v-list-item>
-        <v-btn @click="deleteAllClasses">
+        <v-btn @click="classesStore.deleteAllClasses">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
