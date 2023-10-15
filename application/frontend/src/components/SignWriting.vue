@@ -43,28 +43,35 @@ if (props.sign.includes('%20')) {
 }
 </script>
 <template>
-  <img
-    v-if="signs.length === 0"
-    :src="SIGNWRITING_SVG_BASE_URL + sign"
-    alt=""
-    :width="props.width"
-    :height="props.height"
-    v-show="props.display"
-  />
-  <!---->
-  <img
-    v-else
-    v-for="(sign, index) in signs"
-    :src="SIGNWRITING_SVG_BASE_URL + sign"
-    :key="index"
-    alt=""
-    :width="props.width"
-    :height="props.height"
-    v-show="props.display"
-  />
+  <div class="signwriting">
+    <img
+      v-if="signs.length === 0"
+      :src="SIGNWRITING_SVG_BASE_URL + sign"
+      alt=""
+      :width="props.width"
+      :height="props.height"
+      v-show="props.display"
+    />
+    <!---->
+    <img
+      v-else
+      v-for="(sign, index) in signs"
+      :src="SIGNWRITING_SVG_BASE_URL + sign"
+      :key="index"
+      alt=""
+      :width="props.width"
+      :height="props.height"
+      v-show="props.display"
+    />
+  </div>
 </template>
 <style scoped>
 img {
   margin: 0.2rem;
+}
+
+.signwriting {
+  display: flex;
+  flex-direction: column;
 }
 </style>

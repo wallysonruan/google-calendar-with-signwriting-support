@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { useLanguageStore } from '@/stores/language'
+import LanguageWrapper from '../LanguageWrapper.vue'
 import type { languages } from '../GlobalTypes.vue'
 
-const SIGNWRITING_SVG_BASE_URL: string =
-  'https://www.signbank.org/signpuddle2.0/glyphogram.php?font=svg1&bound=t&text='
-const language = useLanguageStore()
 const props = defineProps<{
   monthNumber: number
   showBanner: boolean
@@ -123,12 +120,9 @@ const monthToShow = props.monthNumber ? props.monthNumber + 1 : current_month
 <template>
   <div>
     <div height="100" class="banner" v-if="showBanner">
-      <span v-show="language.portuguese">{{ month[monthToShow].name.pt }}</span>
-      <img
-        v-show="language.signwriting"
-        :src="SIGNWRITING_SVG_BASE_URL + month[monthToShow].name.libras"
-        alt=""
-        loading="lazy"
+      <LanguageWrapper
+        :sign="month[monthToShow].name.libras"
+        :portuguese="month[monthToShow].name.pt"
       />
     </div>
     <slot> </slot>

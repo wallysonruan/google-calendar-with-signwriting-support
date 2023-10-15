@@ -3,6 +3,7 @@ import { useLanguageStore } from '@/stores/language'
 import SignWriting from '../SignWriting.vue'
 import type { languages } from '../GlobalTypes.vue'
 const languageStore = useLanguageStore()
+import LanguageWrapper from '@/components/LanguageWrapper.vue'
 
 type calendarClassItemProps = {
   title: languages
@@ -13,13 +14,13 @@ const props = defineProps<calendarClassItemProps>()
 <template>
   <div class="classes" :sw="languageStore.signwriting" :free="have_day_bar">
     <div class="class" :sw="languageStore.signwriting">
-      <div class="title custom-card" :sw="languageStore.signwriting">
-        <SignWriting :sign="props.title.libras" :width="35" :display="languageStore.signwriting" />
-        <!---->
-        <p class="title" v-show="languageStore.portuguese">
-          {{ props.title.pt }}
-        </p>
-      </div>
+      <LanguageWrapper
+        :sw="languageStore.signwriting"
+        class="title custom-card"
+        :sign="props.title.libras"
+        :width="35"
+        :portuguese="props.title.pt"
+      />
       <!---->
       <slot></slot>
     </div>

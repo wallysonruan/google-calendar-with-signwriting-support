@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useLanguageStore } from '@/stores/language'
 import CalendarActivity from './CalendarActivity.vue'
+import LanguageWrapper from '../LanguageWrapper.vue'
 import type { activity } from '@/stores/classes'
 const languageStore = useLanguageStore()
 
@@ -11,18 +12,14 @@ const props = defineProps<calendarListActivitiesProps>()
 </script>
 <template>
   <div class="activities">
-    <div class="title">
-      <img
-        loading="lazy"
-        src="../../assets/ATIVIDADE.svg"
-        width="35"
-        height="35"
-        alt=""
-        v-show="languageStore.signwriting"
-      />
-      <!---->
-      <p class="title" v-show="languageStore.portuguese">Atividade</p>
-    </div>
+    <LanguageWrapper
+      class="title"
+      :sw="languageStore.signwriting"
+      :sign="'M530x526S15a37471x474S1f751474x486S14c51490x500S27e0c507x489'"
+      :width="35"
+      :height="35"
+      :portuguese="'Atividade'"
+    />
     <!---->
     <div class="list">
       <div class="list-on" :sw="languageStore.signwriting" v-if="props.activities.length > 0">
@@ -35,18 +32,15 @@ const props = defineProps<calendarListActivitiesProps>()
         />
       </div>
       <!---->
-      <div class="list-off" v-else>
-        <img
-          loading="lazy"
-          src="../../assets/TER-NAO.svg"
-          width="25"
-          height="65"
-          alt=""
-          v-show="languageStore.signwriting"
-        />
-        <!---->
-        <p v-show="languageStore.portuguese">Nenhuma atividade encontrada.</p>
-      </div>
+      <LanguageWrapper
+        v-else
+        class="list-off"
+        :sw="languageStore.signwriting"
+        :sign="'M20x100S30126n18xn24S1dc40n4x31S2a530n4x67S34010n8x11'"
+        :width="25"
+        :height="65"
+        :portuguese="'Nenhuma atividade encontrada.'"
+      />
     </div>
   </div>
 </template>

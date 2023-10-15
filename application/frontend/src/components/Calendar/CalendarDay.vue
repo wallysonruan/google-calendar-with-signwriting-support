@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useLanguageStore } from '@/stores/language'
 import type { languages } from '../GlobalTypes.vue'
+import LanguageWrapper from '../LanguageWrapper.vue'
 
 type calendarDayProps = {
   date: Date
@@ -74,24 +75,14 @@ const dayNumber = date_to_Date.getUTCDate()
 <template>
   <div class="day" :sw="languageStore.signwriting">
     <div class="bar" :sw="languageStore.signwriting">
-      <img
+      <LanguageWrapper
         class="name"
         :sw="languageStore.signwriting"
-        loading="lazy"
-        :src="SIGNWRITING_SVG_BASE_URL + dayName.name.libras"
-        alt=""
-        v-show="languageStore.signwriting"
+        :sign="dayName.name.libras"
+        :width="28"
+        :portuguese="dayName.name.pt.slice(0, 3).toLowerCase()"
         v-if="showDayBall"
       />
-      <!---->
-      <p
-        class="name"
-        :sw="languageStore.signwriting"
-        v-show="languageStore.portuguese"
-        v-if="showDayBall"
-      >
-        {{ dayName.name.pt.slice(0, 3).toLowerCase() }}
-      </p>
       <!---->
       <p class="number" :sw="languageStore.signwriting" v-if="showDayBall">{{ dayNumber }}</p>
     </div>
