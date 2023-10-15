@@ -3,7 +3,6 @@ import { RouterView } from 'vue-router'
 import NavBarDesktop from './components/NavBarDesktop.vue'
 import NavBarMobile from './components/NavBarMobile.vue'
 </script>
-
 <template>
   <v-app>
     <NavBarDesktop />
@@ -11,4 +10,11 @@ import NavBarMobile from './components/NavBarMobile.vue'
     <NavBarMobile />
   </v-app>
 </template>
-<style></style>
+<style lang="scss">
+  a {
+    text-decoration: none;
+    &:visited{
+      color: inherit;
+    }
+  }
+</style>

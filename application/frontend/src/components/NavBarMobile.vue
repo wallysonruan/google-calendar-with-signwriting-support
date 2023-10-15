@@ -7,42 +7,42 @@ const drawer = ref<boolean>(false)
 </script>
 <template>
   <v-navigation-drawer location="right" class="drawer" v-model="drawer">
-    <v-list>
-      <v-list-item>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          class="bi bi-house-door"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146ZM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5Z"
-          />
-        </svg>
-        &nbsp;
-        <RouterLink to="/" @click.stop="drawer = !drawer"> Página Inicial </RouterLink>
-      </v-list-item>
-      <v-list-item>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          class="bi bi-plus-lg"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
-          />
-        </svg>
-        &nbsp;
-        <RouterLink to="create-class" @click.stop="drawer = !drawer"> Criar Aula </RouterLink>
-      </v-list-item>
-      <v-list-item>
-        <v-btn @click="classesStore.deleteAllClasses">
+    <template v-slot:append>
+      <v-list class="list">
+        <v-list-item link @click.stop="drawer = !drawer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-house-door"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146ZM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5Z"
+            />
+          </svg>
+          &nbsp;
+          <RouterLink to="/" @click.stop="drawer = !drawer"> Página Inicial </RouterLink>
+        </v-list-item>
+        <v-list-item link @click.stop="drawer = !drawer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-plus-lg"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+            />
+          </svg>
+          &nbsp;
+          <RouterLink to="create-class"> Criar Aula </RouterLink>
+        </v-list-item>
+        <v-list-item link @click="classesStore.deleteAllClasses">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -56,10 +56,8 @@ const drawer = ref<boolean>(false)
             />
           </svg>
           &nbsp; localStorage
-        </v-btn>
-      </v-list-item>
-    </v-list>
-    <template v-slot:append>
+        </v-list-item>
+      </v-list>
       <v-divider :thickness="2"></v-divider>
       <div class="d-flex flex-column justify-center align-center">
         <LanguageSwitcher class="switcher" />
@@ -85,6 +83,12 @@ const drawer = ref<boolean>(false)
   </v-btn>
 </template>
 <style scoped lang="scss">
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
 .menu-btn {
   position: fixed;
   bottom: 40px;
