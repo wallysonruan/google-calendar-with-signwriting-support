@@ -42,51 +42,53 @@ function createClass(newClassItem: classItem) {
     <h2>Nome do Curso:</h2>
     <!-- <label for="course_pt">Português</label> -->
     <v-text-field
-      v-model="classItemModel.course_title.pt"
-      label="Português"
-      id="course_pt"
-      class="input"
+    v-model="classItemModel.course_title.pt"
+    class="input"
+    id="course_pt"
+    label="Português"
     ></v-text-field>
     <!-- <label for="course_libras">Libras</label> -->
     <v-text-field
       v-model="classItemModel.course_title.libras"
-      label="Libras"
-      id="course_libras"
       class="input"
+      id="course_libras"
+      label="Libras"
+      hint="Insira aqui a sequência FSW do sinal desejado."
     ></v-text-field>
 
     <h2>Nome da Aula</h2>
     <!-- <label for="class_pt">Português</label> -->
     <v-text-field
       v-model="classItemModel.class_title.pt"
-      label="Português"
-      id="class_pt"
       class="input"
+      id="class_pt"
+      label="Português"
     ></v-text-field>
     <!-- <label for="class_libras">Libras</label> -->
     <v-text-field
       v-model="classItemModel.class_title.libras"
-      label="Libras"
-      id="class_libras"
       class="input"
+      id="class_libras"
+      label="Libras"
+      hint="Insira aqui a sequência FSW do sinal desejado."
     ></v-text-field>
 
     <h2>Nome da Atividade</h2>
     <!-- <label for="activity_pt">Português</label> -->
     <v-text-field
       v-model="classItemModel.activities[0].title.pt"
-      label="Português"
-      id="activity_pt"
       class="input"
+      id="activity_pt"
+      label="Português"
     ></v-text-field>
     <!-- <label for="activity_libras">Libras</label> -->
     <v-text-field
       v-model="classItemModel.activities[0].title.libras"
-      label="Libras"
-      id="activity_libras"
       class="input"
+      id="activity_libras"
+      label="Libras"
+      hint="Insira aqui a sequência FSW do sinal desejado."
     ></v-text-field>
-
     <v-btn :loading="loading" type="submit"> Criar </v-btn>
   </v-form>
 </template>
