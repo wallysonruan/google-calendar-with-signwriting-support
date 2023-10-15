@@ -24,7 +24,7 @@ function deleteAllClasses() {
           />
         </svg>
         &nbsp;
-        <RouterLink to="/"> Página Inicial </RouterLink>
+        <RouterLink to="/" @click.stop="drawer = !drawer"> Página Inicial </RouterLink>
       </v-list-item>
       <v-list-item>
         <svg
@@ -41,7 +41,7 @@ function deleteAllClasses() {
           />
         </svg>
         &nbsp;
-        <RouterLink to="create-class"> Criar Aula </RouterLink>
+        <RouterLink to="create-class" @click.stop="drawer = !drawer"> Criar Aula </RouterLink>
       </v-list-item>
       <v-list-item>
         <v-btn @click="deleteAllClasses">
@@ -69,7 +69,7 @@ function deleteAllClasses() {
     </template>
   </v-navigation-drawer>
   <v-btn class="menu-btn" icon>
-    <v-icon color="secundary" @click.stop="drawer = !drawer">
+    <v-icon @click.stop="drawer = !drawer">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="32"
