@@ -11,10 +11,10 @@ import NavBarMobile from './components/NavBarMobile.vue'
   </v-app>
 </template>
 <style lang="scss">
-  a {
-    text-decoration: none;
-    &:visited{
-      color: inherit;
-    }
+a {
+  text-decoration: none;
+  &:visited {
+    color: inherit;
   }
+}
 </style>
