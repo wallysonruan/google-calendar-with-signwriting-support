@@ -27,7 +27,7 @@ const drawer = ref<boolean>(false)
 </template>
 <style scoped lang="scss">
 .menu-btn {
-  position: sticky;
+  position: fixed;
   bottom: 40px;
   left: 80%;
 }
