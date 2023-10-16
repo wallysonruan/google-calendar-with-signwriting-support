@@ -14,8 +14,6 @@ type calendarDayData = {
 
 const props = defineProps<calendarDayProps>()
 const languageStore = useLanguageStore()
-const SIGNWRITING_SVG_BASE_URL: string =
-  'https://www.signbank.org/signpuddle2.0/glyphogram.php?font=svg1&bound=t&text='
 
 const name_of_the_week_days: Record<number, calendarDayData> = {
   1: {

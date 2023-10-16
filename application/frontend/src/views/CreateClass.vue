@@ -34,8 +34,20 @@ const loading = ref<boolean>(false)
 function createClass(newClassItem: classItem) {
   loading.value = true
   classStore.saveClassToLocalStorage(newClassItem)
-  console.log('New class created and uploaded to Local Storage.')
   loading.value = false
+}
+
+function isNotEmpty(value: any): boolean {
+  if (value) return true
+  return false
+}
+
+const rules = {
+  required: {
+    pt: (value: any) => isNotEmpty(value) || 'Campo obrigatório.',
+    libras: (value: any) => isNotEmpty(value) || 'Campo obrigatório.',
+    english: (value: any) => isNotEmpty(value) || 'Mandatory field.'
+  }
 }
 </script>
 <template>
@@ -54,6 +66,7 @@ function createClass(newClassItem: classItem) {
       class="input"
       id="course_pt"
       label="Português"
+      :rules="[rules.required.pt]"
     ></v-text-field>
     <!-- <label for="course_libras">Libras</label> -->
     <v-text-field
@@ -62,6 +75,7 @@ function createClass(newClassItem: classItem) {
       id="course_libras"
       label="Libras"
       hint="Insira aqui a sequência FSW do sinal desejado."
+      :rules="[rules.required.libras]"
     ></v-text-field>
 
     <h2>
@@ -78,6 +92,7 @@ function createClass(newClassItem: classItem) {
       class="input"
       id="class_pt"
       label="Português"
+      :rules="[rules.required.pt]"
     ></v-text-field>
     <!-- <label for="class_libras">Libras</label> -->
     <v-text-field
@@ -86,6 +101,7 @@ function createClass(newClassItem: classItem) {
       id="class_libras"
       label="Libras"
       hint="Insira aqui a sequência FSW do sinal desejado."
+      :rules="[rules.required.libras]"
     ></v-text-field>
 
     <h2>
@@ -102,6 +118,7 @@ function createClass(newClassItem: classItem) {
       class="input"
       id="activity_pt"
       label="Português"
+      :rules="[rules.required.pt]"
     ></v-text-field>
     <!-- <label for="activity_libras">Libras</label> -->
     <v-text-field
@@ -110,6 +127,7 @@ function createClass(newClassItem: classItem) {
       id="activity_libras"
       label="Libras"
       hint="Insira aqui a sequência FSW do sinal desejado."
+      :rules="[rules.required.libras]"
     ></v-text-field>
     <v-btn height="fit-content" :loading="loading" type="submit">
       <LanguageWrapper

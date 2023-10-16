@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import LanguageSwitcher from './LanguageSwitcher.vue'
 function deleteAllClasses() {
   localStorage.removeItem('classes')
