@@ -37,21 +37,43 @@ function createClass(newClassItem: classItem) {
   loading.value = false
 }
 
-function isNotEmpty(value: any): boolean {
+const rules = {
+  required: {
+    pt: (value: any) => isFilled(value) || 'Campo obrigatório.',
+    libras: (value: any) => isFilled(value) || 'Campo obrigatório.',
+    english: (value: any) => isFilled(value) || 'Mandatory field.'
+  }
+}
+
+function isFilled(value: any): boolean {
   if (value) return true
   return false
 }
 
-const rules = {
-  required: {
-    pt: (value: any) => isNotEmpty(value) || 'Campo obrigatório.',
-    libras: (value: any) => isNotEmpty(value) || 'Campo obrigatório.',
-    english: (value: any) => isNotEmpty(value) || 'Mandatory field.'
+function getAllInputs(): NodeListOf<HTMLInputElement> {
+  return document.querySelectorAll('.input')
+}
+
+function areThereEmptyInputs(inputs: NodeListOf<HTMLInputElement>) {
+  let thereAreEmptyInputs = false
+
+  inputs.forEach((input) => {
+    if (!isFilled(input.value)) {
+      thereAreEmptyInputs = !thereAreEmptyInputs
+    }
+  })
+
+  return thereAreEmptyInputs
+}
+
+function submit(classItem: classItem) {
+  if (areThereEmptyInputs(getAllInputs())) {
+    createClass(classItem)
   }
 }
 </script>
 <template>
-  <v-form class="form" @submit.prevent="createClass(classItemModel)">
+  <v-form class="form" @submit.prevent="submit(classItemModel)">
     <div class="inputs">
       <h2>
         <LanguageWrapper
