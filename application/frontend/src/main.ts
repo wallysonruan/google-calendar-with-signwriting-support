@@ -16,8 +16,7 @@ import { VTextField } from 'vuetify/components'
 import { VForm } from 'vuetify/components'
 import { VBtn } from 'vuetify/components'
 import { VLayout } from 'vuetify/components'
-
-// import VueCompositionAPI from '@vue/composition-api'
+import { VAlert } from 'vuetify/components'
 
 const vuetify = createVuetify({
   components: {
@@ -27,7 +26,8 @@ const vuetify = createVuetify({
     VForm,
     VTextField,
     VBtn,
-    VLayout
+    VLayout,
+    VAlert
   }
 })
 
