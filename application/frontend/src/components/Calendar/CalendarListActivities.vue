@@ -67,7 +67,7 @@ const props = defineProps<calendarListActivitiesProps>()
   }
 
   .list-on {
-    max-height: 10rem;
+    max-height: 15rem;
     padding: 0.3rem;
 
     .activity {

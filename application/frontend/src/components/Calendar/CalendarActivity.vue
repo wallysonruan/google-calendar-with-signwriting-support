@@ -20,10 +20,7 @@ const props = defineProps<{
   display: flex;
 
   &[sw='true'] {
-    flex-direction: column;
-    flex-wrap: wrap;
     width: max-content;
-    max-height: 250px;
     padding: 0.5rem;
   }
 }
