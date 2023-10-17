@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import LanguageSwitcher from './LanguageSwitcher.vue'
 import { useClassesStore } from '@/stores/classes'
+import { useAlertStore } from '@/stores/alert'
 const classesStore = useClassesStore()
 const drawer = ref<boolean>(false)
 </script>
@@ -64,7 +65,7 @@ const drawer = ref<boolean>(false)
       </div>
     </template>
   </v-navigation-drawer>
-  <v-btn class="menu-btn" icon @click.stop="drawer = !drawer">
+  <v-btn class="menu-btn" icon @click.stop="drawer = !drawer" :disabled="useAlertStore().onHold">
     <v-icon>
       <svg
         xmlns="http://www.w3.org/2000/svg"

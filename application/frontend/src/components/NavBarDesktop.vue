@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import LanguageSwitcher from './LanguageSwitcher.vue'
+import { useAlertStore } from '@/stores/alert'
 function deleteAllClasses() {
   localStorage.removeItem('classes')
   console.log('Classes deleted.')
@@ -9,7 +10,7 @@ function deleteAllClasses() {
   <v-toolbar class="container">
     <div class="nav">
       <div class="nav-first">
-        <v-btn @click="deleteAllClasses">
+        <v-btn @click="deleteAllClasses" :disabled="useAlertStore().onHold">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -24,7 +25,7 @@ function deleteAllClasses() {
           </svg>
           &nbsp; localStorage
         </v-btn>
-        <v-btn>
+        <v-btn :disabled="useAlertStore().onHold">
           <RouterLink to="create-class" class="router-link">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +43,7 @@ function deleteAllClasses() {
             &nbsp; Criar Aula
           </RouterLink>
         </v-btn>
-        <v-btn>
+        <v-btn :disabled="useAlertStore().onHold">
           <RouterLink to="/" class="router-link">
             <svg
               xmlns="http://www.w3.org/2000/svg"
