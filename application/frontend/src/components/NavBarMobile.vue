@@ -9,7 +9,7 @@ const drawer = ref<boolean>(false)
   <v-navigation-drawer location="right" class="drawer" v-model="drawer">
     <template v-slot:append>
       <v-list class="list">
-        <v-list-item link>
+        <v-list-item link @click.stop="drawer = !drawer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -23,9 +23,9 @@ const drawer = ref<boolean>(false)
             />
           </svg>
           &nbsp;
-          <RouterLink to="/" @click.stop="drawer = !drawer"> Página Inicial </RouterLink>
+          <RouterLink to="/"> Página Inicial </RouterLink>
         </v-list-item>
-        <v-list-item link>
+        <v-list-item link @click.stop="drawer = !drawer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -40,7 +40,7 @@ const drawer = ref<boolean>(false)
             />
           </svg>
           &nbsp;
-          <RouterLink to="create-class" @click.stop="drawer = !drawer"> Criar Aula </RouterLink>
+          <RouterLink to="create-class"> Criar Aula </RouterLink>
         </v-list-item>
         <v-list-item link @click="classesStore.deleteAllClasses">
           <svg
@@ -64,8 +64,8 @@ const drawer = ref<boolean>(false)
       </div>
     </template>
   </v-navigation-drawer>
-  <v-btn class="menu-btn" icon>
-    <v-icon @click.stop="drawer = !drawer">
+  <v-btn class="menu-btn" icon @click.stop="drawer = !drawer">
+    <v-icon>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="32"
