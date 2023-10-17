@@ -20,7 +20,7 @@ const props = defineProps<{
   display: flex;
 
   &[sw='true'] {
-    width: max-content;
+    height: 100%;
     padding: 0.5rem;
   }
 }

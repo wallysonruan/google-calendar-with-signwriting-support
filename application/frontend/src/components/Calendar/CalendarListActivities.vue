@@ -27,7 +27,6 @@ const props = defineProps<calendarListActivitiesProps>()
           v-for="(activity, index) in props.activities"
           :key="index"
           :title="activity.title"
-          class="activity"
           :show_sw="languageStore.signwriting"
         />
       </div>
@@ -61,43 +60,24 @@ const props = defineProps<calendarListActivitiesProps>()
   .list {
     background-color: rgb(116, 105, 105);
     width: 100%;
-    padding: 0.3rem;
+    height: 100%;
     border-radius: 10px;
     overflow: auto;
   }
 
   .list-on {
-    max-height: 15rem;
+    height: 100%;
     padding: 0.3rem;
+    max-height: 15rem;
 
-    .activity {
-      margin-bottom: 0.3rem;
+    &[sw='true'] {
+      display: flex;
+      width: fit-content;
+      max-height: 20rem;
+      max-width: 10px;
+      /* Puts a stop to the list, making the parent become scrollable */
+      gap: 5px;
     }
-  }
-
-  ::-webkit-scrollbar {
-    background-color: transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: #999;
-    border-radius: 6px;
-  }
-
-  /* For Firefox and other non-WebKit browsers
-  scrollbar-width: thin;
-  scrollbar-color: #888 transparent;
-
-  For all browsers
-  scrollbar-width: none;
-  scrollbar-color: transparent transparent; */
-
-  .list-on[sw='true'] {
-    display: flex;
-    width: fit-content;
-    max-width: 10px;
-    /* Puts a stop to the list, making the parent become scrollable */
-    gap: 5px;
 
     &[sw='false'] .activity:not(:last-of-type) {
       margin-bottom: 0.3rem;
@@ -107,6 +87,23 @@ const props = defineProps<calendarListActivitiesProps>()
   .list-off {
     display: flex;
     justify-content: center;
+
+    ::-webkit-scrollbar {
+      background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: #999;
+      border-radius: 6px;
+    }
+
+    /* For Firefox and other non-WebKit browsers
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
+
+  For all browsers
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent; */
   }
 }
 
