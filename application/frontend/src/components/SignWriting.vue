@@ -66,8 +66,8 @@ if (props.sign.includes('%20')) {
   </div>
 </template>
 <style scoped>
-img {
-  margin: 0.2rem;
+img:not(:first-child) {
+  margin-top: 0.7rem;
 }
 
 .signwriting {

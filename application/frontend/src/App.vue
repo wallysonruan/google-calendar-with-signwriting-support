@@ -13,6 +13,8 @@ import NavBarMobile from './components/NavBarMobile.vue'
 <style lang="scss">
 a {
   text-decoration: none;
+  color: inherit;
+
   &:visited {
     color: inherit;
   }

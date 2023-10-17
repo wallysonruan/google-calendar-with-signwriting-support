@@ -36,13 +36,11 @@ const props = defineProps<calendarCourseProps>()
   }
 
   .title[sw='true'] {
-    margin-right: 0.2rem;
     display: flex;
     flex-direction: column;
-    height: fit-content;
+    justify-content: center;
+    margin-right: 0.2rem;
     padding: 0.5rem;
-    gap: 10px;
-    width: fit-content;
   }
 }
 
