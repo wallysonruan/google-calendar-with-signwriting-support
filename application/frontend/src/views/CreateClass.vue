@@ -7,7 +7,6 @@ import { useLanguageStore } from '@/stores/language'
 
 const classStore = useClassesStore()
 const languageStore = useLanguageStore()
-
 const classItemModel = ref<classItem>({
   date: new Date(),
   class_title: {
@@ -30,7 +29,6 @@ const classItemModel = ref<classItem>({
     }
   ]
 })
-
 const loading = ref<boolean>(false)
 
 function createClass(newClassItem: classItem) {
