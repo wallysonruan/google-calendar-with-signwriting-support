@@ -7,10 +7,10 @@ function deleteAllClasses() {
 }
 </script>
 <template>
-  <v-toolbar class="container">
+  <v-toolbar class="container" v-if="!useAlertStore().onHold">
     <div class="nav">
       <div class="nav-first">
-        <v-btn @click="deleteAllClasses" :disabled="useAlertStore().onHold">
+        <v-btn @click="deleteAllClasses">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"

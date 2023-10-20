@@ -65,7 +65,7 @@ const drawer = ref<boolean>(false)
       </div>
     </template>
   </v-navigation-drawer>
-  <v-btn class="menu-btn" icon @click.stop="drawer = !drawer" :disabled="useAlertStore().onHold">
+  <v-btn class="menu-btn" icon @click.stop="drawer = !drawer" v-if="!useAlertStore().onHold">
     <v-icon>
       <svg
         xmlns="http://www.w3.org/2000/svg"

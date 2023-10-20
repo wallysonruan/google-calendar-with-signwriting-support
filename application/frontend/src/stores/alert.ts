@@ -8,7 +8,6 @@ export const useAlertStore = defineStore({
   actions: {
     showOnHold() {
       this.onHold = !this.onHold
-      console.log(this.onHold)
     }
   }
 })
