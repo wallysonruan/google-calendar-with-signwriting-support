@@ -1,28 +1,11 @@
 <script setup lang="ts">
 import SignWriting from './SignWriting.vue'
 import { useAlertStore } from '@/stores/alert'
-
-// Never lets window move its scrollbar
-function disableScroll() {
-  const scrollTop = document.documentElement.scrollTop
-  const scrollLeft = document.documentElement.scrollLeft
-
-  window.onscroll = function () {
-    window.scrollTo(scrollLeft, scrollTop)
-  }
-}
-
-// Undo the function blocking the scrollbar
-function enableScroll() {
-  window.onscroll = function () {}
-}
-
-disableScroll()
 </script>
 <template>
   <v-alert type="info" closable class="alert" variant="elevated" v-model="useAlertStore().onHold">
     <template v-slot:close>
-      <div class="close-btn" @click.stop="useAlertStore().showOnHold(), enableScroll()">
+      <div class="close-btn" @click.stop="useAlertStore().showOnHold()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -160,7 +143,7 @@ disableScroll()
 .alert {
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
   overflow: hidden;
