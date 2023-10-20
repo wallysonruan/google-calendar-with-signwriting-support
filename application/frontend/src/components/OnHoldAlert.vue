@@ -17,17 +17,12 @@ function enableScroll() {
   window.onscroll = function () {}
 }
 
-// Once the close button is hit, toggles between the functions
-if (useAlertStore().onHold) {
-  disableScroll()
-} else {
-  enableScroll()
-}
+disableScroll()
 </script>
 <template>
   <v-alert type="info" closable class="alert" variant="elevated" v-model="useAlertStore().onHold">
     <template v-slot:close>
-      <div class="close-btn" @click.stop="useAlertStore().showOnHold()">
+      <div class="close-btn" @click.stop="useAlertStore().showOnHold(), enableScroll()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
