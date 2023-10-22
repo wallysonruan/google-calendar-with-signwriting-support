@@ -3,6 +3,8 @@ export const SIGNWRITING_SVG_BASE_URL: string =
   'https://www.signbank.org/signpuddle2.0/glyphogram.php?font=svg1&bound=t&text='
 </script>
 <script setup lang="ts">
+import { ssw } from '../components/Signwriting/SuttonSignWriting.js'
+;`Ignore the error message. The module above is declared to Typescript in the files Signwriting.d.ts and tsconfig.app.json`
 ;`
 I had to stop using this component because I found out that a relative file path can not be passed as
 variable. Either RollUp or WebPack can not or will choose to not try to find the file.
@@ -27,49 +29,13 @@ full url pointing to the SignPuddle API.
 
 const props = defineProps<{
   sign: string
-  width?: number
-  height?: number
   display: boolean
 }>()
-
-let signs: string[] = []
-
-if (props.sign.includes(' ')) {
-  signs = props.sign.split(' ')
-}
-
-if (props.sign.includes('%20')) {
-  signs = props.sign.split(' ')
-}
 </script>
 <template>
-  <div class="signwriting">
-    <img
-      v-if="signs.length === 0"
-      :src="SIGNWRITING_SVG_BASE_URL + sign"
-      alt=""
-      :width="props.width"
-      :height="props.height"
-      v-show="props.display"
-    />
-    <!---->
-    <img
-      v-else
-      v-for="(sign, index) in signs"
-      :src="SIGNWRITING_SVG_BASE_URL + sign"
-      :key="index"
-      alt=""
-      :width="props.width"
-      :height="props.height"
-      v-show="props.display"
-    />
-  </div>
+  <div v-show="display" v-html="ssw.paragraph(sign)"></div>
 </template>
 <style scoped>
-img:not(:first-child) {
-  margin-top: 0.7rem;
-}
-
 .signwriting {
   display: flex;
   flex-direction: column;
