@@ -6,6 +6,8 @@ const props = defineProps<{
 </script>
 <template>
   <div v-show="display">
-    <fsw-sign :sign="sign"></fsw-sign>
+    <fsw-sign>
+      {{ sign }}
+    </fsw-sign>
   </div>
 </template>
