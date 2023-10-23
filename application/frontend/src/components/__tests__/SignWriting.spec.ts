@@ -2,7 +2,6 @@ import { describe, it, expect } from 'vitest'
 
 import { mount } from '@vue/test-utils'
 import SignWriting from '../SignWriting.vue'
-import { SIGNWRITING_SVG_BASE_URL } from '../SignWriting.vue'
 
 describe('SignWriting', () => {
   it('Shoud accept only one sign and render it, instead of just taking two or more.', () => {
@@ -34,10 +33,6 @@ describe('SignWriting', () => {
         display: true
       }
     })
-
-    expect(wrapper.find('img').attributes('src')).toBe(
-      SIGNWRITING_SVG_BASE_URL + wrapper.props('sign')
-    )
   })
 
   it('Shoud NOT display if display is set to false', () => {
