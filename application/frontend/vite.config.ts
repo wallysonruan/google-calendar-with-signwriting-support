@@ -8,7 +8,13 @@ import vuetify from 'vite-plugin-vuetify'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.includes('fsw-sign')
+        }
+      }
+    }),
     vuetify({
       // https://stackoverflow.com/questions/72350551/combination-of-vue-3-vuetify-3-vue-test-utils-results-in-could-not-find-in
       autoImport: true
