@@ -28,8 +28,8 @@ export default defineConfig({
   // base: process.env.REPOSITORY_NAME, // This will prevent the resources disappearing when they change from one GitHub repository to another
   base: '/sign-language-school-management/',
   build: {
-    emptyOutDir: true, // force destroy of bundled assets when outside of project dir
-    outDir: '../../', // delete everything, only the output will remain
+    // emptyOutDir: true, // force destroy of bundled assets when outside of project dir
+    // outDir: '../../', // delete everything, only the output will remain
     sourcemap: true,
     rollupOptions: {
       output: {
@@ -37,7 +37,7 @@ export default defineConfig({
         entryFileNames: 'assets/[name].js',
         manualChunks: {
           'stencil-components': [
-            './node_modules/@sutton-signwriting/sgnw-components/loader/index.es2017.js',
+            './node_modules/@sutton-signwriting/sgnw-components/dist/components',
           ],
         }
       }
