@@ -40,67 +40,71 @@ import { useAlertStore } from '@/stores/alert'
       <!-- Projeto -->
       <SignWriting
         class="sign"
-        :sign="'M523x535S21414478x519S14012487x466S20e00482x493S22c04507x493S15a20496x497'"
+        :fsw="'M523x535S21414478x519S14012487x466S20e00482x493S22c04507x493S15a20496x497'"
         :display="true"
       />
       <!-- Parado -->
       <SignWriting
         class="sign"
-        :sign="'M523x520S37700498x495S37806477x498S20322492x481S20356508x491S20500486x502'"
+        :fsw="'M523x520S37700498x495S37806477x498S20322492x481S20356508x491S20500486x502'"
         :display="true"
       />
       <!-- Por quê? -->
       <SignWriting
         class="sign"
-        :sign="'M518x576S30c00482x483S34d10498x507S10041483x546S10049468x546S22800496x471S20600475x530'"
+        :fsw="'M518x576S30c00482x483S34d10498x507S10041483x546S10049468x546S22800496x471S20600475x530'"
         :display="true"
       />
       <!-- = -->
-      <fsw-symbol class="sign" :symbol="'S38a00464x490'"></fsw-symbol>
+      <SignWriting
+        class="sign"
+        :fsw="'S38a00464x490'"
+        :display="true"
+      />
       <!-- Pessoa -->
       <SignWriting
         class="sign"
-        :sign="'M529x518S30000482x483S1c502480x453S26506514x457S21100515x474'"
+        :fsw="'M529x518S30000482x483S1c502480x453S26506514x457S21100515x474'"
         :display="true"
       />
       <!-- Desenvolvedora -->
       <SignWriting
         class="sign mb-1-5"
-        :sign="'M523x525S15a18477x498S19c02494x496S20600488x475'"
+        :fsw="'M523x525S15a18477x498S19c02494x496S20600488x475'"
         :display="true"
       />
       <!-- Signwriting -->
       <SignWriting
         class="sign"
-        :sign="'M516x549S15a36485x452S15a36485x495S2ea0a490x534S14c50492x500S1f750492x461'"
+        :fsw="'M516x549S15a36485x452S15a36485x495S2ea0a490x534S14c50492x500S1f750492x461'"
         :display="true"
       />
       <!-- Por trás -->
       <SignWriting
         class="sign"
-        :sign="'M527x525S15a20499x475S15a22500x509S21414475x517S20600473x500'"
+        :fsw="'M527x525S15a20499x475S15a22500x509S21414475x517S20600473x500'"
         :display="true"
       />
       <!-- Sistema -->
       <SignWriting
         class="sign mb-1"
-        :sign="'M543x516S20320485x485S20320501x485S23c04520x488S23c1c458x489'"
+        :fsw="'M543x516S20320485x485S20320501x485S23c04520x488S23c1c458x489'"
         :display="true"
       />
       <!-- Estudar -->
       <SignWriting
         class="sign"
-        :sign="'AS15a31S15a37S20600M525x515S15a37476x485S15a31486x492S20600503x488'"
+        :fsw="'AS15a31S15a37S20600M525x515S15a37476x485S15a31486x492S20600503x488'"
         :display="true"
       />
       <!-- Futuro -->
-      <SignWriting class="sign" :sign="'M517x531S1d210488x503S2b700484x470'" :display="true" />
+      <SignWriting class="sign" :fsw="'M517x531S1d210488x503S2b700484x470'" :display="true" />
       <!-- Website -->
-      <SignWriting class="sign mb-1" :sign="'M533x516S18720468x485S29406489x500'" :display="true" />
+      <SignWriting class="sign mb-1" :fsw="'M533x516S18720468x485S29406489x500'" :display="true" />
       <!-- Melhor -->
       <SignWriting
         class="sign"
-        :sign="'M524x599S33e00482x483S1f502476x564S1f502508x563S22b00508x526S22b10478x527S2fb04492x593'"
+        :fsw="'M524x599S33e00482x483S1f502476x564S1f502508x563S22b00508x526S22b10478x527S2fb04492x593'"
         :display="true"
       />
     </div>

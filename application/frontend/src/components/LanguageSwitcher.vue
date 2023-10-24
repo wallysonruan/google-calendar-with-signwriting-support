@@ -11,7 +11,7 @@ const languageStore = useLanguageStore()
       :display="true"
       :width="40"
       :height="20"
-      sign="M542x516S14c0a459x493S14c10498x485S2480c526x488"
+      fsw="M542x516S14c0a459x493S14c10498x485S2480c526x488"
     />
   </div>
 </template>

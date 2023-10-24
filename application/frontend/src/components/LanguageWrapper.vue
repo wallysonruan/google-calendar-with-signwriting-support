@@ -15,7 +15,7 @@ const props = defineProps<{
     </p>
     <SignWriting
       v-if="useLanguageStore().signwriting"
-      :sign="props.sign"
+      :fsw="props.sign"
       :width="props.width"
       :height="props.height"
       :display="useLanguageStore().signwriting"

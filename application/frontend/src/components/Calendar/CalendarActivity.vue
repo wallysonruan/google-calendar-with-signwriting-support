@@ -8,7 +8,7 @@ const props = defineProps<{
 </script>
 <template>
   <div class="activity custom-card" :sw="show_sw">
-    <SignWriting :sign="props.title.libras" :width="35" :height="35" :display="props.show_sw" />
+    <SignWriting :fsw="props.title.libras" :width="35" :height="35" :display="props.show_sw" />
     <!---->
     <div v-show="!show_sw">
       <p>{{ props.title.pt }}</p>
