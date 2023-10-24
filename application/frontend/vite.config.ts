@@ -1,4 +1,5 @@
 import { fileURLToPath, URL } from 'node:url'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -18,7 +19,8 @@ export default defineConfig({
     vuetify({
       // https://stackoverflow.com/questions/72350551/combination-of-vue-3-vuetify-3-vue-test-utils-results-in-could-not-find-in
       autoImport: true
-    })
+    }),
+    nodeResolve()
   ],
   resolve: {
     alias: {
@@ -35,11 +37,6 @@ export default defineConfig({
       output: {
         assetFileNames: 'assets/[name][extname]',
         entryFileNames: 'assets/[name].js',
-        manualChunks: {
-          'stencil-components': [
-            './node_modules/@sutton-signwriting/sgnw-components/dist/components',
-          ],
-        }
       }
     }
   }
