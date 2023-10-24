@@ -36,9 +36,8 @@ jobs:
             NODE_ENV=production
             npm i
             npm run build
-            cd dist
         - name: deploy to gh-pages
           run: |
-            git add index.html assets/*
+            git add */dist/*
             git commit -m "🚀 Deploy id ${GITHUB_RUN_ID}"
             git push origin ${GITHUB_REF##*/}:gh-pages --force
