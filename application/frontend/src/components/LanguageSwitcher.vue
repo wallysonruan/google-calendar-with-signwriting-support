@@ -20,10 +20,11 @@ const languageStore = useLanguageStore()
   display: flex;
   align-items: center;
   width: fit-content;
+  padding: 0.5rem;
 
   .switch {
     margin-left: 1rem;
-    margin-right: 0.5rem;
+    margin-right: 1rem;
   }
 }
 </style>
