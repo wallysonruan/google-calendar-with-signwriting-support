@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import LanguageSwitcher from './LanguageSwitcher.vue'
+import LanguageWrapper from './LanguageWrapper.vue'
 import { useAlertStore } from '@/stores/alert'
+import { useLanguageStore } from '@/stores/language'
+
+const languages = useLanguageStore()
+
 function deleteAllClasses() {
   localStorage.removeItem('classes')
   console.log('Classes deleted.')
@@ -8,9 +13,9 @@ function deleteAllClasses() {
 </script>
 <template>
   <v-toolbar class="container" v-if="!useAlertStore().onHold">
-    <div class="nav">
-      <div class="nav-first">
-        <v-btn @click="deleteAllClasses">
+    <template v-slot:prepend>
+      <v-btn class="btn" @click="deleteAllClasses" :sw="languages.signwriting">
+        <template v-slot:prepend>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -23,10 +28,16 @@ function deleteAllClasses() {
               d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"
             />
           </svg>
-          &nbsp; localStorage
-        </v-btn>
-        <v-btn :disabled="useAlertStore().onHold">
-          <RouterLink to="create-class" class="router-link">
+        </template>
+        <LanguageWrapper
+          sign="M536x525S1dc28465x481S15d40496x485S2dc06523x476 M523x523S21404485x518S15a58487x487S2c630503x506S15a56478x477"
+          portuguese="Local Storage"
+        />
+      </v-btn>
+      <!---->
+      <RouterLink to="create-class" class="router-link">
+        <v-btn class="btn" :disabled="useAlertStore().onHold" :sw="languages.signwriting">
+          <template v-slot:prepend>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -40,11 +51,17 @@ function deleteAllClasses() {
                 d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
               />
             </svg>
-            &nbsp; Criar Aula
-          </RouterLink>
+          </template>
+          <LanguageWrapper
+            sign="M531x540S16d48470x494S1773e476x520S22b00515x486S15730471x460S21000492x498 M524x516S15a39477x485S15a31490x493S20600502x485"
+            portuguese="Criar Aula"
+          />
         </v-btn>
-        <v-btn :disabled="useAlertStore().onHold">
-          <RouterLink to="/" class="router-link">
+      </RouterLink>
+      <!---->
+      <RouterLink to="/" class="router-link">
+        <v-btn class="btn" :disabled="useAlertStore().onHold" :sw="languages.signwriting">
+          <template v-slot:prepend>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -57,12 +74,15 @@ function deleteAllClasses() {
                 d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146ZM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5Z"
               />
             </svg>
-            &nbsp; Página Inicial
-          </RouterLink>
+          </template>
+          <LanguageWrapper
+            sign="M533x515S1dc20509x485S1dc28467x485 M520x525S1f502492x476S23604481x508"
+            portuguese="Página Inicial"
+          />
         </v-btn>
-      </div>
-      <LanguageSwitcher />
-    </div>
+      </RouterLink>
+    </template>
+    <LanguageSwitcher />
   </v-toolbar>
 </template>
 <style scoped lang="scss">
@@ -72,23 +92,16 @@ function deleteAllClasses() {
 
 @media only screen and (min-width: 600px) {
   .container {
-    display: flex;
-    justify-content: space-between;
-  }
+    display: block;
+    padding: 0.5rem 0;
 
-  .nav {
-    position: sticky;
-    top: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+    .btn[sw='true'] {
+      height: fit-content;
+    }
 
-    .nav-first {
-      .router-link {
-        display: flex;
-        align-items: center;
-      }
+    .router-link {
+      display: flex;
+      align-items: center;
     }
   }
 }
