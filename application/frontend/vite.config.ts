@@ -34,7 +34,12 @@ export default defineConfig({
     rollupOptions: {
       output: {
         assetFileNames: 'assets/[name][extname]',
-        entryFileNames: 'assets/[name].js'
+        entryFileNames: 'assets/[name].js',
+        manualChunks: {
+          'stencil-components': [
+            './node_modules/@sutton-signwriting/sgnw-components/loader/index.es2017.js',
+          ],
+        }
       }
     }
   }
