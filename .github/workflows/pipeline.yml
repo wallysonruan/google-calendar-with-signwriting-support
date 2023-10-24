@@ -39,7 +39,8 @@ jobs:
         - name: deploy to gh-pages
           run: |
             ls
-            cp application/frontend/dist/* ../../
+            cp -r application/frontend/dist/* ../../
+            cd ../..
             git status
             git commit -m "🚀 Deploy id ${GITHUB_RUN_ID}"
             git push origin ${GITHUB_REF##*/}:gh-pages --force
