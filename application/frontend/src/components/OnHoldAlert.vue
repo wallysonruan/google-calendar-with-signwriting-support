@@ -56,11 +56,7 @@ import { useAlertStore } from '@/stores/alert'
         :display="true"
       />
       <!-- = -->
-      <SignWriting
-        class="sign"
-        :fsw="'S38a00464x490'"
-        :display="true"
-      />
+      <SignWriting class="sign" :fsw="'S38a00464x490'" :display="true" />
       <!-- Pessoa -->
       <SignWriting
         class="sign"
