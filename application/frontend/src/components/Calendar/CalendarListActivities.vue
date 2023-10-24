@@ -35,7 +35,7 @@ const props = defineProps<calendarListActivitiesProps>()
         v-else
         class="list-off"
         :sw="languageStore.signwriting"
-        :sign="'M20x100S30126n18xn24S1dc40n4x31S2a530n4x67S34010n8x11'"
+        :sign="'M520x607S30126482x476S1dc40496x537S2a530494x574S30c30489x495S34110492x512'"
         :width="25"
         :height="65"
         :portuguese="'Nenhuma atividade encontrada.'"
@@ -87,6 +87,9 @@ const props = defineProps<calendarListActivitiesProps>()
   .list-off {
     display: flex;
     justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 
     ::-webkit-scrollbar {
       background-color: transparent;
@@ -96,14 +99,6 @@ const props = defineProps<calendarListActivitiesProps>()
       background-color: #999;
       border-radius: 6px;
     }
-
-    /* For Firefox and other non-WebKit browsers
-  scrollbar-width: thin;
-  scrollbar-color: #888 transparent;
-
-  For all browsers
-  scrollbar-width: none;
-  scrollbar-color: transparent transparent; */
   }
 }
 
