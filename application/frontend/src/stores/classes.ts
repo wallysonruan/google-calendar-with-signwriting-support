@@ -60,11 +60,10 @@ export function saveClassesToLocalStorage(data: classItem[], key: string) {
 
 function getClassesData(): classItem[] {
   const classesDataFake: classItem[] = [
-    // Big text in Libras
     {
       date: new Date('2021-06-02'),
       class_title: {
-        libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4',
+        libras: 'M522x522S10e20507x492S10e28478x492S21600510x480S21600483x479',
         pt: 'Texto Borboleta',
         eng: ''
       },
@@ -101,9 +100,8 @@ function getClassesData(): classItem[] {
         }
       ]
     },
-    // Big text in Libras
     {
-      date: new Date('2021-07-10'),
+      date: new Date('2022-07-10'),
       class_title: {
         libras:
           'M521x567S36d00479x526S20310480x537S21600468x540S20500482x556S30a00483x483 M546x518S30001482x483S30007482x483S18010516x485S18018454x485S26500521x461S26510469x460 M520x524S15a20481x483S1dc20495x477S21410505x511S20500490x513 M536x583S1bb48466x555S1bb40515x523S22b16489x565S22b02484x537S21b00523x570S21b00472x540S30f00482x483',
@@ -144,238 +142,20 @@ function getClassesData(): classItem[] {
       ]
     },
     {
-      date: new Date('2023-01-10'),
+      date: new Date('2022-07-10'),
       class_title: {
-        libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
-        pt: 'Aula de Português',
+        libras:
+          'M521x567S36d00479x526S20310480x537S21600468x540S20500482x556S30a00483x483 M546x518S30001482x483S30007482x483S18010516x485S18018454x485S26500521x461S26510469x460 M520x524S15a20481x483S1dc20495x477S21410505x511S20500490x513 M536x583S1bb48466x555S1bb40515x523S22b16489x565S22b02484x537S21b00523x570S21b00472x540S30f00482x483',
+        pt: 'Teste texto SW',
         eng: ''
       },
       course_title: {
-        libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
-        pt: 'Curso de Tradução',
-        eng: ''
-      },
-      activities: [
-        {
-          title: {
-            libras:
-              'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-            pt: 'Atividade 1',
-            eng: ''
-          }
-        },
-        {
-          title: {
-            libras:
-              'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-            pt: 'Atividade 2',
-            eng: ''
-          }
-        },
-        {
-          title: {
-            libras:
-              'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-            pt: 'Atividade 3',
-            eng: ''
-          }
-        },
-        {
-          title: {
-            libras:
-              'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-            pt: 'Atividade 4',
-            eng: ''
-          }
-        },
-        {
-          title: {
-            libras:
-              'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-            pt: 'Atividade 5',
-            eng: ''
-          }
-        },
-        {
-          title: {
-            libras:
-              'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-            pt: 'Atividade 6',
-            eng: ''
-          }
-        },
-        {
-          title: {
-            libras:
-              'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-            pt: 'Atividade 7',
-            eng: ''
-          }
-        },
-        {
-          title: {
-            libras:
-              'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-            pt: 'Atividade 8',
-            eng: ''
-          }
-        },
-        {
-          title: {
-            libras:
-              'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-            pt: 'Atividade 9',
-            eng: ''
-          }
-        },
-        {
-          title: {
-            libras:
-              'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-            pt: 'Atividade 10',
-            eng: ''
-          }
-        },
-        {
-          title: {
-            libras:
-              'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-            pt: 'Atividade 11',
-            eng: ''
-          }
-        },
-        {
-          title: {
-            libras:
-              'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-            pt: 'Atividade 12',
-            eng: ''
-          }
-        },
-        {
-          title: {
-            libras:
-              'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-            pt: 'Atividade 13',
-            eng: ''
-          }
-        }
-      ]
-    },
-    {
-      date: new Date('2023-01-10'),
-      class_title: {
-        libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
-        pt: 'Aula de Português',
-        eng: ''
-      },
-      course_title: {
-        libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
-        pt: 'Curso de Tradução',
+        libras:
+          'M521x567S36d00479x526S20310480x537S21600468x540S20500482x556S30a00483x483 M546x518S30001482x483S30007482x483S18010516x485S18018454x485S26500521x461S26510469x460 M520x524S15a20481x483S1dc20495x477S21410505x511S20500490x513 M536x583S1bb48466x555S1bb40515x523S22b16489x565S22b02484x537S21b00523x570S21b00472x540S30f00482x483',
+        pt: 'Teste texto SW',
         eng: ''
       },
       activities: []
-    },
-    {
-      date: new Date('2023-01-09'),
-      class_title: {
-        libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
-        pt: 'Aula de Português',
-        eng: ''
-      },
-      course_title: {
-        libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
-        pt: 'Curso de Tradução',
-        eng: ''
-      },
-      activities: [
-        {
-          title: {
-            libras:
-              'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-            pt: 'Atividade 1',
-            eng: ''
-          }
-        },
-        {
-          title: {
-            libras:
-              'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-            pt: 'Atividade 2',
-            eng: ''
-          }
-        }
-      ]
-    },
-    {
-      date: new Date('2022-08-10'),
-      class_title: {
-        libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
-        pt: 'Aula de Português',
-        eng: ''
-      },
-      course_title: {
-        libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
-        pt: 'Curso de Tradução',
-        eng: ''
-      },
-      activities: [
-        {
-          title: {
-            libras:
-              'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-            pt: 'Atividade 1',
-            eng: ''
-          }
-        },
-        {
-          title: {
-            libras:
-              'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-            pt: 'Atividade 2',
-            eng: ''
-          }
-        }
-      ]
-    },
-    {
-      date: new Date('2021-04-10'),
-      class_title: {
-        libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
-        pt: 'Aula de Português',
-        eng: ''
-      },
-      course_title: {
-        libras: 'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 ',
-        pt: 'Curso de Tradução',
-        eng: ''
-      },
-      activities: [
-        {
-          title: {
-            libras:
-              'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-            pt: 'Atividade 1',
-            eng: ''
-          }
-        },
-        {
-          title: {
-            libras:
-              'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-            pt: 'Atividade 2',
-            eng: ''
-          }
-        },
-        {
-          title: {
-            libras:
-              'AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526 AS16d3eS30004S22f04M540x541S30004482x482S16d3e488x523S22f04515x526',
-            pt: 'Atividade 2',
-            eng: ''
-          }
-        }
-      ]
     }
   ]
 
