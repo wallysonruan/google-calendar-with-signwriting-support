@@ -6,7 +6,7 @@ import SignWriting from '../SignWriting.vue'
 describe('SignWriting', () => {
   it('Shoud accept only one sign and render it, instead of just taking two or more.', () => {
     const wrapper = mount(SignWriting, {
-      props: {
+      fsw: {
         sign: 'TEST',
         display: false
       }
@@ -17,7 +17,7 @@ describe('SignWriting', () => {
 
   it('Should render no text', () => {
     const wrapper = mount(SignWriting, {
-      props: {
+      fsw: {
         sign: 'TEST',
         display: true
       }
@@ -28,7 +28,7 @@ describe('SignWriting', () => {
 
   it('Shoud concatenate baseUrl with sign string', () => {
     const wrapper = mount(SignWriting, {
-      props: {
+      fsw: {
         sign: 'TEST',
         display: true
       }
@@ -38,7 +38,7 @@ describe('SignWriting', () => {
   it('Shoud NOT display if display is set to false', () => {
     const wrapper = mount(SignWriting, {
       props: {
-        sign: 'TEST',
+        fsw: 'TEST',
         display: false
       }
     })
@@ -50,7 +50,7 @@ describe('SignWriting', () => {
   it('Shoud accept multiple signs separated by SPACES, and iterate over them to generate a SignWriting for each', () => {
     const wrapper = mount(SignWriting, {
       props: {
-        sign: 'TEST TEST TEST',
+        fsw: 'TEST TEST TEST',
         display: true
       }
     })
@@ -66,7 +66,7 @@ describe('SignWriting', () => {
   it('Shoud accept multiple signs separated by "%20", and iterate over them to generate a SignWriting for each', () => {
     const wrapper = mount(SignWriting, {
       props: {
-        sign: 'TEST%20TEST%20TEST',
+        fsw: 'TEST%20TEST%20TEST',
         display: true
       }
     })
