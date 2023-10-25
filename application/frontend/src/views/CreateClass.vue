@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import type { classItem } from '@/stores/classes'
 import { ref } from 'vue'
-import { useClassesStore } from '@/stores/classes'
+import { stores } from '@/stores/stores'
 import LanguageWrapper from '@/components/LanguageWrapper.vue'
-import { useLanguageStore } from '@/stores/language'
 
-const classStore = useClassesStore()
-const languageStore = useLanguageStore()
+const classStore = stores.classes()
+const languageStore = stores.languages()
 const classItemModel = ref<classItem>({
   date: new Date(),
   class_title: {
