@@ -8,7 +8,6 @@ import CalendarCourse from '@/components/Calendar/CalendarCourse.vue'
 import CalendarClassItem from '@/components/Calendar/CalendarClassItem.vue'
 import CalendarListActivities from '@/components/Calendar/CalendarListActivities.vue'
 import type { languages } from '@/components/GlobalTypes.vue'
-import OnHoldAlert from '@/components/OnHoldAlert.vue'
 
 type Day = {
   date: Date
@@ -122,7 +121,6 @@ function isSameDateAndCourseAsPreviousOne(
 
 <template>
   <div class="calendar">
-    <OnHoldAlert />
     <div class="content">
       <CalendarYear v-for="(year, index) in classesToShow" :key="index" :year="year.year">
         <CalendarMonth
