@@ -137,5 +137,7 @@ const monthToShow = props.monthNumber ? props.monthNumber + 1 : current_month
   height: 8rem;
   margin-bottom: 1rem;
   background-color: white;
+
+  font-size: 1.5rem;
 }
 </style>
