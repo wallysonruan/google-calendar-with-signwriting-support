@@ -77,7 +77,7 @@ function submit(classItem: classItem) {
     <div class="inputs">
       <h2>
         <LanguageWrapper
-          :sign="'M24x19S16d20n11xn17S26a0610xn19S20e00n24xn3S2031an10x4 AS11520S26606M524x515S11520475x485S26606494x486'"
+          :sign="'M524x519S16d20489x483S26a06510x481S20e00476x497S2031a490x504 AS11520S26606M524x515S11520475x485S26606494x486'"
           :portuguese="'Nome do Curso'"
           :height="30"
           :width="30"
