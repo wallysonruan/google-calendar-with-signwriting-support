@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useLanguageStore } from '@/stores/language'
+import { stores } from '@/stores/stores'
 import type { languages } from '../GlobalTypes.vue'
 import LanguageWrapper from '@/components/LanguageWrapper.vue'
 
@@ -8,14 +8,14 @@ type calendarClassItemProps = {
   have_day_bar: boolean
 }
 
-const languageStore = useLanguageStore()
+const languageStore = stores.languages()
 const props = defineProps<calendarClassItemProps>()
 </script>
 <template>
-  <div class="classes" :sw="languageStore.signwriting" :free="have_day_bar">
-    <div class="class" :sw="languageStore.signwriting">
+  <div class="classes" :sw="languageStore.libras" :free="have_day_bar">
+    <div class="class" :sw="languageStore.libras">
       <LanguageWrapper
-        :sw="languageStore.signwriting"
+        :sw="languageStore.libras"
         class="title custom-card"
         :sign="props.title.libras"
         :width="35"

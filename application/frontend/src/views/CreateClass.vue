@@ -153,7 +153,7 @@ function submit(classItem: classItem) {
         :rules="[rules.required.libras]"
       ></v-text-field>
     </div>
-    <v-btn class="create-btn" :loading="loading" type="submit" :sw="languageStore.signwriting">
+    <v-btn class="create-btn" :loading="loading" type="submit" :sw="languageStore.libras">
       <LanguageWrapper
         :sign="'M531x540S16d48470x494S1773e476x520S22b00515x486S15730471x460S21000492x498'"
         :portuguese="'Criar'"

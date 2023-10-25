@@ -2,7 +2,8 @@
 import CalendarMonth from '@/components/Calendar/CalendarMonth.vue'
 import CalendarYear from '@/components/Calendar/CalendarYear.vue'
 import CalendarDay from '@/components/Calendar/CalendarDay.vue'
-import { useClassesStore, type classItem, type activity } from '@/stores/classes'
+import { type classItem, type activity } from '@/stores/classes'
+import { stores } from '@/stores/stores'
 import CalendarCourse from '@/components/Calendar/CalendarCourse.vue'
 import CalendarClassItem from '@/components/Calendar/CalendarClassItem.vue'
 import CalendarListActivities from '@/components/Calendar/CalendarListActivities.vue'
@@ -26,7 +27,7 @@ type YearClass = {
   months: Month[]
 }
 
-const classesStore = useClassesStore()
+const classesStore = stores.classes()
 const allClasses: classItem[] | null = classesStore.getClasses()
 
 function convertBackendDataModelToFrontendDataModel(classesData: classItem[]): YearClass[] {

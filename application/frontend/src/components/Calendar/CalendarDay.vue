@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useLanguageStore } from '@/stores/language'
+import { stores } from '@/stores/stores'
 import type { languages } from '../GlobalTypes.vue'
 import LanguageWrapper from '../LanguageWrapper.vue'
 
@@ -13,7 +13,7 @@ type calendarDayData = {
 }
 
 const props = defineProps<calendarDayProps>()
-const languageStore = useLanguageStore()
+const languageStore = stores.languages()
 
 const name_of_the_week_days: Record<number, calendarDayData> = {
   1: {
@@ -71,18 +71,18 @@ const dayName = name_of_the_week_days[date_to_Date.getDay()]
 const dayNumber = date_to_Date.getUTCDate()
 </script>
 <template>
-  <div class="day" :sw="languageStore.signwriting">
-    <div class="bar" :sw="languageStore.signwriting">
+  <div class="day" :sw="languageStore.libras">
+    <div class="bar" :sw="languageStore.libras">
       <LanguageWrapper
         class="name"
-        :sw="languageStore.signwriting"
+        :sw="languageStore.libras"
         :sign="dayName.name.libras"
         :width="28"
         :portuguese="dayName.name.pt.slice(0, 3).toLowerCase()"
         v-if="showDayBall"
       />
       <!---->
-      <p class="number" :sw="languageStore.signwriting" v-if="showDayBall">{{ dayNumber }}</p>
+      <p class="number" :sw="languageStore.libras" v-if="showDayBall">{{ dayNumber }}</p>
     </div>
     <!---->
     <slot> </slot>

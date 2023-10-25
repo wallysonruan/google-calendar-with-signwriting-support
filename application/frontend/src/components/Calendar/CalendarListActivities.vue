@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { useLanguageStore } from '@/stores/language'
+import { stores } from '@/stores/stores'
+import type { activity } from '@/stores/classes'
+
 import CalendarActivity from './CalendarActivity.vue'
 import LanguageWrapper from '../LanguageWrapper.vue'
-import type { activity } from '@/stores/classes'
-const languageStore = useLanguageStore()
+
+const languageStore = stores.languages()
 
 type calendarListActivitiesProps = {
   activities: activity[]
@@ -14,7 +16,7 @@ const props = defineProps<calendarListActivitiesProps>()
   <div class="activities">
     <LanguageWrapper
       class="title"
-      :sw="languageStore.signwriting"
+      :sw="languageStore.libras"
       :sign="'M530x526S15a37471x474S1f751474x486S14c51490x500S27e0c507x489'"
       :width="35"
       :height="35"
@@ -22,19 +24,19 @@ const props = defineProps<calendarListActivitiesProps>()
     />
     <!---->
     <div class="list">
-      <div class="list-on" :sw="languageStore.signwriting" v-if="props.activities.length > 0">
+      <div class="list-on" :sw="languageStore.libras" v-if="props.activities.length > 0">
         <CalendarActivity
           v-for="(activity, index) in props.activities"
           :key="index"
           :title="activity.title"
-          :show_sw="languageStore.signwriting"
+          :show_libras="languageStore.libras"
         />
       </div>
       <!---->
       <LanguageWrapper
         v-else
         class="list-off"
-        :sw="languageStore.signwriting"
+        :sw="languageStore.libras"
         :sign="'M520x607S30126482x476S1dc40496x537S2a530494x574S30c30489x495S34110492x512'"
         :width="25"
         :height="65"

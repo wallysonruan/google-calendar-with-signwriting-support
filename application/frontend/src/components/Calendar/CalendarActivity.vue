@@ -2,15 +2,15 @@
 import type { languages } from '../GlobalTypes.vue'
 import SignWriting from '../SignWriting.vue'
 const props = defineProps<{
-  show_sw: boolean
+  show_libras: boolean
   title: languages
 }>()
 </script>
 <template>
-  <div class="activity custom-card" :sw="show_sw">
-    <SignWriting :fsw="props.title.libras" :width="35" :height="35" :display="props.show_sw" />
+  <div class="activity custom-card" :sw="show_libras">
+    <SignWriting :fsw="props.title.libras" :width="35" :height="35" :display="props.show_libras" />
     <!---->
-    <div v-show="!show_sw">
+    <div v-show="!show_libras">
       <p>{{ props.title.pt }}</p>
     </div>
   </div>

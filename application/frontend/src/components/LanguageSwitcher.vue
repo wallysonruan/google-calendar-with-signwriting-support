@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { useLanguageStore } from '@/stores/language'
+import { stores } from '@/stores/stores'
 import SignWriting from './SignWriting.vue'
-const languageStore = useLanguageStore()
+const languageStore = stores.languages()
 </script>
 <template>
   <div class="switcher">
     <p>PT</p>
-    <v-switch class="switch" @click="languageStore.showSignWriting" hide-details> </v-switch>
+    <v-switch class="switch" @click="languageStore.changeLanguage" hide-details> </v-switch>
     <SignWriting
       :display="true"
       :width="40"

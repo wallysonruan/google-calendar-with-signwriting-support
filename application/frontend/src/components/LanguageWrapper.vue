@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import SignWriting from './SignWriting.vue'
-import { useLanguageStore } from '@/stores/language'
+import { stores } from '@/stores/stores'
 const props = defineProps<{
   sign: string
   width?: number
@@ -10,15 +10,15 @@ const props = defineProps<{
 </script>
 <template>
   <div>
-    <p v-if="useLanguageStore().portuguese">
+    <p v-if="stores.languages().portuguese">
       {{ props.portuguese }}
     </p>
     <SignWriting
-      v-if="useLanguageStore().signwriting"
+      v-if="stores.languages().libras"
       :fsw="props.sign"
       :width="props.width"
       :height="props.height"
-      :display="useLanguageStore().signwriting"
+      :display="stores.languages().libras"
     />
   </div>
 </template>

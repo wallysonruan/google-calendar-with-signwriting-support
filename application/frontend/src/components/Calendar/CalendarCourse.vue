@@ -1,20 +1,22 @@
 <script setup lang="ts">
-import { useLanguageStore } from '@/stores/language'
+import { stores } from '@/stores/stores'
 import type { languages } from '../GlobalTypes.vue'
 import LanguageWrapper from '../LanguageWrapper.vue'
-const languageStore = useLanguageStore()
+
+const languageStore = stores.languages()
 
 type calendarCourseProps = {
   title: languages
   showCourseTitle: boolean
 }
+
 const props = defineProps<calendarCourseProps>()
 </script>
 <template>
-  <div class="course" :sw="languageStore.signwriting">
+  <div class="course" :sw="languageStore.libras">
     <LanguageWrapper
       class="title custom-card"
-      :sw="languageStore.signwriting"
+      :sw="languageStore.libras"
       :sign="props.title.libras"
       :width="40"
       :portuguese="props.title.pt"

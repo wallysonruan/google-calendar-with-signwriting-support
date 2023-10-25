@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import LanguageSwitcher from './LanguageSwitcher.vue'
 import LanguageWrapper from './LanguageWrapper.vue'
-import { useAlertStore } from '@/stores/alert'
-import { useLanguageStore } from '@/stores/language'
+import { stores } from '@/stores/stores'
 
-const languages = useLanguageStore()
+const languagesStore = stores.languages()
 
 function deleteAllClasses() {
   localStorage.removeItem('classes')
@@ -12,9 +11,9 @@ function deleteAllClasses() {
 }
 </script>
 <template>
-  <v-toolbar class="container" v-if="!useAlertStore().onHold">
+  <v-toolbar class="container">
     <template v-slot:prepend>
-      <v-btn class="btn" @click="deleteAllClasses" :sw="languages.signwriting">
+      <v-btn class="btn" @click="deleteAllClasses" :sw="languagesStore.libras">
         <template v-slot:prepend>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +35,7 @@ function deleteAllClasses() {
       </v-btn>
       <!---->
       <RouterLink to="create-class" class="router-link">
-        <v-btn class="btn" :disabled="useAlertStore().onHold" :sw="languages.signwriting">
+        <v-btn class="btn" :sw="languagesStore.libras">
           <template v-slot:prepend>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +59,7 @@ function deleteAllClasses() {
       </RouterLink>
       <!---->
       <RouterLink to="/" class="router-link">
-        <v-btn class="btn" :disabled="useAlertStore().onHold" :sw="languages.signwriting">
+        <v-btn class="btn" :sw="languagesStore.libras">
           <template v-slot:prepend>
             <svg
               xmlns="http://www.w3.org/2000/svg"
