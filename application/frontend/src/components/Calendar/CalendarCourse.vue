@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { stores } from '@/stores/stores'
 import type { languages } from '../GlobalTypes.vue'
-import LanguageWrapper from '../LanguageWrapper.vue'
+import LanguageWrapper from '../Language/LanguageWrapper.vue'
 
 const languageStore = stores.languages()
 

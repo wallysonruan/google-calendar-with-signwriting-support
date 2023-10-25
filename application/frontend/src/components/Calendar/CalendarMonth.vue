@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import LanguageWrapper from '../LanguageWrapper.vue'
+import LanguageWrapper from '../Language/LanguageWrapper.vue'
 import type { languages } from '../GlobalTypes.vue'
 
 const props = defineProps<{

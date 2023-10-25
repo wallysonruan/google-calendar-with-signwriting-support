@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import LanguageSwitcher from './LanguageSwitcher.vue'
-import LanguageWrapper from './LanguageWrapper.vue'
+import LanguageSwitcher from './Language/LanguageSwitcher.vue'
+import LanguageWrapper from './Language/LanguageWrapper.vue'
 import { useClassesStore } from '@/stores/classes'
 import { useAlertStore } from '@/stores/alert'
 const classesStore = useClassesStore()

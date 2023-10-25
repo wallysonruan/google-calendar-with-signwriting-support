@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import LanguageSwitcher from './LanguageSwitcher.vue'
-import LanguageWrapper from './LanguageWrapper.vue'
+import LanguageSwitcher from './Language/LanguageSwitcher.vue'
+import LanguageWrapper from './Language/LanguageWrapper.vue'
 import { stores } from '@/stores/stores'
 
 const languagesStore = stores.languages()

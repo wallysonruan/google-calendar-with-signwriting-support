@@ -3,7 +3,7 @@ import { stores } from '@/stores/stores'
 import type { activity } from '@/stores/classes'
 
 import CalendarActivity from './CalendarActivity.vue'
-import LanguageWrapper from '../LanguageWrapper.vue'
+import LanguageWrapper from '../Language/LanguageWrapper.vue'
 
 const languageStore = stores.languages()
 

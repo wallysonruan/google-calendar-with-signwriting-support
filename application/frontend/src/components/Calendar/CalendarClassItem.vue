@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { stores } from '@/stores/stores'
 import type { languages } from '../GlobalTypes.vue'
-import LanguageWrapper from '@/components/LanguageWrapper.vue'
+import LanguageWrapper from '@/components/Language/LanguageWrapper.vue'
 
 type calendarClassItemProps = {
   title: languages

@@ -2,7 +2,7 @@
 import type { classItem } from '@/stores/classes'
 import { ref } from 'vue'
 import { stores } from '@/stores/stores'
-import LanguageWrapper from '@/components/LanguageWrapper.vue'
+import LanguageWrapper from '@/components/Language/LanguageWrapper.vue'
 
 const classStore = stores.classes()
 const languageStore = stores.languages()

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { stores } from '@/stores/stores'
 import type { languages } from '../GlobalTypes.vue'
-import LanguageWrapper from '../LanguageWrapper.vue'
+import LanguageWrapper from '../Language/LanguageWrapper.vue'
 
 type calendarDayProps = {
   date: Date

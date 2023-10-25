@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { stores } from '@/stores/stores'
-import SignWriting from './SignWriting.vue'
+import SignWriting from '../SignWriting.vue'
 const languageStore = stores.languages()
 </script>
 <template>
   <div class="switcher">
-    <v-switch v-model="languageStore.portuguese" @click="languageStore.changeLanguage" hide-details>
+    <v-switch v-model="languageStore.libras" @click="languageStore.changeLanguage" hide-details>
       <template v-slot:prepend>
         <p>PT</p>
       </template>
