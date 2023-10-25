@@ -108,9 +108,10 @@ import { useAlertStore } from '@/stores/alert'
 </template>
 <style scoped lang="scss">
 .alert {
+  position: absolute;
+  top: 0;
   width: 100vw;
-  height: 100vh;
-  position: fixed;
+  height: 100%;
   display: flex;
   justify-content: center;
   overflow: hidden;
