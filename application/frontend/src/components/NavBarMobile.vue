@@ -2,9 +2,8 @@
 import { ref } from 'vue'
 import LanguageSwitcher from './Language/LanguageSwitcher.vue'
 import LanguageWrapper from './Language/LanguageWrapper.vue'
-import { useClassesStore } from '@/stores/classes'
-import { useAlertStore } from '@/stores/alert'
-const classesStore = useClassesStore()
+import { stores } from '@/stores/stores';
+const classesStore = stores.classes()
 const drawer = ref<boolean>(false)
 </script>
 <template>
@@ -85,7 +84,7 @@ const drawer = ref<boolean>(false)
       </div>
     </template>
   </v-navigation-drawer>
-  <v-btn class="menu-btn" icon @click.stop="drawer = !drawer" v-if="!useAlertStore().onHold">
+  <v-btn class="menu-btn" icon @click.stop="drawer = !drawer">
     <v-icon>
       <svg
         xmlns="http://www.w3.org/2000/svg"
