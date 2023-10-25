@@ -28,7 +28,7 @@ export default defineConfig({
     }
   },
   // base: process.env.REPOSITORY_NAME, // This will prevent the resources disappearing when they change from one GitHub repository to another
-  base: '/sign-language-school-management/',
+  base: '/google-calendar-with-signwriting-support/',
   build: {
     // emptyOutDir: true, // force destroy of bundled assets when outside of project dir
     // outDir: '../../', // delete everything, only the output will remain
