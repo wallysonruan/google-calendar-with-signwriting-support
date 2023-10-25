@@ -40,6 +40,7 @@ jobs:
           run: |
             ls
             cp -r application/frontend/dist/* .
+            rm -r application .idea .github README.md
             git add assets/* index.html
             git commit -m "🚀 Deploy id ${GITHUB_RUN_ID}"
             git push origin ${GITHUB_REF##*/}:gh-pages --force
