@@ -4,7 +4,7 @@ import CalendarYear from '@/components/Calendar/CalendarYear.vue'
 import CalendarDayContainer from '@/components/Calendar/CalendarDayContainer.vue'
 import { type classItem, type activity } from '@/stores/classes'
 import { stores } from '@/stores/stores'
-import CalendarCourse from '@/components/Calendar/CalendarCourse.vue'
+import CalendarDay from '@/components/Calendar/CalendarDay.vue'
 import type { languages } from '@/components/GlobalTypes.vue'
 
 type Day = {
@@ -133,7 +133,7 @@ function isSameDateAndCourseAsPreviousOne(
             :date="new Date(day.date)"
             :show-day-ball="!isSameDateAsPreviousOne(year.months, monthIndex)"
           >
-            <CalendarCourse
+            <CalendarDay
               :title="day.course_title"
               :show-course-title="
                 !isSameDateAndCourseAsPreviousOne(
@@ -143,7 +143,7 @@ function isSameDateAndCourseAsPreviousOne(
                 )
               "
             >
-            </CalendarCourse>
+            </CalendarDay>
           </CalendarDayContainer>
         </CalendarMonth>
       </CalendarYear>
