@@ -14,7 +14,7 @@ function deleteAllClasses() {
 }
 </script>
 <template>
-  <v-app-bar class="container">
+  <v-toolbar class="container">
     <template v-slot:prepend>
       <v-app-bar-nav-icon>
         <v-btn icon @click="navBar.showDrawer()">
@@ -35,7 +35,7 @@ function deleteAllClasses() {
       </v-app-bar-nav-icon>
     </template>
     <LanguageSwitcher />
-  </v-app-bar>
+  </v-toolbar>
   <NavigationDrawer />
   <BtnCreateEvent />
 </template>
