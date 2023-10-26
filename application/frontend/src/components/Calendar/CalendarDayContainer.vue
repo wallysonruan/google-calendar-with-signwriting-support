@@ -3,19 +3,19 @@ import { stores } from '@/stores/stores'
 import type { languages } from '../GlobalTypes.vue'
 import LanguageWrapper from '../Language/LanguageWrapper.vue'
 
-type calendarDayProps = {
+type calendarDayContainerProps = {
   date: Date
   showDayBall: boolean
 }
 
-type calendarDayData = {
+type calendarDayContainerData = {
   name: languages
 }
 
-const props = defineProps<calendarDayProps>()
+const props = defineProps<calendarDayContainerProps>()
 const languageStore = stores.languages()
 
-const name_of_the_week_days: Record<number, calendarDayData> = {
+const name_of_the_week_days: Record<number, calendarDayContainerData> = {
   1: {
     name: {
       pt: 'Segunda-feira',
@@ -93,11 +93,7 @@ const dayNumber = date_to_Date.getUTCDate()
 .day {
   display: flex;
   width: 100%;
-  padding: 1rem;
-
-  &:not(:last-child) {
-    margin-bottom: 1.5rem;
-  }
+  padding: 0 0 .5rem 0;
 
   &[sw='true'] {
     flex-direction: column;

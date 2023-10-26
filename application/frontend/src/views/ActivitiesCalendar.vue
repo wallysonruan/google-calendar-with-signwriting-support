@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import CalendarMonth from '@/components/Calendar/CalendarMonth.vue'
 import CalendarYear from '@/components/Calendar/CalendarYear.vue'
-import CalendarDay from '@/components/Calendar/CalendarDay.vue'
+import CalendarDayContainer from '@/components/Calendar/CalendarDayContainer.vue'
 import { type classItem, type activity } from '@/stores/classes'
 import { stores } from '@/stores/stores'
 import CalendarCourse from '@/components/Calendar/CalendarCourse.vue'
-import CalendarClassItem from '@/components/Calendar/CalendarClassItem.vue'
-import CalendarListActivities from '@/components/Calendar/CalendarListActivities.vue'
 import type { languages } from '@/components/GlobalTypes.vue'
 
 type Day = {
@@ -129,7 +127,7 @@ function isSameDateAndCourseAsPreviousOne(
           :month-number="month.number"
           :show-banner="!isSameMonthAsPrevious(year.months, monthIndex)"
         >
-          <CalendarDay
+          <CalendarDayContainer
             v-for="(day, index) in month.days"
             :key="index"
             :date="new Date(day.date)"
@@ -145,20 +143,8 @@ function isSameDateAndCourseAsPreviousOne(
                 )
               "
             >
-              <CalendarClassItem
-                :title="day.class_title"
-                :have_day_bar="
-                  !isSameDateAndCourseAsPreviousOne(
-                    isSameDateAsPreviousOne(year.months, monthIndex),
-                    year.months,
-                    monthIndex
-                  )
-                "
-              >
-                <CalendarListActivities :activities="day.activities" />
-              </CalendarClassItem>
             </CalendarCourse>
-          </CalendarDay>
+          </CalendarDayContainer>
         </CalendarMonth>
       </CalendarYear>
     </div>
