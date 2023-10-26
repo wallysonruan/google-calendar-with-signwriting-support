@@ -4,10 +4,10 @@ import NavBar from './components/NavBar.vue'
 </script>
 <template>
   <v-app>
-      <NavBar />
-      <v-main>
-        <RouterView />
-      </v-main>
+    <NavBar />
+    <v-main>
+      <RouterView />
+    </v-main>
   </v-app>
 </template>
 <style lang="scss">

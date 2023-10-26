@@ -13,44 +13,27 @@ type calendarCourseProps = {
 const props = defineProps<calendarCourseProps>()
 </script>
 <template>
-  <div class="course" :sw="languageStore.libras">
-    <LanguageWrapper
-      class="title custom-card"
-      :sw="languageStore.libras"
-      :sign="props.title.libras"
-      :width="40"
-      :portuguese="props.title.pt"
-    />
-    <!---->
-    <slot> </slot>
-  </div>
+  <LanguageWrapper
+    :sw="languageStore.libras"
+    class="title custom-card"
+    :sign="props.title.libras"
+    :portuguese="props.title.pt"
+  />
 </template>
 <style scoped lang="scss">
 @import '../../assets/main.css';
-.course {
+.title {
+  width: 100%;
+  min-height: 3rem;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  justify-content: center;
+  border-radius: 15px;
 
   &[sw='true'] {
     flex-direction: row;
-    justify-content: end;
-  }
-
-  .title[sw='true'] {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-right: 0.2rem;
+    width: fit-content;
     padding: 0.5rem;
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  .course {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
   }
 }
 </style>

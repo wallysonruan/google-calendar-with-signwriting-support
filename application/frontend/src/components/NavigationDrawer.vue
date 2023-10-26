@@ -46,7 +46,7 @@ const navBar = stores.navbar()
   .list-item {
     border-bottom: 1px rgb(140, 136, 136) solid;
     &:not(:last-child) {
-      margin-bottom: .9rem;
+      margin-bottom: 0.9rem;
     }
     .item-icon {
       margin-right: 10px;
