@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import LanguageSwitcher from './Language/LanguageSwitcher.vue'
 import LanguageWrapper from './Language/LanguageWrapper.vue'
-import { stores } from '@/stores/stores';
+import { stores } from '@/stores/stores'
 const classesStore = stores.classes()
 const drawer = ref<boolean>(false)
 </script>
@@ -30,7 +30,8 @@ const drawer = ref<boolean>(false)
               class="language-wrapper"
               sign="M533x515S1dc20509x485S1dc28467x485 M520x525S1f502492x476S23604481x508"
               portuguese="Página Inicial"
-          /></RouterLink>
+            />
+          </RouterLink>
         </v-list-item>
         <v-list-item class="list-item" link @click.stop="drawer = !drawer">
           <template v-slot:prepend>
@@ -84,19 +85,19 @@ const drawer = ref<boolean>(false)
       </div>
     </template>
   </v-navigation-drawer>
-  <v-btn class="menu-btn" icon @click.stop="drawer = !drawer">
+  <v-btn class="menu-btn" icon @click.stop="drawer = !drawer" aria-label="Create Event">
     <v-icon>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="32"
-        height="32"
+        width="16"
+        height="16"
         fill="currentColor"
-        class="bi bi-list"
+        class="bi bi-plus-lg"
         viewBox="0 0 16 16"
       >
         <path
           fill-rule="evenodd"
-          d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+          d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
         />
       </svg>
     </v-icon>
@@ -126,6 +127,7 @@ const drawer = ref<boolean>(false)
   position: fixed;
   bottom: 40px;
   left: 80%;
+  border-radius: 25%;
 }
 
 @media only screen and (min-width: 600px) {
