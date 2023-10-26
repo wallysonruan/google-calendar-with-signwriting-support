@@ -3,8 +3,10 @@ import LanguageWrapper from '../Language/LanguageWrapper.vue'
 import type { languages } from '../GlobalTypes.vue'
 
 const props = defineProps<{
+  year: number
   monthNumber: number
   showBanner: boolean
+  isFirstMonth: boolean
 }>()
 
 type calendarMonthData = {
@@ -124,6 +126,9 @@ const monthToShow = props.monthNumber ? props.monthNumber + 1 : current_month
         :sign="month[monthToShow].name.libras"
         :portuguese="month[monthToShow].name.pt"
       />
+      <div class="year" v-if="isFirstMonth">
+        {{ props.year }}
+      </div>
     </div>
     <slot> </slot>
   </div>
@@ -139,5 +144,8 @@ const monthToShow = props.monthNumber ? props.monthNumber + 1 : current_month
   background-color: white;
 
   font-size: 1.5rem;
+}
+.year {
+  margin-left: .5rem;
 }
 </style>

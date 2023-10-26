@@ -120,12 +120,14 @@ function isSameDateAndCourseAsPreviousOne(
 <template>
   <div class="calendar">
     <div class="content">
-      <CalendarYear v-for="(year, index) in classesToShow" :key="index" :year="year.year">
+      <CalendarYear v-for="(year, index) in classesToShow" :key="index">
         <CalendarMonth
           v-for="(month, monthIndex) in year.months"
           :key="monthIndex"
+          :year="year.year"
           :month-number="month.number"
           :show-banner="!isSameMonthAsPrevious(year.months, monthIndex)"
+          :is-first-month="monthIndex === 0"
         >
           <CalendarDayContainer
             v-for="(day, index) in month.days"
