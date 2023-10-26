@@ -7,21 +7,19 @@ const languageStore = stores.languages()
   <div class="switcher">
     <v-switch v-model="languageStore.libras" @click="languageStore.changeLanguage" hide-details>
       <template v-slot:prepend>
-        <p>PT</p>
+        <p class="portuguese">PT</p>
       </template>
       <template v-slot:append>
-        <SignWriting
-          :display="true"
-          :width="40"
-          :height="20"
-          fsw="M542x516S14c0a459x493S14c10498x485S2480c526x488"
-        />
+        <SignWriting class="libras" fsw="M542x516S14c0a459x493S14c10498x485S2480c526x488" :display="true" />
       </template>
     </v-switch>
   </div>
 </template>
 <style scoped lang="scss">
 .switcher {
-  margin-right: 1.5rem;
+  margin-right: .5rem;
+}
+.portuguese, .libras {
+  font-size: small;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn class="create-btn" icon aria-label="Create Event">
+    <v-btn class="create-btn" icon aria-label="Create Event" disabled>
       <v-icon>
         <svg
           xmlns="http://www.w3.org/2000/svg"

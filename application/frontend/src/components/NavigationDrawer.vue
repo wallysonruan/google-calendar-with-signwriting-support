@@ -13,8 +13,7 @@ const navBar = stores.navbar()
             portuguese="Google Calendar"
           />
         </v-list-item>
-        <v-divider :thickness="2"></v-divider>
-        <v-list-item class="list-item">
+        <v-list-item class="list-item" disabled>
           <template v-slot:prepend>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +37,6 @@ const navBar = stores.navbar()
             portuguese="Atualizar"
           />
         </v-list-item>
-        <v-divider :thickness="2"></v-divider>
       </v-list>
     </template>
   </v-navigation-drawer>
@@ -46,6 +44,10 @@ const navBar = stores.navbar()
 <style scoped lang="scss">
 .list {
   .list-item {
+    border-bottom: 1px rgb(140, 136, 136) solid;
+    &:not(:last-child) {
+      margin-bottom: .9rem;
+    }
     .item-icon {
       margin-right: 10px;
     }
