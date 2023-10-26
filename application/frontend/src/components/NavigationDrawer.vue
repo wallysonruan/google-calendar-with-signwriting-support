@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import LanguageSwitcher from './Language/LanguageSwitcher.vue'
 import LanguageWrapper from './Language/LanguageWrapper.vue'
 import { stores } from '@/stores/stores'
 const navBar = stores.navbar()
@@ -43,18 +41,9 @@ const navBar = stores.navbar()
         <v-divider :thickness="2"></v-divider>
       </v-list>
     </template>
-    <template v-slot:append>
-      <v-divider :thickness="2"></v-divider>
-      <div class="d-flex flex-column justify-center align-center">
-        <LanguageSwitcher class="switcher" />
-      </div>
-    </template>
   </v-navigation-drawer>
 </template>
 <style scoped lang="scss">
-.drawer {
-}
-
 .list {
   .list-item {
     .item-icon {
