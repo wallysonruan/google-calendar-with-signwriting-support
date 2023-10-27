@@ -2,7 +2,7 @@
 import CalendarMonth from '@/components/Calendar/CalendarMonth.vue'
 import CalendarYear from '@/components/Calendar/CalendarYear.vue'
 import CalendarDayContainer from '@/components/Calendar/CalendarDayContainer.vue'
-import { type classItem, type activity } from '@/stores/classes'
+import { type classItem } from '@/stores/classes'
 import { stores } from '@/stores/stores'
 import CalendarDay from '@/components/Calendar/CalendarDay.vue'
 import type { languages } from '@/components/GlobalTypes.vue'
@@ -11,7 +11,6 @@ type Day = {
   date: Date
   course_title: languages
   class_title: languages
-  activities: activity[]
 }
 
 type Month = {
