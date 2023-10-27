@@ -93,7 +93,7 @@ const dayNumber = date_to_Date.getUTCDate()
 .day {
   display: flex;
   width: 100%;
-  padding: 0 0 .5rem 0;
+  padding: 0 0 0.5rem 0;
 
   &[sw='true'] {
     flex-direction: column;

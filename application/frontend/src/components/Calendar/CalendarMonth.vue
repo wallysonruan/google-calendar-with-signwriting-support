@@ -146,6 +146,6 @@ const monthToShow = props.monthNumber ? props.monthNumber + 1 : current_month
   font-size: 1.5rem;
 }
 .year {
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 </style>
