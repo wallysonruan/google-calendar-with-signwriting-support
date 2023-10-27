@@ -53,8 +53,7 @@ function convertBackendDataModelToFrontendDataModel(classesData: classItem[]): Y
         {
           date: classItem.date,
           course_title: classItem.course_title,
-          class_title: classItem.class_title,
-          activities: classItem.activities
+          class_title: classItem.class_title
         }
       ]
     }
