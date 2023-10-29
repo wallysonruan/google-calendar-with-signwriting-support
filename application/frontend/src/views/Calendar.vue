@@ -2,7 +2,7 @@
 import CalendarMonth from '@/components/Calendar/CalendarMonth.vue'
 import CalendarYear from '@/components/Calendar/CalendarYear.vue'
 import CalendarDayContainer from '@/components/Calendar/CalendarDayContainer.vue'
-import { type classItem } from '@/stores/classes'
+import { type calendarEventType } from '@/stores/calendarEvents'
 import { stores } from '@/stores/stores'
 import CalendarDay from '@/components/Calendar/CalendarDay.vue'
 import type { languages } from '@/components/GlobalTypes.vue'
@@ -23,16 +23,18 @@ type YearClass = {
   months: Month[]
 }
 
-const classesStore = stores.classes()
-const allClasses: classItem[] | null = classesStore.getClasses()
+const calendarEventsStore = stores.calendarEvents()
+const allCalendarEvents: calendarEventType[] | null = calendarEventsStore.getCalendarEvents()
 
-function convertBackendDataModelToFrontendDataModel(classesData: classItem[]): YearClass[] {
+function convertBackendDataModelToFrontendDataModel(
+  calendarEvents: calendarEventType[]
+): YearClass[] {
   const result: YearClass[] = []
 
   // Iterate through the input data
-  classesData.forEach((classItem) => {
-    const year = new Date(classItem.date).getFullYear()
-    const month = new Date(classItem.date).getMonth() + 1 // Month is 0-based, so we add 1
+  calendarEvents.forEach((calendarEventType) => {
+    const year = new Date(calendarEventType.date).getFullYear()
+    const month = new Date(calendarEventType.date).getMonth() + 1 // Month is 0-based, so we add 1
 
     // Find the corresponding year in the result
     let yearObj = result.find((y) => y.year === year)
@@ -51,9 +53,9 @@ function convertBackendDataModelToFrontendDataModel(classesData: classItem[]): Y
       number: month,
       days: [
         {
-          date: classItem.date,
-          course_title: classItem.course_title,
-          class_title: classItem.class_title
+          date: calendarEventType.date,
+          course_title: calendarEventType.course_title,
+          class_title: calendarEventType.class_title
         }
       ]
     }
@@ -65,8 +67,8 @@ function convertBackendDataModelToFrontendDataModel(classesData: classItem[]): Y
   return result
 }
 
-const classesToShow: YearClass[] = convertBackendDataModelToFrontendDataModel(
-  allClasses as classItem[]
+const calendarEventsToShow: YearClass[] = convertBackendDataModelToFrontendDataModel(
+  allCalendarEvents as calendarEventType[]
 )
 
 function isSameMonthAsPrevious(monthsArray: Month[], index: number): boolean {
@@ -118,7 +120,7 @@ function isSameDateAndCourseAsPreviousOne(
 <template>
   <div class="calendar">
     <div class="content">
-      <CalendarYear v-for="(year, index) in classesToShow" :key="index">
+      <CalendarYear v-for="(year, index) in calendarEventsToShow" :key="index">
         <CalendarMonth
           v-for="(month, monthIndex) in year.months"
           :key="monthIndex"

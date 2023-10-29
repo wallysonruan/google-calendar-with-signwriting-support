@@ -2,15 +2,15 @@ import type { languages } from '@/components/GlobalTypes.vue'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-export type classItem = {
+export type calendarEventType = {
   date: Date
   class_title: languages
   course_title: languages
 }
 
-const classItemDatalocalStorage_key = 'classes'
+const calendarEventDatalocalStorage_key = 'calendarEvents'
 
-function sortClassesItem(data: classItem[]): classItem[] {
+function sortCalendarEventsByDate(data: calendarEventType[]): calendarEventType[] {
   return data.sort((a, b) => {
     const aDate = new Date(a.date)
     const bDate = new Date(b.date)
@@ -18,8 +18,8 @@ function sortClassesItem(data: classItem[]): classItem[] {
   })
 }
 
-export function getClassItemsFromLocalStorage(key: string): classItem[] {
-  const emptyClassItem: classItem[] = []
+export function getcalendarEventsFromLocalStorage(key: string): calendarEventType[] {
+  const emptycalendarEvent: calendarEventType[] = []
 
   try {
     // Get data from localStorage
@@ -27,19 +27,19 @@ export function getClassItemsFromLocalStorage(key: string): classItem[] {
 
     if (jsonData) {
       // Converts string JSON data back to a TypeScript object
-      const data = JSON.parse(jsonData) as classItem[]
+      const data = JSON.parse(jsonData) as calendarEventType[]
       return data
     } else {
-      // Retorna `null` se a chave não existir no localStorage
-      return emptyClassItem
+      // Returns `null` if key does not exists in LocalStorage
+      return emptycalendarEvent
     }
   } catch (error) {
     console.error(`Error while retrieving data from localStorage: ${error}`)
-    return emptyClassItem
+    return emptycalendarEvent
   }
 }
 
-export function saveClassesToLocalStorage(data: classItem[], key: string) {
+export function saveCalendarEventsToLocalStorage(data: calendarEventType[], key: string) {
   try {
     // Converts data to string JSON
     const jsonData = JSON.stringify(data)
@@ -53,8 +53,8 @@ export function saveClassesToLocalStorage(data: classItem[], key: string) {
   }
 }
 
-function getClassesData(): classItem[] {
-  const classesDataFake: classItem[] = [
+function getcalendarEventsData(): calendarEventType[] {
+  const fakeCalendarEvents: calendarEventType[] = [
     {
       date: new Date('2021-06-02'),
       class_title: {
@@ -129,40 +129,45 @@ function getClassesData(): classItem[] {
     }
   ]
 
-  const dataRetrievedFromLocalStorage = getClassItemsFromLocalStorage(classItemDatalocalStorage_key)
+  const dataRetrievedFromLocalStorage = getcalendarEventsFromLocalStorage(
+    calendarEventDatalocalStorage_key
+  )
 
   if (dataRetrievedFromLocalStorage.length > 0)
-    return sortClassesItem(dataRetrievedFromLocalStorage)
+    return sortCalendarEventsByDate(dataRetrievedFromLocalStorage)
 
-  saveClassesToLocalStorage(classesDataFake, classItemDatalocalStorage_key)
+  saveCalendarEventsToLocalStorage(fakeCalendarEvents, calendarEventDatalocalStorage_key)
 
-  return sortClassesItem(classesDataFake)
+  return sortCalendarEventsByDate(fakeCalendarEvents)
 }
 
-const classesData = ref<classItem[]>(getClassesData())
+const calendarEventsData = ref<calendarEventType[]>(getcalendarEventsData())
 
-function updateClasses() {
-  classesData.value = getClassesData()
+function updatecalendarEvents() {
+  calendarEventsData.value = getcalendarEventsData()
 }
 
-localStorage.removeItem(classItemDatalocalStorage_key)
+localStorage.removeItem(calendarEventDatalocalStorage_key)
 
-export const useClassesStore = defineStore({
-  id: 'useClassesStore',
+export const useCalendarEventsStore = defineStore({
+  id: 'useCalendarEventsStore',
   state: () => ({
-    classes: classesData
+    calendarEvents: calendarEventsData
   }),
   actions: {
-    getClasses() {
-      return this.classes
+    getCalendarEvents() {
+      return this.calendarEvents
     },
-    async saveClassToLocalStorage(data: classItem) {
-      const dataFromLocalStorage = await getClassItemsFromLocalStorage(
-        classItemDatalocalStorage_key
+    async saveCalendarEventToLocalStorage(data: calendarEventType) {
+      const dataFromLocalStorage = await getcalendarEventsFromLocalStorage(
+        calendarEventDatalocalStorage_key
       )
       dataFromLocalStorage.push(data)
-      await saveClassesToLocalStorage(dataFromLocalStorage, classItemDatalocalStorage_key)
-      updateClasses()
+      await saveCalendarEventsToLocalStorage(
+        dataFromLocalStorage,
+        calendarEventDatalocalStorage_key
+      )
+      updatecalendarEvents()
     }
   }
 })

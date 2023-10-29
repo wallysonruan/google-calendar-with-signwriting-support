@@ -2,16 +2,9 @@
 import LanguageSwitcher from './Language/LanguageSwitcher.vue'
 import NavigationDrawer from './NavigationDrawer.vue'
 import BtnCreateEvent from './BtnCreateEvent.vue'
-import LanguageWrapper from './Language/LanguageWrapper.vue'
 import { stores } from '@/stores/stores'
 
-const languagesStore = stores.languages()
 const navBar = stores.navbar()
-
-function deleteAllClasses() {
-  localStorage.removeItem('classes')
-  console.log('Classes deleted.')
-}
 </script>
 <template>
   <v-toolbar class="container">

@@ -1,15 +1,15 @@
-import { useClassesStore } from './classes'
+import { useCalendarEventsStore } from './calendarEvents'
 import { useLanguageStore } from './language'
 import { useNavBar } from './navBar'
 
 type storesType = {
-  classes: Function
+  calendarEvents: Function
   languages: Function
   navbar: Function
 }
 
 export const stores: storesType = {
-  classes: useClassesStore,
+  calendarEvents: useCalendarEventsStore,
   languages: useLanguageStore,
   navbar: useNavBar
 }
