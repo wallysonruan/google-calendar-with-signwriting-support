@@ -10,7 +10,7 @@ const navBar = stores.navbar()
   <v-toolbar class="container">
     <template v-slot:prepend>
       <v-app-bar-nav-icon>
-        <v-btn icon @click="navBar.showDrawer()">
+        <v-btn class="btn" icon @click="navBar.showDrawer()">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -38,8 +38,13 @@ const navBar = stores.navbar()
     display: block;
     padding: 0.5rem 0;
 
-    .btn[sw='true'] {
-      height: fit-content;
+    .btn {
+      &:hover {
+        cursor: pointer;
+      }
+      &[sw='true'] {
+        height: fit-content;
+      }
     }
 
     .router-link {

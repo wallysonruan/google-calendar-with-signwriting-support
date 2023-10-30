@@ -59,5 +59,10 @@ const navBar = stores.navbar()
 }
 
 @media only screen and (min-width: 600px) {
+  .drawer {
+    // It's the only way of changing the drawer height. The default height is injected during
+    // the component generation, which always override the custom CSS.
+    position: static !important;
+  }
 }
 </style>
