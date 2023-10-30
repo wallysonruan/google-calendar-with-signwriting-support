@@ -19,19 +19,15 @@ function containsSpacesOrCode(signsString: string): boolean {
 }
 
 function getSignsSeparatedBySpacesOrCodes(signsString: string): string[] {
-  let emptyArray: string[] = []
-
-  if (typeof signsString === 'string') {
-    if (signsString.includes(' ')) {
-      return signsString.split(' ')
-    }
-
-    if (signsString.includes('%20')) {
-      return signsString.split('%20')
-    }
+  if (signsString.includes(' ')) {
+    return signsString.split(' ')
   }
 
-  return emptyArray
+  if (signsString.includes('%20')) {
+    return signsString.split('%20')
+  }
+
+  return [signsString]
 }
 
 const signs: string[] = containsSpacesOrCode(props.fsw)
