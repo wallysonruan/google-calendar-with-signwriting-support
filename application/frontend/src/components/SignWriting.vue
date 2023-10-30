@@ -41,7 +41,7 @@ const signs: string[] = containsSpacesOrCode(props.fsw)
 
 <template>
   <div v-show="display" class="signwriting-container">
-    <div v-for="sign in signs" class="sign">
+    <div v-for="(sign, index) in signs" class="sign" v-bind:key="index">
       <fsw-sign :sign="sign" v-if="!isType(sign, 'punctuation')" />
       <fsw-symbol :symbol="sign" v-if="isType(sign, 'punctuation')" />
     </div>
