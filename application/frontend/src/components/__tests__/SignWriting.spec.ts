@@ -36,39 +36,42 @@ describe('SignWriting', () => {
         }
       })
 
-      expect(wrapper.find('.sign').exists()).toBe(true)
+      expect(wrapper.findAll('fsw-sign').length).toBe(1)
+    })
+
+    it('If fsw string have spaces, the amount of signs should be the same as the amount of fsw strings separated by spaces', () => {
+      const wrapper = mount(SignWriting, {
+        props: {
+          fsw: 'M536x549S30c00482x483S14710521x504S28903490x521S22e04519x531 M536x549S30c00482x483S14710521x504S28903490x521S22e04519x531',
+          display: true
+        }
+      })
+
+      const totalOfFswStringsSeparatedBySpaces: string[] = wrapper.props('fsw').split(' ').length
+      expect(wrapper.findAll('fsw-sign').length).toBe(totalOfFswStringsSeparatedBySpaces)
+    })
+
+    it('If fsw string does not have %20, should show only one sign', () => {
+      const wrapper = mount(SignWriting, {
+        props: {
+          fsw: 'M536x549S30c00482x483S14710521x504S28903490x521S22e04519x531',
+          display: true
+        }
+      })
+
+      expect(wrapper.findAll('fsw-sign').length).toBe(1)
+    })
+
+    it('The amount of signs should be the same as the amount of fsw strings separated by %20 code', () => {
+      const wrapper = mount(SignWriting, {
+        props: {
+          fsw: 'M536x549S30c00482x483S14710521x504S28903490x521S22e04519x531%20M536x549S30c00482x483S14710521x504S28903490x521S22e04519x531',
+          display: true
+        }
+      })
+
+      const totalOfFswStringsSeparatedBySpaces: string[] = wrapper.props('fsw').split('%20').length
+      expect(wrapper.findAll('fsw-sign').length).toBe(totalOfFswStringsSeparatedBySpaces)
     })
   })
-
-  // it('Shoud accept multiple signs separated by SPACES, and iterate over them to generate a SignWriting for each', () => {
-  //   const wrapper = mount(SignWriting, {
-  //     props: {
-  //       fsw: 'TEST TEST TEST',
-  //       display: true
-  //     }
-  //   })
-
-  //   wrapper
-  //     .props('sign')
-  //     .split(' ')
-  //     .forEach((sign: string, index: number) => {
-  //       expect(wrapper.findAll('img')[index].attributes('src')).toContain(sign)
-  //     })
-  // })
-
-  // it('Shoud accept multiple signs separated by "%20", and iterate over them to generate a SignWriting for each', () => {
-  //   const wrapper = mount(SignWriting, {
-  //     props: {
-  //       fsw: 'TEST%20TEST%20TEST',
-  //       display: true
-  //     }
-  //   })
-
-  //   wrapper
-  //     .props('sign')
-  //     .split(' ')
-  //     .forEach((sign: string, index: number) => {
-  //       expect(wrapper.findAll('img')[index].attributes('src')).toContain(sign)
-  //     })
-  // })
 })
