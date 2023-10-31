@@ -24,8 +24,8 @@ const props = defineProps<calendarEventProps>()
   background-color: white;
   border-radius: 15px;
   padding: 0.5rem;
+
   &[sw='true'] {
-    flex-direction: row;
     width: fit-content;
     padding: 0.5rem;
   }

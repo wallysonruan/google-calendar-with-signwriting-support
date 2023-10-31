@@ -85,17 +85,16 @@ const dayNumber = date_to_Date.getUTCDate()
       <p class="number" :sw="languageStore.libras" v-if="showDayBall">{{ dayNumber }}</p>
     </div>
     <!---->
-    <div>
-      <slot> </slot>
-    </div>
+    <slot> </slot>
   </div>
 </template>
 
 <style scoped lang="scss">
 .day {
   display: flex;
-  width: 100%;
-  padding: 0 0 0.5rem 0;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 0.5rem;
 
   &[sw='true'] {
     flex-direction: column;

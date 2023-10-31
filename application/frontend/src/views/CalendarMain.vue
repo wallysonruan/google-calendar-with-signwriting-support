@@ -129,14 +129,13 @@ function isSameDayAsPreviousOne(days: Day[], index: number): boolean {
             :date="new Date(day.date)"
             :show-day-ball="!isSameDayAsPreviousOne(month.days, index)"
           >
-          <CalendarEventContainer>
-            <CalendarEvent
-              v-for="(event, index) in day.events"
-              :key="index"
-              :title="event"
-              :show-course-title="true"
-            />
-          </CalendarEventContainer>
+            <CalendarEventContainer>
+              <CalendarEvent
+                v-for="(event, index) in day.events"
+                :key="index"
+                :title="event"
+              />
+            </CalendarEventContainer>
           </CalendarDay>
         </CalendarMonth>
       </CalendarYear>

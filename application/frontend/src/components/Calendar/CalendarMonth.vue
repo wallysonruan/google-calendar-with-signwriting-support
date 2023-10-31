@@ -120,7 +120,7 @@ const monthToShow = props.monthNumber ? props.monthNumber + 1 : current_month
 </script>
 
 <template>
-  <div>
+  <div class="month">
     <div height="100" class="banner" v-if="showBanner">
       <LanguageWrapper
         :sign="month[monthToShow].name.libras"
@@ -133,19 +133,21 @@ const monthToShow = props.monthNumber ? props.monthNumber + 1 : current_month
     <slot> </slot>
   </div>
 </template>
-<style scoped>
-.banner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 8rem;
-  margin-bottom: 1rem;
-  background-color: white;
+<style scoped lang="scss">
+.month {
+  .banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 8rem;
+    margin-bottom: 1rem;
+    background-color: white;
+    font-size: 1.5rem;
 
-  font-size: 1.5rem;
-}
-.year {
-  margin-left: 0.5rem;
+    .year {
+      margin-left: 0.5rem;
+    }
+  }
 }
 </style>
