@@ -7,64 +7,74 @@ import { stores } from '@/stores/stores'
 import CalendarEvent from '@/components/Calendar/CalendarEvent.vue'
 import type { languages } from '@/components/GlobalTypes.vue'
 
-type Day = {
-  date: Date
-  course_title: languages
-  class_title: languages
-}
-
-type Month = {
-  number: number
-  days: Day[]
-}
-
-type YearClass = {
-  year: number
-  months: Month[]
-}
-
 const calendarEventsStore = stores.calendarEvents()
 const allCalendarEvents: calendarEventType[] | null = calendarEventsStore.getCalendarEvents()
+
+type Day = {
+  date: Date;
+  events: languages[];
+};
+
+type Month = {
+  number: number;
+  days: Day[];
+};
+
+type YearClass = {
+  year: number;
+  months: Month[];
+};
 
 function convertBackendDataModelToFrontendDataModel(
   calendarEvents: calendarEventType[]
 ): YearClass[] {
-  const result: YearClass[] = []
+  const result: YearClass[] = [];
 
-  // Iterate through the input data
-  calendarEvents.forEach((calendarEventType) => {
-    const year = new Date(calendarEventType.date).getFullYear()
-    const month = new Date(calendarEventType.date).getMonth() + 1 // Month is 0-based, so we add 1
+  calendarEvents.forEach((event) => {
+    const year = event.date.getFullYear();
+    const month = event.date.getMonth() + 1; // Month is 0-based, so we add 1
 
     // Find the corresponding year in the result
-    let yearObj = result.find((y) => y.year === year)
+    let yearObj = result.find((y) => y.year === year);
 
     if (!yearObj) {
       // If the year doesn't exist, create an object for it
       yearObj = {
         year: year,
-        months: []
-      }
-      result.push(yearObj)
+        months: [],
+      };
+      result.push(yearObj);
     }
 
-    // Create an object for the month
-    const monthObj: Month = {
-      number: month,
-      days: [
-        {
-          date: calendarEventType.date,
-          course_title: calendarEventType.course_title,
-          class_title: calendarEventType.class_title
-        }
-      ]
+    // Find the corresponding month in the year
+    let monthObj = yearObj.months.find((m) => m.number === month);
+
+    if (!monthObj) {
+      // If the month doesn't exist, create an object for it
+      monthObj = {
+        number: month,
+        days: [],
+      };
+      yearObj.months.push(monthObj);
     }
 
-    // Add the month to the corresponding year
-    yearObj.months.push(monthObj)
-  })
+    // Find the corresponding day in the month
+    let dayObj = monthObj.days.find((d) => d.date.getDate() === event.date.getDate());
 
-  return result
+    if (!dayObj) {
+      // If the day doesn't exist, create an object for it
+      dayObj = {
+        date: event.date,
+        events: [],
+      };
+      monthObj.days.push(dayObj);
+    }
+
+    // Add the events to the day
+    dayObj.events.push(...event.events);
+  });
+
+  return result;
 }
 
 const calendarEventsToShow: YearClass[] = convertBackendDataModelToFrontendDataModel(
@@ -86,34 +96,17 @@ function isSameMonthAsPrevious(monthsArray: Month[], index: number): boolean {
   return true
 }
 
-function isSameDateAsPreviousOne(monthsArray: Month[], index: number): boolean {
-  // Check if it's the first month in the array.
+function isSameDayAsPreviousOne(days: Day[], index: number): boolean {
+  // Check if it's the first day in the array.
   if (index === 0) {
     return false // Nothing to compare.
   }
 
-  const currentDay = new Date(monthsArray[index].days[0].date)
-  const previousDay = new Date(monthsArray[index - 1].days[0].date)
+  const currentDay = new Date(days[index].date)
+  const previousDay = new Date(days[index - 1].date)
 
   // Always true if current and previous day are different.
   return currentDay.getDay() === previousDay.getDay()
-}
-
-function isSameDateAndCourseAsPreviousOne(
-  isSameDate: boolean,
-  monthsArray: Month[],
-  index: number
-): boolean {
-  // Check if it's the first month in the array.
-  if (index === 0) {
-    return false // Nothing to compare.
-  }
-
-  const previousCourseTitle: string = monthsArray[index - 1].days[0].course_title.pt
-  const currentCourseTitle: string = monthsArray[index].days[0].course_title.pt
-  const isSameCourse: boolean = currentCourseTitle == previousCourseTitle
-
-  return isSameDate && isSameCourse
 }
 </script>
 
@@ -133,17 +126,13 @@ function isSameDateAndCourseAsPreviousOne(
             v-for="(day, index) in month.days"
             :key="index"
             :date="new Date(day.date)"
-            :show-day-ball="!isSameDateAsPreviousOne(year.months, monthIndex)"
+            :show-day-ball="!isSameDayAsPreviousOne(month.days, index)"
           >
             <CalendarEvent
-              :title="day.course_title"
-              :show-course-title="
-                !isSameDateAndCourseAsPreviousOne(
-                  isSameDateAsPreviousOne(year.months, monthIndex),
-                  year.months,
-                  monthIndex
-                )
-              "
+              v-for="(event, index) in day.events"
+              :key="index"
+              :title="event"
+              :show-course-title="true"
             />
           </CalendarDay>
         </CalendarMonth>

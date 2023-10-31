@@ -85,7 +85,9 @@ const dayNumber = date_to_Date.getUTCDate()
       <p class="number" :sw="languageStore.libras" v-if="showDayBall">{{ dayNumber }}</p>
     </div>
     <!---->
-    <slot> </slot>
+    <div class="events" :sw="languageStore.libras">
+      <slot> </slot>
+    </div>
   </div>
 </template>
 
@@ -122,6 +124,17 @@ const dayNumber = date_to_Date.getUTCDate()
 
     .number {
       font-weight: 600;
+    }
+  }
+
+  .events {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &[sw='true'] {
+      flex-direction: row;
+      height: max-content;
     }
   }
 }
