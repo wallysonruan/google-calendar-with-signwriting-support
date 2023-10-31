@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import CalendarMonth from '@/components/Calendar/CalendarMonth.vue'
 import CalendarYear from '@/components/Calendar/CalendarYear.vue'
-import CalendarDayContainer from '@/components/Calendar/CalendarDayContainer.vue'
+import CalendarDay from '@/components/Calendar/CalendarDay.vue'
 import { type calendarEventType } from '@/stores/calendarEvents'
 import { stores } from '@/stores/stores'
 import CalendarEvent from '@/components/Calendar/CalendarEvent.vue'
@@ -129,7 +129,7 @@ function isSameDateAndCourseAsPreviousOne(
           :show-banner="!isSameMonthAsPrevious(year.months, monthIndex)"
           :is-first-month="monthIndex === 0"
         >
-          <CalendarDayContainer
+          <CalendarDay
             v-for="(day, index) in month.days"
             :key="index"
             :date="new Date(day.date)"
@@ -145,7 +145,7 @@ function isSameDateAndCourseAsPreviousOne(
                 )
               "
             />
-          </CalendarDayContainer>
+          </CalendarDay>
         </CalendarMonth>
       </CalendarYear>
     </div>
