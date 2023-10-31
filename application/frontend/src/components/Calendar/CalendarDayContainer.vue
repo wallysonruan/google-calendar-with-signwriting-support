@@ -78,7 +78,7 @@ const dayNumber = date_to_Date.getUTCDate()
         :sw="languageStore.libras"
         :sign="dayName.name.libras"
         :width="28"
-        :portuguese="dayName.name.pt.slice(0, 3).toLowerCase()"
+        :portuguese="dayName.name.pt.slice(0, 3).toLowerCase().concat('.')"
         v-if="showDayBall"
       />
       <!---->
