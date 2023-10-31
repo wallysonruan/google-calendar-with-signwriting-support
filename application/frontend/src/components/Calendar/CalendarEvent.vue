@@ -12,25 +12,18 @@ type calendarEventProps = {
 const props = defineProps<calendarEventProps>()
 </script>
 <template>
-  <div>
-    <LanguageWrapper
-      :sw="languageStore.libras"
-      class="title custom-card"
-      :sign="props.title.libras"
-      :portuguese="props.title.pt"
-    />
+  <div class="event" :sw="languageStore.libras">
+    <LanguageWrapper class="title" :sign="props.title.libras" :portuguese="props.title.pt" />
   </div>
 </template>
 <style scoped lang="scss">
 @import '../../assets/main.css';
-.title {
+.event {
   width: 100%;
-  min-height: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  height: min-content;
+  background-color: white;
   border-radius: 15px;
-
+  padding: 0.5rem;
   &[sw='true'] {
     flex-direction: row;
     width: fit-content;
