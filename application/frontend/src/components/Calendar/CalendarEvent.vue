@@ -5,20 +5,21 @@ import LanguageWrapper from '../Language/LanguageWrapper.vue'
 
 const languageStore = stores.languages()
 
-type calendarDayProps = {
+type calendarEventProps = {
   title: languages
-  showCourseTitle: boolean
 }
 
-const props = defineProps<calendarDayProps>()
+const props = defineProps<calendarEventProps>()
 </script>
 <template>
-  <LanguageWrapper
-    :sw="languageStore.libras"
-    class="title custom-card"
-    :sign="props.title.libras"
-    :portuguese="props.title.pt"
-  />
+  <div>
+    <LanguageWrapper
+      :sw="languageStore.libras"
+      class="title custom-card"
+      :sign="props.title.libras"
+      :portuguese="props.title.pt"
+    />
+  </div>
 </template>
 <style scoped lang="scss">
 @import '../../assets/main.css';

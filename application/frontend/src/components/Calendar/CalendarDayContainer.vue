@@ -121,7 +121,6 @@ const dayNumber = date_to_Date.getUTCDate()
     }
 
     .number {
-      font-size: larger;
       font-weight: 600;
     }
   }
