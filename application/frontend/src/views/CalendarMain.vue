@@ -2,9 +2,10 @@
 import CalendarMonth from '@/components/Calendar/CalendarMonth.vue'
 import CalendarYear from '@/components/Calendar/CalendarYear.vue'
 import CalendarDay from '@/components/Calendar/CalendarDay.vue'
+import CalendarEventContainer from '@/components/Calendar/CalendarEventContainer.vue'
+import CalendarEvent from '@/components/Calendar/CalendarEvent.vue'
 import { type calendarEventType } from '@/stores/calendarEvents'
 import { stores } from '@/stores/stores'
-import CalendarEvent from '@/components/Calendar/CalendarEvent.vue'
 import type { languages } from '@/components/GlobalTypes.vue'
 
 const calendarEventsStore = stores.calendarEvents()
@@ -128,12 +129,14 @@ function isSameDayAsPreviousOne(days: Day[], index: number): boolean {
             :date="new Date(day.date)"
             :show-day-ball="!isSameDayAsPreviousOne(month.days, index)"
           >
+          <CalendarEventContainer>
             <CalendarEvent
               v-for="(event, index) in day.events"
               :key="index"
               :title="event"
               :show-course-title="true"
             />
+          </CalendarEventContainer>
           </CalendarDay>
         </CalendarMonth>
       </CalendarYear>
