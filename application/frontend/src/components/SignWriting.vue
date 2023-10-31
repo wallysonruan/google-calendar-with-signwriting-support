@@ -44,13 +44,19 @@ const signs: string[] = containsSpacesOrCode(props.fsw)
   </div>
 </template>
 <style scoped lang="scss">
-.sign {
+.signwriting-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  max-height: 15rem;
+  .sign {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-  &:not(:last-child) {
-    margin-bottom: 0.3rem;
+    &:not(:last-child) {
+      margin-bottom: 0.3rem;
+    }
   }
 }
 </style>

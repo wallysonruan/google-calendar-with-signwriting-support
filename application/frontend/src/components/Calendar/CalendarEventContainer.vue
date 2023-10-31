@@ -3,21 +3,27 @@ import { stores } from '@/stores/stores'
 const languageStore = stores.languages()
 </script>
 <template>
-  <div class="events" :sw="languageStore.libras">
-    <slot></slot>
+  <div class="container">
+    <div class="events" :sw="languageStore.libras">
+      <slot></slot>
+    </div>
   </div>
 </template>
 <style scoped lang="scss">
-.events {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+.container {
   width: 100%;
+  overflow: auto;
+  .events {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
 
-  &[sw='true'] {
-    flex-direction: row;
-    justify-content: end;
-    height: max-content;
+    &[sw='true'] {
+      width: 200%;
+      flex-direction: row;
+      height: max-content;
+    }
   }
 }
 </style>

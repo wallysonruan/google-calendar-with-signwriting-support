@@ -27,7 +27,6 @@ const props = defineProps<calendarEventProps>()
 
   &[sw='true'] {
     width: fit-content;
-    padding: 0.5rem;
   }
 }
 </style>
