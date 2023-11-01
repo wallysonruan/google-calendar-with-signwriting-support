@@ -186,7 +186,8 @@ function saveCalendarEventsToLocalStorage(data: calendarEventType[], key: string
   }
 }
 
-function getcalendarEventsData(): calendarEventType[] {
+function getcalendarEventsData(fallback: calendarEventType[]): calendarEventType[] {
+  const emptycalendarEvent: calendarEventType[] = []
   const dataRetrievedFromLocalStorage = getcalendarEventsFromLocalStorage(
     calendarEventDatalocalStorage_key
   )
@@ -194,7 +195,7 @@ function getcalendarEventsData(): calendarEventType[] {
   if (dataRetrievedFromLocalStorage.length > 0)
     return sortCalendarEventsByDate(dataRetrievedFromLocalStorage)
 
-  return sortCalendarEventsByDate(dummyCalendarEvents)
+  return sortCalendarEventsByDate(emptycalendarEvent.concat(fallback))
 }
 
 function updatecalendarEvents() {
@@ -255,7 +256,7 @@ function convertBackendDataModelToFrontendDataModel(
 
 localStorage.removeItem(calendarEventDatalocalStorage_key)
 // saveCalendarEventsToLocalStorage(dummyCalendarEvents, calendarEventDatalocalStorage_key)
-const calendarEventsData = convertBackendDataModelToFrontendDataModel(getcalendarEventsData())
+const calendarEventsData: YearClass[] = convertBackendDataModelToFrontendDataModel(getcalendarEventsData(dummyCalendarEvents))
 
 export const useCalendarEventsStore = defineStore({
   id: 'useCalendarEventsStore',

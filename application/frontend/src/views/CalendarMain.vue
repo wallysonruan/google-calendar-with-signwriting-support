@@ -9,8 +9,16 @@ import CreateEvent from '@/components/CreateEvent.vue'
 import type { YearClass, Month, Day } from '@/stores/calendarEvents'
 
 const calendarEventsStore = stores.calendarEvents()
-
 const calendarEventsToShow: YearClass[] = calendarEventsStore.getCalendarEvents()
+
+function isThereEventToShow(eventsArray: YearClass[]): boolean {
+  if(eventsArray != null){
+    if(eventsArray.length > 0){
+      return true
+    }
+  }
+  return false
+}
 
 function isSameMonthAsPrevious(monthsArray: Month[], index: number): boolean {
   // Check if it's the first month in the array.
@@ -43,7 +51,7 @@ function isSameDayAsPreviousOne(days: Day[], index: number): boolean {
 
 <template>
   <div class="calendar">
-    <div class="content">
+    <div class="content" v-if="isThereEventToShow(calendarEventsToShow)">
       <CalendarYear v-for="(year, index) in calendarEventsToShow" :key="index">
         <CalendarMonth
           v-for="(month, monthIndex) in year.months"
