@@ -5,6 +5,7 @@ import { stores } from '@/stores/stores'
 
 const activateOverlay = ref<boolean>(false)
 const languageStore = stores.languages()
+const activateEventStore = stores.createEvent()
 </script>
 <template>
   <div class="container">
@@ -34,7 +35,12 @@ const languageStore = stores.languages()
     </v-btn>
     <!---->
     <div v-if="activateOverlay">
-      <v-btn class="btn" icon aria-label="Create Event">
+      <v-btn
+        class="btn create-event"
+        icon
+        aria-label="Create Event"
+        @click="activateEventStore.activateCreateEvent()"
+      >
         <v-icon>
           <svg
             xmlns="http://www.w3.org/2000/svg"
