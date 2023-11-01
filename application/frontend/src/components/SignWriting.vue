@@ -48,7 +48,7 @@ const signs: string[] = containsSpacesOrCode(props.fsw)
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  max-height: 15rem;
+  max-height: 20rem;
   .sign {
     text-align: center;
     margin-left: 0.5rem;
