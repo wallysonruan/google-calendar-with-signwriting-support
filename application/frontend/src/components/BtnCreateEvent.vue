@@ -85,7 +85,6 @@ const activateEventStore = stores.createEvent()
     bottom: 40px;
     left: 80%;
     border-radius: 25%;
-    z-index: 9999;
   }
 
   .title-container {
@@ -102,6 +101,10 @@ const activateEventStore = stores.createEvent()
         top: -30px;
       }
     }
+  }
+
+  .create-event {
+    z-index: 2001;
   }
 }
 
