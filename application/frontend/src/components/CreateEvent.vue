@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import LanguageWrapper from './Language/LanguageWrapper.vue'
 import { stores } from '@/stores/stores'
+import LanguageWrapper from './Language/LanguageWrapper.vue'
 const activateEventStore = stores.createEvent()
 </script>
 <template>
@@ -35,11 +35,43 @@ const activateEventStore = stores.createEvent()
     <v-list>
       <v-list-item>
         <div class="input-title">
-          <LanguageWrapper
-            sign="M529x541S24e38507x460S14c20506x500 M522x522S10e20507x492S10e28478x492S21600510x480S21600483x479"
-            portuguese="Adicionar título"
-          />
-          <input type="text" name="" id="event-title" />
+          <h2>
+            <LanguageWrapper
+              sign="M529x541S24e38507x460S14c20506x500 M522x522S10e20507x492S10e28478x492S21600510x480S21600483x479"
+              portuguese="Adicionar título"
+            />
+          </h2>
+          <br />
+          <div class="inputs">
+            <div class="input portuguese">
+              <label for="title-pt">
+                <LanguageWrapper
+                  sign="M522x519S15212478x481S22f04486x505S20e00510x493"
+                  portuguese="Português"
+                />
+              </label>
+              <input
+                type="text"
+                name=""
+                placeholder=" Escreva aqui"
+                id="title-pt"
+                required
+                autofocus
+              />
+            </div>
+            <!--  -->
+            <br />
+            <!--  -->
+            <div class="input libras">
+              <label for="title-libras">
+                <LanguageWrapper
+                  sign="M542x516S14c0a459x493S14c10498x485S2480c526x488"
+                  portuguese="Libras"
+                />
+              </label>
+              <input type="text" name="" placeholder=" fsw" id="title-libras" required />
+            </div>
+          </div>
         </div>
       </v-list-item>
       <!--  -->
@@ -68,8 +100,23 @@ const activateEventStore = stores.createEvent()
       color: white;
     }
   }
+
   .input-title {
     font-size: large;
+    text-align: center;
+
+    .input {
+      display: flex;
+      justify-content: space-between;
+
+      label {
+        width: 20%;
+      }
+
+      input {
+        width: 70%;
+      }
+    }
   }
 }
 </style>

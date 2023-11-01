@@ -10,11 +10,7 @@ const languageStore = stores.languages()
         <p class="portuguese">PT</p>
       </template>
       <template v-slot:append>
-        <SignWriting
-          class="libras"
-          fsw="M542x516S14c0a459x493S14c10498x485S2480c526x488"
-          :display="true"
-        />
+        <SignWriting class="libras" fsw="M542x516S14c0a459x493S14c10498x485S2480c526x488" display />
       </template>
     </v-switch>
   </div>
