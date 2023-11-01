@@ -167,22 +167,18 @@ function sortCalendarEventsByDate(data: calendarEventType[]): calendarEventType[
  * @returns {calendarEventType[]} Returns empty array if object is not found.
  */
 function getcalendarEventsFromLocalStorage(key: string): calendarEventType[] {
-  try {
-    // Get data from localStorage
-    const jsonData = localStorage.getItem(key)
+  // Get data from localStorage
+  const jsonData = localStorage.getItem(key)
 
-    if (jsonData) {
+  if (jsonData != null) {
+    if (jsonData.length > 0) {
       // Converts string JSON data back to a TypeScript object
       const data = JSON.parse(jsonData) as calendarEventType[]
       return data
-    } else {
-      // Returns `null` if key does not exists in LocalStorage
-      return []
     }
-  } catch (error) {
-    console.error(`Error while retrieving data from localStorage: ${error}`)
-    return []
   }
+
+  return []
 }
 
 /**
@@ -208,8 +204,8 @@ function convertBackendDataModelToFrontendDataModel(
   const result: YearClass[] = []
 
   calendarEvents.forEach((event) => {
-    const year = event.date.getFullYear()
-    const month = event.date.getMonth() + 1 // Month is 0-based, so we add 1
+    const year = new Date(event.date).getFullYear()
+    const month = new Date(event.date).getMonth() + 1 // Month is 0-based, so we add 1
 
     // Find the corresponding year in the result
     let yearObj = result.find((y) => y.year === year)
@@ -236,7 +232,7 @@ function convertBackendDataModelToFrontendDataModel(
     }
 
     // Find the corresponding day in the month
-    let dayObj = monthObj.days.find((d) => d.date.getDate() === event.date.getDate())
+    let dayObj = monthObj.days.find((day) => new Date(day.date).getDate() === new Date(event.date).getDate())
 
     if (!dayObj) {
       // If the day doesn't exist, create an object for it
@@ -254,7 +250,15 @@ function convertBackendDataModelToFrontendDataModel(
   return result
 }
 
-localStorage.removeItem(calendarEventDatalocalStorage_key)
+/**
+ *
+ */
+function saveCalendarEventToLocalStorage(event: calendarEventType, key: string) {
+  const currentEventsInLocalStorage = getcalendarEventsFromLocalStorage(key)
+  currentEventsInLocalStorage.push(event)
+  const jsonOfNewArrayToLocalStorage: string = JSON.stringify(currentEventsInLocalStorage)
+  localStorage.setItem(key, jsonOfNewArrayToLocalStorage)
+}
 
 const calendarEventsData: YearClass[] = convertBackendDataModelToFrontendDataModel(
   sortCalendarEventsByDate(getcalendarEventsDataFromAllSources(dummyCalendarEvents))
