@@ -14,6 +14,7 @@ const languageStore = stores.languages()
       aria-label="Create"
       @click="activateOverlay = !activateOverlay"
       v-if="!activateOverlay"
+      disabled
     >
       <v-icon>
         <svg
