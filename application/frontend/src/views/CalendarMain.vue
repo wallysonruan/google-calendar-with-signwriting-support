@@ -7,6 +7,7 @@ import CalendarEvent from '@/components/Calendar/CalendarEvent.vue'
 import { type calendarEventType } from '@/stores/calendarEvents'
 import { stores } from '@/stores/stores'
 import type { languages } from '@/components/GlobalTypes.vue'
+import CreateEvent from '@/components/CreateEvent.vue'
 
 const calendarEventsStore = stores.calendarEvents()
 const allCalendarEvents: calendarEventType[] | null = calendarEventsStore.getCalendarEvents()
@@ -136,6 +137,7 @@ function isSameDayAsPreviousOne(days: Day[], index: number): boolean {
         </CalendarMonth>
       </CalendarYear>
     </div>
+    <CreateEvent />
   </div>
 </template>
 

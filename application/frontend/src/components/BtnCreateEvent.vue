@@ -14,9 +14,9 @@ const activateEventStore = stores.createEvent()
       icon
       aria-label="Create"
       @click="activateOverlay = !activateOverlay"
-      v-if="!activateOverlay"
       disabled
-    >
+      >
+      <!-- :disabled="activateOverlay" -->
       <v-icon>
         <svg
           xmlns="http://www.w3.org/2000/svg"
