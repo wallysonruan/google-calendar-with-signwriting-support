@@ -4,84 +4,13 @@ import CalendarYear from '@/components/Calendar/CalendarYear.vue'
 import CalendarDay from '@/components/Calendar/CalendarDay.vue'
 import CalendarEventContainer from '@/components/Calendar/CalendarEventContainer.vue'
 import CalendarEvent from '@/components/Calendar/CalendarEvent.vue'
-import { type calendarEventType } from '@/stores/calendarEvents'
 import { stores } from '@/stores/stores'
-import type { languages } from '@/components/GlobalTypes.vue'
 import CreateEvent from '@/components/CreateEvent.vue'
+import type { YearClass, Month, Day } from '@/stores/calendarEvents'
 
 const calendarEventsStore = stores.calendarEvents()
-const allCalendarEvents: calendarEventType[] | null = calendarEventsStore.getCalendarEvents()
 
-type Day = {
-  date: Date
-  events: languages[]
-}
-
-type Month = {
-  number: number
-  days: Day[]
-}
-
-type YearClass = {
-  year: number
-  months: Month[]
-}
-
-function convertBackendDataModelToFrontendDataModel(
-  calendarEvents: calendarEventType[]
-): YearClass[] {
-  const result: YearClass[] = []
-
-  calendarEvents.forEach((event) => {
-    const year = event.date.getFullYear()
-    const month = event.date.getMonth() + 1 // Month is 0-based, so we add 1
-
-    // Find the corresponding year in the result
-    let yearObj = result.find((y) => y.year === year)
-
-    if (!yearObj) {
-      // If the year doesn't exist, create an object for it
-      yearObj = {
-        year: year,
-        months: []
-      }
-      result.push(yearObj)
-    }
-
-    // Find the corresponding month in the year
-    let monthObj = yearObj.months.find((m) => m.number === month)
-
-    if (!monthObj) {
-      // If the month doesn't exist, create an object for it
-      monthObj = {
-        number: month,
-        days: []
-      }
-      yearObj.months.push(monthObj)
-    }
-
-    // Find the corresponding day in the month
-    let dayObj = monthObj.days.find((d) => d.date.getDate() === event.date.getDate())
-
-    if (!dayObj) {
-      // If the day doesn't exist, create an object for it
-      dayObj = {
-        date: event.date,
-        events: []
-      }
-      monthObj.days.push(dayObj)
-    }
-
-    // Add the events to the day
-    dayObj.events.push(...event.events)
-  })
-
-  return result
-}
-
-const calendarEventsToShow: YearClass[] = convertBackendDataModelToFrontendDataModel(
-  allCalendarEvents as calendarEventType[]
-)
+const calendarEventsToShow: YearClass[] = calendarEventsStore.getCalendarEvents()
 
 function isSameMonthAsPrevious(monthsArray: Month[], index: number): boolean {
   // Check if it's the first month in the array.

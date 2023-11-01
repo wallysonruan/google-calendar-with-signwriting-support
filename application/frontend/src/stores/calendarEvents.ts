@@ -7,9 +7,24 @@ export type calendarEventType = {
   events: languages[]
 }
 
+export type Day = {
+  date: Date
+  events: languages[]
+}
+
+export type Month = {
+  number: number
+  days: Day[]
+}
+
+export type YearClass = {
+  year: number
+  months: Month[]
+}
+
 const calendarEventDatalocalStorage_key = 'calendarEvents'
 
-const fakeCalendarEvents: calendarEventType[] = [
+const dummyCalendarEvents: calendarEventType[] = [
   {
     date: new Date('2021-06-05T00:00:00.000Z'),
     events: [
@@ -128,8 +143,6 @@ const fakeCalendarEvents: calendarEventType[] = [
   }
 ]
 
-localStorage.removeItem(calendarEventDatalocalStorage_key)
-
 function sortCalendarEventsByDate(data: calendarEventType[]): calendarEventType[] {
   return data.sort((a, b) => {
     const aDate = new Date(a.date)
@@ -138,7 +151,7 @@ function sortCalendarEventsByDate(data: calendarEventType[]): calendarEventType[
   })
 }
 
-export function getcalendarEventsFromLocalStorage(key: string): calendarEventType[] {
+function getcalendarEventsFromLocalStorage(key: string): calendarEventType[] {
   const emptycalendarEvent: calendarEventType[] = []
 
   try {
@@ -159,7 +172,7 @@ export function getcalendarEventsFromLocalStorage(key: string): calendarEventTyp
   }
 }
 
-export function saveCalendarEventsToLocalStorage(data: calendarEventType[], key: string) {
+function saveCalendarEventsToLocalStorage(data: calendarEventType[], key: string) {
   try {
     // Converts data to string JSON
     const jsonData = JSON.stringify(data)
@@ -181,16 +194,68 @@ function getcalendarEventsData(): calendarEventType[] {
   if (dataRetrievedFromLocalStorage.length > 0)
     return sortCalendarEventsByDate(dataRetrievedFromLocalStorage)
 
-  saveCalendarEventsToLocalStorage(fakeCalendarEvents, calendarEventDatalocalStorage_key)
-
-  return sortCalendarEventsByDate(fakeCalendarEvents)
+  return sortCalendarEventsByDate(dummyCalendarEvents)
 }
-
-const calendarEventsData = ref<calendarEventType[]>(getcalendarEventsData())
 
 function updatecalendarEvents() {
   calendarEventsData.value = getcalendarEventsData()
 }
+
+function convertBackendDataModelToFrontendDataModel(
+  calendarEvents: calendarEventType[]
+): YearClass[] {
+  const result: YearClass[] = []
+
+  calendarEvents.forEach((event) => {
+    const year = event.date.getFullYear()
+    const month = event.date.getMonth() + 1 // Month is 0-based, so we add 1
+
+    // Find the corresponding year in the result
+    let yearObj = result.find((y) => y.year === year)
+
+    if (!yearObj) {
+      // If the year doesn't exist, create an object for it
+      yearObj = {
+        year: year,
+        months: []
+      }
+      result.push(yearObj)
+    }
+
+    // Find the corresponding month in the year
+    let monthObj = yearObj.months.find((m) => m.number === month)
+
+    if (!monthObj) {
+      // If the month doesn't exist, create an object for it
+      monthObj = {
+        number: month,
+        days: []
+      }
+      yearObj.months.push(monthObj)
+    }
+
+    // Find the corresponding day in the month
+    let dayObj = monthObj.days.find((d) => d.date.getDate() === event.date.getDate())
+
+    if (!dayObj) {
+      // If the day doesn't exist, create an object for it
+      dayObj = {
+        date: event.date,
+        events: []
+      }
+      monthObj.days.push(dayObj)
+    }
+
+    // Add the events to the day
+    dayObj.events.push(...event.events)
+  })
+
+  return result
+}
+
+localStorage.removeItem(calendarEventDatalocalStorage_key)
+// saveCalendarEventsToLocalStorage(dummyCalendarEvents, calendarEventDatalocalStorage_key)
+const calendarEventsData = convertBackendDataModelToFrontendDataModel(getcalendarEventsData())
 
 export const useCalendarEventsStore = defineStore({
   id: 'useCalendarEventsStore',
