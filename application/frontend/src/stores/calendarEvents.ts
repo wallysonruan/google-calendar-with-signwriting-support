@@ -232,7 +232,9 @@ function convertBackendDataModelToFrontendDataModel(
     }
 
     // Find the corresponding day in the month
-    let dayObj = monthObj.days.find((day) => new Date(day.date).getDate() === new Date(event.date).getDate())
+    let dayObj = monthObj.days.find(
+      (day) => new Date(day.date).getDate() === new Date(event.date).getDate()
+    )
 
     if (!dayObj) {
       // If the day doesn't exist, create an object for it
@@ -252,6 +254,8 @@ function convertBackendDataModelToFrontendDataModel(
 
 /**
  *
+ * @param {calendarEventType} event
+ * @param {string} key - Name of the object in localStorage.
  */
 function saveCalendarEventToLocalStorage(event: calendarEventType, key: string) {
   const currentEventsInLocalStorage = getcalendarEventsFromLocalStorage(key)
