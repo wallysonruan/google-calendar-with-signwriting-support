@@ -149,7 +149,7 @@ const dummyCalendarEvents: calendarEventType[] = [
 */
 function sortCalendarEventsByDate(data: calendarEventType[]): calendarEventType[] {
   if (data != null) {
-    if (data.length === 0) {
+    if (data.length > 0) {
       return data.sort((a, b) => {
         const aDate = new Date(a.date)
         const bDate = new Date(b.date)
@@ -191,15 +191,10 @@ function getcalendarEventsFromLocalStorage(key: string): calendarEventType[] {
  * @returns {calendarEventType[]} Array with all Events found.
  */
 function getcalendarEventsDataFromAllSources(fallback: calendarEventType[]): calendarEventType[] {
-  const emptycalendarEvent: calendarEventType[] = []
   const dataRetrievedFromLocalStorage = getcalendarEventsFromLocalStorage(
     calendarEventDatalocalStorage_key
   )
-
-  if (dataRetrievedFromLocalStorage.length > 0)
-    return sortCalendarEventsByDate(dataRetrievedFromLocalStorage)
-
-  return sortCalendarEventsByDate(emptycalendarEvent.concat(fallback))
+  return fallback.concat(dataRetrievedFromLocalStorage)
 }
 
 /**
@@ -260,8 +255,9 @@ function convertBackendDataModelToFrontendDataModel(
 }
 
 localStorage.removeItem(calendarEventDatalocalStorage_key)
+
 const calendarEventsData: YearClass[] = convertBackendDataModelToFrontendDataModel(
-  getcalendarEventsDataFromAllSources(dummyCalendarEvents)
+  sortCalendarEventsByDate(getcalendarEventsDataFromAllSources(dummyCalendarEvents))
 )
 
 export const useCalendarEventsStore = defineStore({
