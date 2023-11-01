@@ -12,8 +12,8 @@ const calendarEventsStore = stores.calendarEvents()
 const calendarEventsToShow: YearClass[] = calendarEventsStore.getCalendarEvents()
 
 function isThereEventToShow(eventsArray: YearClass[]): boolean {
-  if(eventsArray != null){
-    if(eventsArray.length > 0){
+  if (eventsArray != null) {
+    if (eventsArray.length > 0) {
       return true
     }
   }
