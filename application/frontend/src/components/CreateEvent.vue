@@ -184,7 +184,7 @@ function submit() {
     </v-row>
     <!---->
     <v-overlay v-model="showDatePicker">
-      <v-date-picker v-model="date" :onClick:save="openOrCloseDatePicker" />
+      <v-date-picker v-model="date" :onClick:save="openOrCloseDatePicker" :onClick:cancel="openOrCloseDatePicker"/>
     </v-overlay>
   </form>
 </template>
