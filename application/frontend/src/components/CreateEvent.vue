@@ -196,6 +196,10 @@ function submit() {
   height: 100vh;
   background-color: white;
 
+  input {
+    width: 95%;
+  }
+
   nav {
     padding: 0.7rem;
     display: flex;
