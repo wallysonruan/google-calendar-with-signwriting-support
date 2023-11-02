@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import type { calendarEventType } from '@/stores/calendarEvents'
 import { stores } from '@/stores/stores'
 import LanguageWrapper from './Language/LanguageWrapper.vue'
 import { ref } from 'vue'
-import type { calendarEventType } from '@/stores/calendarEvents'
+
 const activateEventStore = stores.createEvent()
 const calendarEventStore = stores.calendarEvents()
 
@@ -17,7 +18,7 @@ let date = ref({
 })
 
 let calendarEvent = ref<calendarEventType>({
-  date: new Date(date.value.start[0]),
+  date: new Date(),
   events: [
     {
       pt: '',
@@ -26,6 +27,16 @@ let calendarEvent = ref<calendarEventType>({
     }
   ]
 })
+
+/**
+ * Intermediary function to set the initial date. It is the only way that worked so far.
+ *
+ * @param {any} value - It'll be passed automatically once v-model is called by the component.
+ * @returns Nothing.
+ */
+function setInitialDate(value: any) {
+  calendarEvent.value.date = new Date(value)
+}
 
 function submit() {
   calendarEventStore.saveCalendarEvent(calendarEvent.value)
@@ -147,7 +158,7 @@ function submit() {
     <v-row>
       <v-col cols="2"></v-col>
       <v-col cols="8">
-        <button class="disabled" disabled type="button" @click="openOrCloseDatePicker()">{{ calendarEvent.date }}</button>
+        <button type="button" @click="openOrCloseDatePicker()">{{ calendarEvent.date }}</button>
       </v-col>
       <v-col cols="2"></v-col>
     </v-row>
@@ -186,7 +197,12 @@ function submit() {
     </v-row>
     <!---->
     <v-overlay v-model="showDatePicker">
-      <v-date-picker v-model="date.start" :onClick:save="openOrCloseDatePicker" :onClick:cancel="openOrCloseDatePicker"/>
+      <v-date-picker
+        v-model="date.start"
+        @update:modelValue="setInitialDate"
+        :onClick:save="openOrCloseDatePicker"
+        :onClick:cancel="openOrCloseDatePicker"
+      />
     </v-overlay>
   </form>
 </template>
