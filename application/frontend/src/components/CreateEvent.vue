@@ -11,10 +11,13 @@ function openOrCloseDatePicker() {
   showDatePicker.value = !showDatePicker.value
 }
 
-let date = ref([new Date()])
+let date = ref({
+  start: [new Date()],
+  end: [new Date()]
+})
 
 let calendarEvent = ref<calendarEventType>({
-  date: new Date(date.value[0]),
+  date: new Date(date.value.start[0]),
   events: [
     {
       pt: '',
@@ -26,7 +29,6 @@ let calendarEvent = ref<calendarEventType>({
 
 function submit() {
   calendarEventStore.saveCalendarEvent(calendarEvent.value)
-  console.log(calendarEvent.value)
 }
 </script>
 <template>
@@ -145,7 +147,7 @@ function submit() {
     <v-row>
       <v-col cols="2"></v-col>
       <v-col cols="8">
-        <button type="button" @click="openOrCloseDatePicker()">{{ calendarEvent.date }}</button>
+        <button class="disabled" disabled type="button" @click="openOrCloseDatePicker()">{{ calendarEvent.date }}</button>
       </v-col>
       <v-col cols="2"></v-col>
     </v-row>
@@ -184,7 +186,7 @@ function submit() {
     </v-row>
     <!---->
     <v-overlay v-model="showDatePicker">
-      <v-date-picker v-model="date" :onClick:save="openOrCloseDatePicker" :onClick:cancel="openOrCloseDatePicker"/>
+      <v-date-picker v-model="date.start" :onClick:save="openOrCloseDatePicker" :onClick:cancel="openOrCloseDatePicker"/>
     </v-overlay>
   </form>
 </template>
