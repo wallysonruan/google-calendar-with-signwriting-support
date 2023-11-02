@@ -17,6 +17,7 @@ import { VForm } from 'vuetify/components'
 import { VBtn } from 'vuetify/components'
 import { VLayout } from 'vuetify/components'
 import { VAlert } from 'vuetify/components'
+import { VDatePicker } from 'vuetify/labs/components'
 
 const vuetify = createVuetify({
   components: {
@@ -27,7 +28,8 @@ const vuetify = createVuetify({
     VTextField,
     VBtn,
     VLayout,
-    VAlert
+    VAlert,
+    VDatePicker
   }
 })
 
