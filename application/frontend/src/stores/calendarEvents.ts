@@ -276,6 +276,9 @@ export const useCalendarEventsStore = defineStore({
   actions: {
     getCalendarEvents() {
       return this.calendarEvents
+    },
+    saveCalendarEvent(event: calendarEventType) {
+      saveCalendarEventToLocalStorage(event, calendarEventDatalocalStorage_key)
     }
   }
 })

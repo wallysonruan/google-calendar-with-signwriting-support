@@ -1,10 +1,26 @@
 <script setup lang="ts">
 import { stores } from '@/stores/stores'
 import LanguageWrapper from './Language/LanguageWrapper.vue'
+import { ref } from 'vue'
+import type { calendarEventType } from '@/stores/calendarEvents'
 const activateEventStore = stores.createEvent()
+const calendarEventStore = stores.calendarEvents()
+let calendarEvent = ref<calendarEventType>({
+  date: new Date(),
+  events: [
+    {
+      pt: '',
+      libras: '',
+      eng: ''
+    }
+  ]
+})
+function submit() {
+  calendarEventStore.saveCalendarEvent(calendarEvent.value)
+}
 </script>
 <template>
-  <div class="container" v-if="activateEventStore.activated">
+  <form class="container" @submit.prevent="submit()" v-if="activateEventStore.activated">
     <nav>
       <ul>
         <button @click="activateEventStore.activateCreateEvent()">
@@ -23,7 +39,7 @@ const activateEventStore = stores.createEvent()
         </button>
       </ul>
       <ul>
-        <button class="btn-save">
+        <button type="submit" class="btn-save">
           <LanguageWrapper
             sign="M546x531S1bb48454x469S1bb40498x503S26602466x514S26616479x478S21b00513x482S21b00454x518S21500530x500"
             portuguese="Salvar"
@@ -57,6 +73,7 @@ const activateEventStore = stores.createEvent()
                 id="title-pt"
                 required
                 autofocus
+                v-model="calendarEvent.events[0].pt"
               />
             </div>
             <!--  -->
@@ -69,7 +86,14 @@ const activateEventStore = stores.createEvent()
                   portuguese="Libras"
                 />
               </label>
-              <input type="text" name="" placeholder=" fsw" id="title-libras" required />
+              <input
+                type="text"
+                name=""
+                placeholder=" fsw"
+                id="title-libras"
+                required
+                v-model="calendarEvent.events[0].libras"
+              />
             </div>
           </div>
         </div>
@@ -78,7 +102,7 @@ const activateEventStore = stores.createEvent()
       <v-divider></v-divider>
       <!--  -->
     </v-list>
-  </div>
+  </form>
 </template>
 <style scoped lang="scss">
 .container {
