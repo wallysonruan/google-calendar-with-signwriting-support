@@ -387,4 +387,10 @@ function submit() {
     width: 100%;
   }
 }
+
+@media only screen and (min-width: 600px) {
+  .container {
+    display: none;
+  }
+}
 </style>
