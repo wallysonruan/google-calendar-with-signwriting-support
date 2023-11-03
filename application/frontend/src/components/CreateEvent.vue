@@ -186,7 +186,6 @@ function submit() {
                 name_of_the_week_days[calendarEvent.date.getDay()].name.pt.slice(0, 3).concat('.,')
               "
             />
-            {{ console.log(name_of_the_week_days[calendarEvent.date.getDay()].name.libras) }}
             <!--  -->
             <span> &nbsp;{{ calendarEvent.date.getUTCDate() }}&nbsp; </span>
             <!-- -->
@@ -276,7 +275,7 @@ function submit() {
         <v-col cols="2"></v-col>
       </v-row>
       <!---->
-      <v-overlay v-model="showDatePicker">
+      <v-overlay class="overlay" v-model="showDatePicker">
         <v-date-picker
           show-adjacent-months
           v-model="date.start"
@@ -386,6 +385,13 @@ function submit() {
   .date {
     width: 100%;
   }
+}
+
+.overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @media only screen and (min-width: 600px) {
