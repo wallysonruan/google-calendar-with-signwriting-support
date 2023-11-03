@@ -114,8 +114,12 @@ const activateEventStore = stores.createEvent()
 }
 
 @media only screen and (min-width: 600px) {
-  .container > * {
-    display: none;
+  .container {
+    display: none !important; // I dont know why, but the container custom behavior is being overriden by a default one.
+
+    &> * {
+      display: none;
+    }
   }
 }
 </style>
