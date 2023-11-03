@@ -266,7 +266,12 @@ function submit() {
           </v-icon>
         </v-col>
         <v-col cols="8" class="disabled">
-          <button type="button">Horário Padrão de Brasília</button>
+          <button type="button">
+            <LanguageWrapper
+              portuguese="Horário Padrão de Brasília"
+              sign="AS10051S37a0bS20359S20600M527x522S3780b479x492S20359502x478S10051497x496S20600474x486 M585x515S1ee10500x486S1ee18473x486S1f410556x493S1f418415x492S26a06534x488S26a12451x487 M516x523S14750499x477S14758484x477S2eb06484x508"
+            />
+          </button>
         </v-col>
         <v-col cols="2"></v-col>
       </v-row>
