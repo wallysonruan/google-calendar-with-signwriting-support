@@ -1,21 +1,9 @@
-<script lang="ts" setup>
-import { stores } from '@/stores/stores'
+<script lang="ts">
 import type { languages } from '../GlobalTypes.vue'
-import LanguageWrapper from '../Language/LanguageWrapper.vue'
-
-type calendarDayContainerProps = {
-  date: Date
-  showDayBall: boolean
-}
-
 type calendarDayContainerData = {
   name: languages
 }
-
-const props = defineProps<calendarDayContainerProps>()
-const languageStore = stores.languages()
-
-const name_of_the_week_days: Record<number, calendarDayContainerData> = {
+export const name_of_the_week_days: Record<number, calendarDayContainerData> = {
   1: {
     name: {
       pt: 'Segunda-feira',
@@ -66,6 +54,18 @@ const name_of_the_week_days: Record<number, calendarDayContainerData> = {
     }
   }
 }
+</script>
+<script lang="ts" setup>
+import { stores } from '@/stores/stores'
+import LanguageWrapper from '../Language/LanguageWrapper.vue'
+
+type calendarDayContainerProps = {
+  date: Date
+  showDayBall: boolean
+}
+
+const props = defineProps<calendarDayContainerProps>()
+const languageStore = stores.languages()
 const date_to_Date = new Date(props.date)
 const dayName = name_of_the_week_days[date_to_Date.getDay()]
 const dayNumber = date_to_Date.getUTCDate()

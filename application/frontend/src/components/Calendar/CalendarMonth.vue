@@ -1,20 +1,10 @@
-<script setup lang="ts">
-import LanguageWrapper from '../Language/LanguageWrapper.vue'
-import type { languages } from '../GlobalTypes.vue'
-
-const props = defineProps<{
-  year: number
-  monthNumber: number
-  showBanner: boolean
-  isFirstMonth: boolean
-}>()
-
+<script lang="ts">
 type calendarMonthData = {
   name: languages
   total_days: number
 }
 
-const month: Record<number, calendarMonthData> = {
+export const name_of_the_months: Record<number, calendarMonthData> = {
   1: {
     name: {
       pt: 'Janeiro',
@@ -113,6 +103,17 @@ const month: Record<number, calendarMonthData> = {
     total_days: 31
   }
 }
+</script>
+<script setup lang="ts">
+import LanguageWrapper from '../Language/LanguageWrapper.vue'
+import type { languages } from '../GlobalTypes.vue'
+
+const props = defineProps<{
+  year: number
+  monthNumber: number
+  showBanner: boolean
+  isFirstMonth: boolean
+}>()
 
 // Date().getMonth() considers January as the month 0.
 const current_month = new Date().getMonth() + 1
@@ -123,8 +124,8 @@ const monthToShow = props.monthNumber ? props.monthNumber + 1 : current_month
   <div class="month">
     <div height="100" class="banner" v-if="showBanner">
       <LanguageWrapper
-        :sign="month[monthToShow].name.libras"
-        :portuguese="month[monthToShow].name.pt"
+        :sign="name_of_the_months[monthToShow].name.libras"
+        :portuguese="name_of_the_months[monthToShow].name.pt"
       />
       <div class="year" v-if="isFirstMonth">
         {{ props.year }}
