@@ -117,7 +117,7 @@ const activateEventStore = stores.createEvent()
   .container {
     display: none !important; // I dont know why, but the container custom behavior is being overriden by a default one.
 
-    &> * {
+    & > * {
       display: none;
     }
   }
