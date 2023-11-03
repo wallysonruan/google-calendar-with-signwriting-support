@@ -20,7 +20,7 @@ const languageStore = stores.languages()
     gap: 5px;
 
     &[sw='true'] {
-      width: 200%;
+      width: max-content;
       flex-direction: row;
       height: max-content;
     }
