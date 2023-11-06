@@ -2,13 +2,15 @@
 import type { calendarEventType } from '@/stores/calendarEvents'
 import { stores } from '@/stores/stores'
 import LanguageWrapper from './Language/LanguageWrapper.vue'
-import { ref } from 'vue'
+import { ref, type Ref } from 'vue'
 import { name_of_the_week_days } from './Calendar/CalendarDay.vue'
 import { name_of_the_months } from './Calendar/CalendarMonth.vue'
 
 const activateEventStore = stores.createEvent()
 const calendarEventStore = stores.calendarEvents()
 const languageStore = stores.languages()
+const reRenderInitialDate = ref<number>(0)
+const reRenderFinalDate = ref<number>(0)
 
 let showDatePicker = ref<boolean>(false)
 function openOrCloseDatePicker() {
@@ -31,23 +33,35 @@ let calendarEvent = ref<calendarEventType>({
   ]
 })
 
-// The object below does not update when a new date is pickered. For it to work, I must change the 'calendarEvent.value' approach
-// for a function, such as 'updateDate()' or smth.
-//
-// const initialDate = {
-//   day: name_of_the_week_days[calendarEvent.value.date.getDay()],
-//   month: name_of_the_months[calendarEvent.value.date.getMonth()],
-//   year: calendarEvent.value.date.getFullYear()
-// }
-
 /**
  * Intermediary function to set the initial date. It is the only way that worked so far.
+ * It is called whenever the model used by the date-picker is changed. Once that happens,
+ * it'll get the change, i.e., the new value, and pass it to the calendarEvent.date variable.
+ *
+ * After that, it'll call the function responsible for re-rendering the component used to show
+ * the chosen date.
  *
  * @param {any} value - It'll be passed automatically once v-model is called by the component.
  * @returns Nothing.
  */
 function setInitialDate(value: any) {
   calendarEvent.value.date = new Date(value)
+  triggerReRenderingOfDateComponents(reRenderInitialDate)
+  triggerReRenderingOfDateComponents(reRenderFinalDate)
+}
+
+/**
+ *
+ * It's used to trigger a re-rendering of the components by changing their ":key" value.
+ * Once the key is changed, Vue will throw away the current component and re-render it. In other words, Vue
+ * will instantiate the component again.
+ * @tutorial https://michaelnthiessen.com/force-re-render/#key-changing-to-force-a-component-refresh
+ *
+ * @param componentKey - The ref variable used by the component as its id.
+ *
+ */
+function triggerReRenderingOfDateComponents(componentKey: Ref<number>): void {
+  componentKey.value += 1
 }
 
 function submit() {
@@ -181,6 +195,7 @@ function submit() {
             :sw="languageStore.libras"
           >
             <LanguageWrapper
+              :key="reRenderInitialDate"
               :sign="name_of_the_week_days[calendarEvent.date.getDay()].name.libras"
               :portuguese="
                 name_of_the_week_days[calendarEvent.date.getDay()].name.pt.slice(0, 3).concat('.,')
@@ -217,8 +232,10 @@ function submit() {
             type="button"
             @click="openOrCloseDatePicker()"
             :sw="languageStore.libras"
+            disabled
           >
             <LanguageWrapper
+              :key="reRenderFinalDate"
               :sign="name_of_the_week_days[calendarEvent.date.getDay()].name.libras"
               :portuguese="
                 name_of_the_week_days[calendarEvent.date.getDay()].name.pt.slice(0, 3).concat('.,')
