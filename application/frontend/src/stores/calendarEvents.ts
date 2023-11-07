@@ -101,17 +101,17 @@ const dummyCalendarEvents: calendarEventType[] = [
       }
     ]
   },
-  {
-    date: new Date('2023-01-10T00:00:00.000Z'),
-    events: [
-      {
-        libras:
-          'M520x515S2e211487x485S1f721482x498 M520x528S1f740481x484S1f748500x484S20600499x514S20e00492x496',
-        pt: 'historia-fonologia-movimento',
-        eng: ''
-      }
-    ]
-  },
+  // {
+  //   date: new Date('2023-01-10T00:00:00.000Z'),
+  //   events: [
+  //     {
+  //       libras:
+  //         'M520x515S2e211487x485S1f721482x498 M520x528S1f740481x484S1f748500x484S20600499x514S20e00492x496',
+  //       pt: 'historia-fonologia-movimento',
+  //       eng: ''
+  //     }
+  //   ]
+  // },
   {
     date: new Date('2022-11-30T00:00:00.000Z'),
     events: [
@@ -155,18 +155,127 @@ const dummyCalendarEvents: calendarEventType[] = [
 ]
 
 const brazilianHolidays: calendarEventType[] = [
+  // {
+  //   date: new Date('2023-01-01T00:00:00.000Z'),
+  //   events: [
+  //     {
+  //       libras: 'Confraternização Universal Libras Data',
+  //       pt: 'Confraternização Universal',
+  //       eng: 'Universal Brotherhood Day',
+  //     },
+  //   ],
+  // },
   {
-    date: new Date('2024-06-05T00:00:00.000Z'),
+    date: new Date('2023-02-20T00:00:00.000Z'),
     events: [
       {
-        libras:
-          'M528x598S15a00493x545S20e00502x535S26504506x583S15720499x553S22104516x548S30a00482x483 M521x520S36d10479x488S16d10469x480S20500509x505S22a05489x494 S38700463x496 M531x551S30000482x483S14011500x460S22c04492x493S20500495x540 M547x569S30122482x476S30c30489x496S10020510x538S2f700533x528S26c02532x542',
-        pt: 'imitar Cristo, egoísta não',
-        eng: ''
-      }
-    ]
+        libras: 'M555x645S2ff00482x494S14c01490x502S2e231517x530S10010519x565S10018469x563S24e00513x603S2fb04494x639S24e0c534x604S24e10473x603S24e1c450x605S30920488x482S30928489x472',
+        pt: 'Carnaval',
+        eng: 'Carnival',
+      },
+    ],
   },
-]
+  {
+    date: new Date('2023-02-21T00:00:00.000Z'),
+    events: [
+      {
+        libras: 'M555x645S2ff00482x494S14c01490x502S2e231517x530S10010519x565S10018469x563S24e00513x603S2fb04494x639S24e0c534x604S24e10473x603S24e1c450x605S30920488x482S30928489x472',
+        pt: 'Carnaval',
+        eng: 'Carnival',
+      },
+    ],
+  },
+  // {
+  //   date: new Date('2023-04-07T00:00:00.000Z'),
+  //   events: [
+  //     {
+  //       libras: 'Paixão de Cristo Libras Data',
+  //       pt: 'Paixão de Cristo',
+  //       eng: 'Good Friday',
+  //     },
+  //   ],
+  // },
+  {
+    date: new Date('2023-04-21T00:00:00.000Z'),
+    events: [
+      {
+        libras: 'M551x533S36a00482x477S20323506x512S22b07527x489',
+        pt: 'Tiradentes',
+        eng: 'Tiradentes Day',
+      },
+    ],
+  },
+  {
+    date: new Date('2023-05-01T00:00:00.000Z'),
+    events: [
+      {
+        libras: 'M539x536S1dc50510x465S1dc58469x477S26c00512x498S26c18461x512S2fc04499x525',
+        pt: 'Dia do Trabalho',
+        eng: 'Labor Day',
+      },
+    ],
+  },
+  {
+    date: new Date('2023-06-08T00:00:00.000Z'),
+    events: [
+      {
+        libras: 'M549x523S36d10479x480S15a01522x478S15a09455x478S20500471x512S20500519x512S22a04536x504S22a14452x504 M523x542S1c510493x470S14c18478x459S1c518478x514S14c10500x503',
+        pt: 'Corpus Christi',
+        eng: 'Corpus Christi',
+      },
+    ],
+  },
+  {
+    date: new Date('2023-09-07T00:00:00.000Z'),
+    events: [
+      {
+        libras: 'M562x539S36d10479x500S20500466x518S22b07513x499S2930c548x498S14710547x462S1ea21478x506',
+        pt: 'Independência do Brasil',
+        eng: 'Independence Day',
+      },
+    ],
+  },
+  {
+    date: new Date('2023-10-12T00:00:00.000Z'),
+    events: [
+      {
+        libras: 'M550x533S2ff00482x483S36d00479x524S1f710460x507S20500523x522S20500470x521S14011519x501S28f0a475x451',
+        pt: 'Nossa Sr.a Aparecida - Padroeira do Brasil',
+        eng: 'Our Lady of Aparecida - Patroness of Brazil',
+      },
+    ],
+  },
+  // {
+  //   date: new Date('2023-11-02T00:00:00.000Z'),
+  //   events: [
+  //     {
+  //       libras: 'Finados Libras Data',
+  //       pt: 'Finados',
+  //       eng: 'All Souls Day',
+  //     },
+  //   ],
+  // },
+  {
+    date: new Date('2023-11-15T00:00:00.000Z'),
+    events: [
+      {
+        libras: 'M533x526S37816476x474S37700506x476S3780c475x500S20353467x505S22c07500x486',
+        pt: 'Proclamação da República',
+        eng: 'Republic Day',
+      },
+    ],
+  },
+  {
+    date: new Date('2023-12-25T00:00:00.000Z'),
+    events: [
+      {
+        libras: 'M518x578S30004482x483S16d3e488x524S22b04490x548',
+        pt: 'Natal',
+        eng: 'Christmas',
+      },
+    ],
+  },
+];
 
 /**
  * 
