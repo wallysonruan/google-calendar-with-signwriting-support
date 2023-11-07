@@ -154,6 +154,20 @@ const dummyCalendarEvents: calendarEventType[] = [
   }
 ]
 
+const brazilianHolidays: calendarEventType[] = [
+  {
+    date: new Date('2024-06-05T00:00:00.000Z'),
+    events: [
+      {
+        libras:
+          'M528x598S15a00493x545S20e00502x535S26504506x583S15720499x553S22104516x548S30a00482x483 M521x520S36d10479x488S16d10469x480S20500509x505S22a05489x494 S38700463x496 M531x551S30000482x483S14011500x460S22c04492x493S20500495x540 M547x569S30122482x476S30c30489x496S10020510x538S2f700533x528S26c02532x542',
+        pt: 'imitar Cristo, egoísta não',
+        eng: ''
+      }
+    ]
+  },
+]
+
 /**
  * 
   @param {calendarEventType[]} data
@@ -195,14 +209,23 @@ function getcalendarEventsFromLocalStorage(key: string): calendarEventType[] {
 
 /**
  *
- * @param {calendarEventType[]} fallback - Array to return if no other data from any other source is found.
+ * @param {...calendarEventType[][]} defaultCalendarEvents - Default arrays, such as mock calendarEvents, holidays, ... .
  * @returns {calendarEventType[]} Array with all Events found.
  */
-function getcalendarEventsDataFromAllSources(fallback: calendarEventType[]): calendarEventType[] {
+function getcalendarEventsDataFromAllSources(...defaultCalendarEvents: calendarEventType[][]): calendarEventType[] {
+  let toReturn: calendarEventType[] = []
+
   const dataRetrievedFromLocalStorage = getcalendarEventsFromLocalStorage(
     calendarEventDatalocalStorage_key
   )
-  return fallback.concat(dataRetrievedFromLocalStorage)
+
+  defaultCalendarEvents.forEach((param) => {
+    toReturn = toReturn.concat(param);
+  });
+
+  toReturn = toReturn.concat(dataRetrievedFromLocalStorage);
+
+  return toReturn;
 }
 
 /**
@@ -277,7 +300,7 @@ function saveCalendarEventToLocalStorage(event: calendarEventType, key: string) 
 }
 
 const calendarEventsData: YearClass[] = convertBackendDataModelToFrontendDataModel(
-  sortCalendarEventsByDate(getcalendarEventsDataFromAllSources(dummyCalendarEvents))
+  sortCalendarEventsByDate(getcalendarEventsDataFromAllSources(dummyCalendarEvents, brazilianHolidays))
 )
 
 export const useCalendarEventsStore = defineStore({
