@@ -116,8 +116,8 @@ const props = defineProps<{
 }>()
 
 // Date().getMonth() considers January as the month 0.
-const current_month = new Date().getMonth() + 1
-const monthToShow = props.monthNumber ? props.monthNumber + 1 : current_month
+const current_month = new Date().getMonth()
+const monthToShow = props.monthNumber ? props.monthNumber : current_month
 </script>
 
 <template>
