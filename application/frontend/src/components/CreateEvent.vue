@@ -312,6 +312,7 @@ function submit() {
   height: 100vh;
   background-color: white;
   overflow: scroll;
+  z-index: 1006; // Only 1 digit bigger than the v-app-bar z-index
 
   form {
     width: 100vw;

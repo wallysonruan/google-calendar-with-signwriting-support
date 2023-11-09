@@ -7,7 +7,7 @@ import { stores } from '@/stores/stores'
 const navBar = stores.navbar()
 </script>
 <template>
-  <v-toolbar class="container">
+  <v-app-bar class="container" scroll-behavior="hide">
     <template v-slot:prepend>
       <v-app-bar-nav-icon>
         <v-btn class="btn" icon @click="navBar.showDrawer()">
@@ -28,7 +28,7 @@ const navBar = stores.navbar()
       </v-app-bar-nav-icon>
     </template>
     <LanguageSwitcher />
-  </v-toolbar>
+  </v-app-bar>
   <NavigationDrawer />
   <BtnCreateEvent />
 </template>
