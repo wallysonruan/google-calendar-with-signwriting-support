@@ -5,6 +5,7 @@ import LanguageWrapper from './Language/LanguageWrapper.vue'
 import { ref, type Ref } from 'vue'
 import { name_of_the_week_days } from './Calendar/CalendarDay.vue'
 import { name_of_the_months } from './Calendar/CalendarMonth.vue'
+import { re } from '@sutton-signwriting/core/fsw'
 
 const activateEventStore = stores.createEvent()
 const calendarEventStore = stores.calendarEvents()
@@ -68,6 +69,36 @@ function submit() {
   calendarEventStore.saveCalendarEvent(calendarEvent.value)
   activateEventStore.activateCreateEvent()
 }
+
+/**
+ * REGEX:
+ * - ^A?([BLMR][0-9]{3}x[0-9]{3})?(S[123][0-9a-f]{2}[0-5][0-9a-f]([BLMR])?[0-9]{3}x[0-9]{3})+$
+ *
+ * The regex expression will look for the caracteristics below:
+ *
+ * - It must have the exact pattern declared in the regex;
+ *    - REGEX: ^[...]$
+ *
+ * - It must either have a re.sort at the beginning or not;
+ *    - REGEX: A? [...]
+ *
+ * - It must either have a re.box and a re.coord at the beginning or after the re.sort;
+ *    - REGEX: [...] ([BLMR][0-9]{3}x[0-9]{3})? [...]
+ *
+ * - It must have multiple recurrences of the pattern inside the parenthesis;
+ *    - REGEX: ([...])+
+ *
+ * -  It must have either a re.symbol and a re.coord with a re.box between them or not;
+ *    - REGEX: [...] S[123][0-9a-f]{2}[0-5][0-9a-f]([BLMR])?[0-9]{3}x[0-9]{3} [...]
+ *
+ * @param fsw - A string to be tested against a regex that will say if it's a valid fsw or not.
+ */
+function isValidFswString(fsw: string): boolean {
+  const fsw_regex = new RegExp(fsw_regex_string)
+  return fsw_regex.test(fsw)
+}
+
+const fsw_regex_string = `^${re.sort}?(${re.box}${re.coord})?(${re.symbol}(${re.box})?${re.coord})+$`
 </script>
 <template>
   <div class="container" v-if="activateEventStore.activated">
@@ -143,10 +174,11 @@ function submit() {
         <v-col cols="9">
           <input
             class="input-title input libras"
+            id="title-libras"
             type="text"
             name=""
             placeholder=" fsw"
-            id="title-libras"
+            :pattern="fsw_regex_string"
             required
             v-model="calendarEvent.events[0].libras"
           />

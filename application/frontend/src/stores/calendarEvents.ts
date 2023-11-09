@@ -169,21 +169,23 @@ const brazilianHolidays: calendarEventType[] = [
     date: new Date('2023-02-20T00:00:00.000Z'),
     events: [
       {
-        libras: 'M555x645S2ff00482x494S14c01490x502S2e231517x530S10010519x565S10018469x563S24e00513x603S2fb04494x639S24e0c534x604S24e10473x603S24e1c450x605S30920488x482S30928489x472',
+        libras:
+          'M555x645S2ff00482x494S14c01490x502S2e231517x530S10010519x565S10018469x563S24e00513x603S2fb04494x639S24e0c534x604S24e10473x603S24e1c450x605S30920488x482S30928489x472',
         pt: 'Carnaval',
-        eng: 'Carnival',
-      },
-    ],
+        eng: 'Carnival'
+      }
+    ]
   },
   {
     date: new Date('2023-02-21T00:00:00.000Z'),
     events: [
       {
-        libras: 'M555x645S2ff00482x494S14c01490x502S2e231517x530S10010519x565S10018469x563S24e00513x603S2fb04494x639S24e0c534x604S24e10473x603S24e1c450x605S30920488x482S30928489x472',
+        libras:
+          'M555x645S2ff00482x494S14c01490x502S2e231517x530S10010519x565S10018469x563S24e00513x603S2fb04494x639S24e0c534x604S24e10473x603S24e1c450x605S30920488x482S30928489x472',
         pt: 'Carnaval',
-        eng: 'Carnival',
-      },
-    ],
+        eng: 'Carnival'
+      }
+    ]
   },
   // {
   //   date: new Date('2023-04-07T00:00:00.000Z'),
@@ -201,9 +203,9 @@ const brazilianHolidays: calendarEventType[] = [
       {
         libras: 'M551x533S36a00482x477S20323506x512S22b07527x489',
         pt: 'Tiradentes',
-        eng: 'Tiradentes Day',
-      },
-    ],
+        eng: 'Tiradentes Day'
+      }
+    ]
   },
   {
     date: new Date('2023-05-01T00:00:00.000Z'),
@@ -211,39 +213,42 @@ const brazilianHolidays: calendarEventType[] = [
       {
         libras: 'M539x536S1dc50510x465S1dc58469x477S26c00512x498S26c18461x512S2fc04499x525',
         pt: 'Dia do Trabalho',
-        eng: 'Labor Day',
-      },
-    ],
+        eng: 'Labor Day'
+      }
+    ]
   },
   {
     date: new Date('2023-06-08T00:00:00.000Z'),
     events: [
       {
-        libras: 'M549x523S36d10479x480S15a01522x478S15a09455x478S20500471x512S20500519x512S22a04536x504S22a14452x504 M523x542S1c510493x470S14c18478x459S1c518478x514S14c10500x503',
+        libras:
+          'M549x523S36d10479x480S15a01522x478S15a09455x478S20500471x512S20500519x512S22a04536x504S22a14452x504 M523x542S1c510493x470S14c18478x459S1c518478x514S14c10500x503',
         pt: 'Corpus Christi',
-        eng: 'Corpus Christi',
-      },
-    ],
+        eng: 'Corpus Christi'
+      }
+    ]
   },
   {
     date: new Date('2023-09-07T00:00:00.000Z'),
     events: [
       {
-        libras: 'M562x539S36d10479x500S20500466x518S22b07513x499S2930c548x498S14710547x462S1ea21478x506',
+        libras:
+          'M562x539S36d10479x500S20500466x518S22b07513x499S2930c548x498S14710547x462S1ea21478x506',
         pt: 'Independência do Brasil',
-        eng: 'Independence Day',
-      },
-    ],
+        eng: 'Independence Day'
+      }
+    ]
   },
   {
     date: new Date('2023-10-12T00:00:00.000Z'),
     events: [
       {
-        libras: 'M550x533S2ff00482x483S36d00479x524S1f710460x507S20500523x522S20500470x521S14011519x501S28f0a475x451',
+        libras:
+          'M550x533S2ff00482x483S36d00479x524S1f710460x507S20500523x522S20500470x521S14011519x501S28f0a475x451',
         pt: 'Nossa Sr.a Aparecida - Padroeira do Brasil',
-        eng: 'Our Lady of Aparecida - Patroness of Brazil',
-      },
-    ],
+        eng: 'Our Lady of Aparecida - Patroness of Brazil'
+      }
+    ]
   },
   // {
   //   date: new Date('2023-11-02T00:00:00.000Z'),
@@ -261,9 +266,9 @@ const brazilianHolidays: calendarEventType[] = [
       {
         libras: 'M533x526S37816476x474S37700506x476S3780c475x500S20353467x505S22c07500x486',
         pt: 'Proclamação da República',
-        eng: 'Republic Day',
-      },
-    ],
+        eng: 'Republic Day'
+      }
+    ]
   },
   {
     date: new Date('2023-12-25T00:00:00.000Z'),
@@ -271,11 +276,11 @@ const brazilianHolidays: calendarEventType[] = [
       {
         libras: 'M518x578S30004482x483S16d3e488x524S22b04490x548',
         pt: 'Natal',
-        eng: 'Christmas',
-      },
-    ],
-  },
-];
+        eng: 'Christmas'
+      }
+    ]
+  }
+]
 
 /**
  * 
@@ -321,7 +326,9 @@ function getcalendarEventsFromLocalStorage(key: string): calendarEventType[] {
  * @param {...calendarEventType[][]} defaultCalendarEvents - Default arrays, such as mock calendarEvents, holidays, ... .
  * @returns {calendarEventType[]} Array with all Events found.
  */
-function getcalendarEventsDataFromAllSources(...defaultCalendarEvents: calendarEventType[][]): calendarEventType[] {
+function getcalendarEventsDataFromAllSources(
+  ...defaultCalendarEvents: calendarEventType[][]
+): calendarEventType[] {
   let toReturn: calendarEventType[] = []
 
   const dataRetrievedFromLocalStorage = getcalendarEventsFromLocalStorage(
@@ -329,12 +336,12 @@ function getcalendarEventsDataFromAllSources(...defaultCalendarEvents: calendarE
   )
 
   defaultCalendarEvents.forEach((param) => {
-    toReturn = toReturn.concat(param);
-  });
+    toReturn = toReturn.concat(param)
+  })
 
-  toReturn = toReturn.concat(dataRetrievedFromLocalStorage);
+  toReturn = toReturn.concat(dataRetrievedFromLocalStorage)
 
-  return toReturn;
+  return toReturn
 }
 
 /**
@@ -409,7 +416,9 @@ function saveCalendarEventToLocalStorage(event: calendarEventType, key: string) 
 }
 
 const calendarEventsData: YearClass[] = convertBackendDataModelToFrontendDataModel(
-  sortCalendarEventsByDate(getcalendarEventsDataFromAllSources(dummyCalendarEvents, brazilianHolidays))
+  sortCalendarEventsByDate(
+    getcalendarEventsDataFromAllSources(dummyCalendarEvents, brazilianHolidays)
+  )
 )
 
 export const useCalendarEventsStore = defineStore({
