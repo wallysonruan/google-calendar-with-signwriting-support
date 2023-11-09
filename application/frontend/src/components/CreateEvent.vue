@@ -175,7 +175,7 @@ function submit() {
         </v-col>
         <v-col cols="8" class="date disabled">
           <LanguageWrapper
-            class="title"
+            class="date__title"
             sign="M538x537S15a1a511x525S37a06463x530S37903485x489S15a11474x479S28b0a492x463"
             portuguese="Dia inteiro"
           />
@@ -364,8 +364,8 @@ function submit() {
       .date {
         display: flex;
         align-items: center;
-        .title {
-          justify-content: left;
+        .date__title {
+          text-align: left;
         }
       }
     }
