@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SignWriting from '../SignWriting.vue'
+import SignWriting from '../Language/SignWriting.vue'
 import { stores } from '@/stores/stores'
 const props = defineProps<{
   sign: string

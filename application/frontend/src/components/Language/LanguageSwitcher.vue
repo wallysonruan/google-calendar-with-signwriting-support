@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { stores } from '@/stores/stores'
-import SignWriting from '../SignWriting.vue'
+import SignWriting from '../Language/SignWriting.vue'
 const languageStore = stores.languages()
 </script>
 <template>
