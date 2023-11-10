@@ -70,6 +70,8 @@ function submit() {
   activateEventStore.activateCreateEvent()
 }
 
+const fsw_regex_string = `^${re.sort}?(${re.box}${re.coord})?(${re.symbol}(${re.box})?${re.coord})+$`
+
 /**
  * REGEX:
  * - ^A?([BLMR][0-9]{3}x[0-9]{3})?(S[123][0-9a-f]{2}[0-5][0-9a-f]([BLMR])?[0-9]{3}x[0-9]{3})+$
@@ -98,7 +100,27 @@ function isValidFswString(fsw: string): boolean {
   return fsw_regex.test(fsw)
 }
 
-const fsw_regex_string = `^${re.sort}?(${re.box}${re.coord})?(${re.symbol}(${re.box})?${re.coord})+$`
+/**
+ *
+ * @param milliseconds
+ *
+ * @returns String formatted as hh:mm.
+ *
+ * @see https://stackoverflow.com/questions/19700283/how-to-convert-time-in-milliseconds-to-hours-min-sec-format-in-javascript
+ */
+function parseMillisecondsIntoHoursAndMinutes(milliseconds: number): string {
+  //Get hours from milliseconds
+  var hours = milliseconds / (1000 * 60 * 60)
+  var absoluteHours = Math.floor(hours)
+  var h = absoluteHours > 9 ? absoluteHours : '0' + absoluteHours
+
+  //Get remainder from hours and convert to minutes
+  var minutes = (hours - absoluteHours) * 60
+  var absoluteMinutes = Math.floor(minutes)
+  var m = absoluteMinutes > 9 ? absoluteMinutes : '0' + absoluteMinutes
+
+  return h + ':' + m
+}
 </script>
 <template>
   <div class="container" v-if="activateEventStore.activated">
@@ -253,7 +275,9 @@ const fsw_regex_string = `^${re.sort}?(${re.box}${re.coord})?(${re.symbol}(${re.
             </span>
           </button>
         </v-col>
-        <v-col cols="2"></v-col>
+        <v-col cols="2" class="disabled">
+          {{ parseMillisecondsIntoHoursAndMinutes(calendarEvent.date.getMilliseconds()) }}
+        </v-col>
       </v-row>
       <!-- INPUT DAY END -->
       <v-row class="disabled">
@@ -293,7 +317,9 @@ const fsw_regex_string = `^${re.sort}?(${re.box}${re.coord})?(${re.symbol}(${re.
             </span>
           </button>
         </v-col>
-        <v-col cols="2"></v-col>
+        <v-col cols="2">
+          {{ parseMillisecondsIntoHoursAndMinutes(calendarEvent.date.getMilliseconds()) }}
+        </v-col>
       </v-row>
       <!-- TIMEZONE -->
       <v-row class="input">
