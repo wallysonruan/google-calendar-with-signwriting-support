@@ -7,7 +7,7 @@ import { stores } from '@/stores/stores'
 const navBar = stores.navbar()
 </script>
 <template>
-  <v-app-bar class="container" scroll-behavior="hide">
+  <v-app-bar class="container">
     <template v-slot:prepend>
       <v-app-bar-nav-icon>
         <v-btn class="btn" icon @click="navBar.showDrawer()">
