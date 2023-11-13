@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 
 import { mount } from '@vue/test-utils'
-import SignWriting from '../SignWriting.vue'
+import SignWriting from '../Language/SignWriting.vue'
 
 describe('SignWriting', () => {
   describe('Visibility', () => {
