@@ -4,7 +4,7 @@ import { stores } from '@/stores/stores'
 import LanguageWrapper from './Language/LanguageWrapper.vue'
 import { ref, type Ref } from 'vue'
 import { name_of_the_week_days } from './Calendar/CalendarDay.vue'
-import { name_of_the_months } from './Calendar/CalendarMonth.vue'
+import { name_of_the_months } from './Language/LanguageDate.vue'
 import { re } from '@sutton-signwriting/core/fsw'
 
 const activateEventStore = stores.createEvent()
