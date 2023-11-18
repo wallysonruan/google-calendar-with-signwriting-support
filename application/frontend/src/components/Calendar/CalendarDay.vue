@@ -9,15 +9,18 @@ type calendarDayContainerProps = {
 
 const props = defineProps<calendarDayContainerProps>()
 const languageStore = stores.languages()
-const date_to_Date = new Date(props.date)
-const dayNumber = date_to_Date.getDay()
+const date_as_Date = new Date(props.date)
+// Returns the day of the week (from 0-6, being 0 the Monday)
+const day_of_the_week = date_as_Date.getDay()
+// Returns the number of the day (from 1-[29|30|31])
+const day = date_as_Date.getUTCDay()
 </script>
 <template>
   <div class="day" :sw="languageStore.libras">
     <div class="bar" :sw="languageStore.libras">
-      <LanguageDate :day-number="dayNumber" abbreviated lower-case />
+      <LanguageDate :day-number="day_of_the_week" abbreviated lower-case />
       <!---->
-      <p class="number" :sw="languageStore.libras" v-if="showDayBall">{{ dayNumber }}</p>
+      <p class="number" :sw="languageStore.libras" v-if="showDayBall">{{ day }}</p>
     </div>
     <!---->
     <slot> </slot>
