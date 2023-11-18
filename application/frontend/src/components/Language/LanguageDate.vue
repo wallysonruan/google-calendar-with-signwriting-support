@@ -110,7 +110,7 @@ type calendarDayContainerData = {
   name: languages
 }
 
-export const name_of_the_week_days: Record<number, calendarDayContainerData> = {
+const name_of_the_week_days: Record<number, calendarDayContainerData> = {
   0: {
     name: {
       pt: 'Segunda-feira',
@@ -161,11 +161,6 @@ export const name_of_the_week_days: Record<number, calendarDayContainerData> = {
     }
   }
 }
-
-export enum dayFormat {
-  short = 'short',
-  long = 'long'
-}
 </script>
 <script setup lang="ts">
 import LanguageWrapper from '../Language/LanguageWrapper.vue'
@@ -174,14 +169,43 @@ const props = defineProps<{
   year?: number
   monthNumber?: number
   dayNumber?: number
-  dayNameFormat?: dayFormat
+  abbreviated?: boolean
+  upperCase?: boolean
+  lowerCase?: boolean
+  pascalCase?: boolean
 }>()
 
 const monthToShow = name_of_the_months[props.monthNumber!!]
 const dayToShow = name_of_the_week_days[props.dayNumber!!]
 
-if (props.dayNameFormat === dayFormat.short) {
-  dayToShow.name.pt = dayToShow.name.pt.slice(0, 3).concat('.')
+if (props.abbreviated) {
+  if (dayToShow) {
+    dayToShow.name.pt = dayToShow.name.pt.slice(0, 3).concat('.')
+  }
+
+  if (monthToShow) {
+    monthToShow.name.pt = monthToShow.name.pt.slice(0, 3).concat('.')
+  }
+}
+
+if (props.upperCase) {
+  if (dayToShow) {
+    dayToShow.name.pt = dayToShow.name.pt.toUpperCase()
+  }
+
+  if (monthToShow) {
+    monthToShow.name.pt = monthToShow.name.pt.toUpperCase()
+  }
+}
+
+if (props.lowerCase) {
+  if (dayToShow) {
+    dayToShow.name.pt = dayToShow.name.pt.toLowerCase()
+  }
+
+  if (monthToShow) {
+    monthToShow.name.pt = monthToShow.name.pt.toLowerCase()
+  }
 }
 </script>
 <template>

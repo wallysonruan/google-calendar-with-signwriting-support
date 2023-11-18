@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import type { calendarEventType } from '@/stores/calendarEvents'
 import { stores } from '@/stores/stores'
+import LanguageDate from './Language/LanguageDate.vue'
 import LanguageWrapper from './Language/LanguageWrapper.vue'
 import { ref, type Ref } from 'vue'
-import { name_of_the_week_days } from './Language/LanguageDate.vue'
-import { name_of_the_months } from './Language/LanguageDate.vue'
 import { re } from '@sutton-signwriting/core/fsw'
 
 const activateEventStore = stores.createEvent()
@@ -247,26 +246,14 @@ function parseMillisecondsIntoHoursAndMinutes(milliseconds: number): string {
             type="button"
             @click="openOrCloseDatePicker()"
             :sw="languageStore.libras"
+            :key="reRenderInitialDate"
           >
-            <LanguageWrapper
-              :key="reRenderInitialDate"
-              :sign="name_of_the_week_days[calendarEvent.date.getDay()].name.libras"
-              :portuguese="
-                name_of_the_week_days[calendarEvent.date.getDay()].name.pt.slice(0, 3).concat('.,')
-              "
-            />
+            <LanguageDate :day-number="calendarEvent.date.getDay()" abbreviated />
             <!--  -->
+            <span v-if="languageStore.portuguese">, </span>
             <span> &nbsp;{{ calendarEvent.date.getUTCDate() }}&nbsp; </span>
             <!-- -->
-            <LanguageWrapper
-              :sign="name_of_the_months[calendarEvent.date.getMonth()].name.libras"
-              :portuguese="
-                name_of_the_months[calendarEvent.date.getMonth()].name.pt
-                  .slice(0, 3)
-                  .toLowerCase()
-                  .concat('.')
-              "
-            />
+            <LanguageDate :month-number="calendarEvent.date.getMonth()" abbreviated lower-case />
             <!--  -->
             <span v-if="languageStore.portuguese"> &nbsp;de&nbsp; </span>
             <!--  -->
@@ -289,26 +276,14 @@ function parseMillisecondsIntoHoursAndMinutes(milliseconds: number): string {
             @click="openOrCloseDatePicker()"
             :sw="languageStore.libras"
             disabled
+            :key="reRenderFinalDate"
           >
-            <LanguageWrapper
-              :key="reRenderFinalDate"
-              :sign="name_of_the_week_days[calendarEvent.date.getDay()].name.libras"
-              :portuguese="
-                name_of_the_week_days[calendarEvent.date.getDay()].name.pt.slice(0, 3).concat('.,')
-              "
-            />
+            <LanguageDate :day-number="calendarEvent.date.getDay()" abbreviated />
             <!--  -->
+            <span v-if="languageStore.portuguese">, </span>
             <span> &nbsp;{{ calendarEvent.date.getUTCDate() }}&nbsp; </span>
             <!-- -->
-            <LanguageWrapper
-              :sign="name_of_the_months[calendarEvent.date.getMonth()].name.libras"
-              :portuguese="
-                name_of_the_months[calendarEvent.date.getMonth()].name.pt
-                  .slice(0, 3)
-                  .toLowerCase()
-                  .concat('.')
-              "
-            />
+            <LanguageDate :month-number="calendarEvent.date.getMonth()" abbreviated lower-case />
             <!--  -->
             <span v-if="languageStore.portuguese"> &nbsp;de&nbsp; </span>
             <!--  -->

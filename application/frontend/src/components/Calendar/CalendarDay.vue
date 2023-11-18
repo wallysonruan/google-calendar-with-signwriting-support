@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { stores } from '@/stores/stores'
-import LanguageDate, { dayFormat } from '../Language/LanguageDate.vue'
+import LanguageDate from '../Language/LanguageDate.vue'
 
 type calendarDayContainerProps = {
   date: Date
@@ -15,7 +15,7 @@ const dayNumber = date_to_Date.getDay()
 <template>
   <div class="day" :sw="languageStore.libras">
     <div class="bar" :sw="languageStore.libras">
-      <LanguageDate :day-number="dayNumber" :day-name-format="dayFormat.short" />
+      <LanguageDate :day-number="dayNumber" abbreviated lower-case />
       <!---->
       <p class="number" :sw="languageStore.libras" v-if="showDayBall">{{ dayNumber }}</p>
     </div>
