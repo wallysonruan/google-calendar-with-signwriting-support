@@ -16,9 +16,7 @@ const monthToShow = props.monthNumber ? props.monthNumber : current_month
 <template>
   <div class="month">
     <div height="100" class="banner" v-if="showBanner">
-      <LanguageDate
-      :month-number="monthToShow"
-      />
+      <LanguageDate :month-number="monthToShow" />
       <div class="year" v-if="isFirstMonth">
         {{ props.year }}
       </div>

@@ -1,63 +1,6 @@
-<script lang="ts">
-import type { languages } from '../GlobalTypes.vue'
-type calendarDayContainerData = {
-  name: languages
-}
-export const name_of_the_week_days: Record<number, calendarDayContainerData> = {
-  1: {
-    name: {
-      pt: 'Segunda-feira',
-      libras: 'M544x518S30007482x483S10e21514x483S20600503x470',
-      eng: 'Monday'
-    }
-  },
-  2: {
-    name: {
-      pt: 'Terça-feira',
-      libras: 'AS18621S30007S20600M544x517S30007482x482S18621518x479S20600502x466',
-      eng: 'Tuesday'
-    }
-  },
-  3: {
-    name: {
-      pt: 'Quarta-feira',
-      libras: 'AS14421S30007S20600M547x518S30007482x483S14421518x474S20600495x468',
-      eng: 'Wednesday'
-    }
-  },
-  4: {
-    name: {
-      pt: 'Quinta-feira',
-      libras: 'AS11021S30007S20600M548x518S30007482x483S11021519x476S20600495x470',
-      eng: 'Thursday'
-    }
-  },
-  5: {
-    name: {
-      pt: 'Sexta-feira',
-      libras: 'M545x552S33b00482x483S10641507x506S26505522x539S26505532x529S20e00521x501',
-      eng: 'Friday'
-    }
-  },
-  6: {
-    name: {
-      pt: 'Sábado',
-      libras: 'M518x535S33b00482x483S21800471x520S20310493x520',
-      eng: 'Saturday'
-    }
-  },
-  0: {
-    name: {
-      pt: 'Domingo',
-      libras: 'M527x549S33b00482x483S10110511x501S2e500488x522',
-      eng: 'Sunday'
-    }
-  }
-}
-</script>
 <script lang="ts" setup>
 import { stores } from '@/stores/stores'
-import LanguageWrapper from '../Language/LanguageWrapper.vue'
+import LanguageDate, { dayFormat } from '../Language/LanguageDate.vue'
 
 type calendarDayContainerProps = {
   date: Date
@@ -67,20 +10,12 @@ type calendarDayContainerProps = {
 const props = defineProps<calendarDayContainerProps>()
 const languageStore = stores.languages()
 const date_to_Date = new Date(props.date)
-const dayName = name_of_the_week_days[date_to_Date.getDay()]
-const dayNumber = date_to_Date.getUTCDate()
+const dayNumber = date_to_Date.getDay()
 </script>
 <template>
   <div class="day" :sw="languageStore.libras">
     <div class="bar" :sw="languageStore.libras">
-      <LanguageWrapper
-        class="name"
-        :sw="languageStore.libras"
-        :sign="dayName.name.libras"
-        :width="28"
-        :portuguese="dayName.name.pt.slice(0, 3).toLowerCase().concat('.')"
-        v-if="showDayBall"
-      />
+      <LanguageDate :day-number="dayNumber" :day-name-format="dayFormat.short" />
       <!---->
       <p class="number" :sw="languageStore.libras" v-if="showDayBall">{{ dayNumber }}</p>
     </div>
