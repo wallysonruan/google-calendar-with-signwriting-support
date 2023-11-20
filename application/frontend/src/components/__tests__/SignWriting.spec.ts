@@ -13,7 +13,7 @@ describe('SignWriting', () => {
         }
       })
 
-      expect(wrapper.findComponent('.container').isVisible()).toBe(true)
+      expect(wrapper.findComponent('.signwriting-container').isVisible()).toBe(true)
     })
 
     it('Should NOT be visible when "display" is set to false', () => {
@@ -24,7 +24,7 @@ describe('SignWriting', () => {
         }
       })
 
-      expect(wrapper.findComponent('.container').isVisible()).toBe(false)
+      expect(wrapper.findComponent('.signwriting-container').isVisible()).toBe(false)
     })
   })
   describe('Quantity', () => {
