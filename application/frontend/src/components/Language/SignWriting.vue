@@ -4,6 +4,7 @@ import { isType } from '@sutton-signwriting/core/fsw'
 const props = defineProps<{
   fsw: string
   display: boolean
+  maxHeight?: string
 }>()
 
 function containsSpacesOrCode(signsString: string): boolean {
@@ -33,10 +34,12 @@ function getSignsSeparatedBySpacesOrCodes(signsString: string): string[] {
 const signs: string[] = containsSpacesOrCode(props.fsw)
   ? getSignsSeparatedBySpacesOrCodes(props.fsw)
   : [props.fsw]
+
+const maxHeight = props.maxHeight ? props.maxHeight : '20'
 </script>
 
 <template>
-  <div v-show="display" class="container">
+  <div v-show="display" class="signwriting-container" :style="'max-height:' + maxHeight + 'rem;'">
     <div v-for="(sign, index) in signs" class="sign" v-bind:key="index">
       <fsw-sign :sign="sign" v-if="!isType(sign, 'punctuation')" />
       <fsw-symbol :symbol="sign" v-if="isType(sign, 'punctuation')" />
@@ -44,11 +47,10 @@ const signs: string[] = containsSpacesOrCode(props.fsw)
   </div>
 </template>
 <style scoped lang="scss">
-.container {
+.signwriting-container {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  max-height: 20rem;
   .sign {
     text-align: center;
     margin-left: 0.5rem;
