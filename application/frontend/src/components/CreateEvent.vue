@@ -5,6 +5,7 @@ import LanguageDate from './Language/LanguageDate.vue'
 import LanguageWrapper from './Language/LanguageWrapper.vue'
 import { ref, type Ref } from 'vue'
 import { re } from '@sutton-signwriting/core/fsw'
+import SignWriting from './Language/SignWriting.vue'
 
 const activateEventStore = stores.createEvent()
 const calendarEventStore = stores.calendarEvents()
@@ -46,8 +47,8 @@ let calendarEvent = ref<calendarEventType>({
  */
 function setInitialDate(value: any) {
   calendarEvent.value.date = new Date(value)
-  triggerReRenderingOfDateComponents(reRenderInitialDate)
-  triggerReRenderingOfDateComponents(reRenderFinalDate)
+  triggerComponentReRendering(reRenderInitialDate)
+  triggerComponentReRendering(reRenderFinalDate)
 }
 
 /**
@@ -60,7 +61,7 @@ function setInitialDate(value: any) {
  * @param componentKey - The ref variable used by the component as its id.
  *
  */
-function triggerReRenderingOfDateComponents(componentKey: Ref<number>): void {
+function triggerComponentReRendering(componentKey: Ref<number>): void {
   componentKey.value += 1
 }
 
@@ -116,12 +117,61 @@ function parseMillisecondsIntoHoursAndMinutes(milliseconds: number): string {
   return h + ':' + m
 }
 
+const showSignwritingPreview = ref<boolean>(false)
+function showSignWritingComponentPreview(event: InputEvent) {
+  const inputLibras = event.target as HTMLInputElement
+  const inputLibrasValue = inputLibras.value
+
+  /**
+   * If the preview is hidden, it'll be shown, and the preview will be updated.
+   */
+  if (showSignwritingPreview.value === false) {
+    showSignwritingPreview.value = true
+    fillSignWritingPreview(inputLibrasValue)
+    return
+  }
+
+  /**
+   * If the input is empty, it'll hide the preview.
+   */
+  if (inputLibrasValue === '') {
+    showSignwritingPreview.value = false
+    return
+  }
+
+  /**
+   * If the input is not empty, it'll update the preview.
+   */
+  fillSignWritingPreview(inputLibrasValue)
+}
+
+/**
+ * Libras text: F-S-W WRONG
+ */
+const DEFAULT_FSW_STRING =
+  'M541x533S20322496x482S26606489x517S1d220460x468S18620523x467 M529x520S15a36502x505S20e00488x500S26a02472x493S14030496x480'
+const signWritingPreviewSign = ref<string>(DEFAULT_FSW_STRING)
+function fillSignWritingPreview(fsw: string) {
+  let validFswStrings: string[] = []
+
+  signWritingPreviewSign.value = DEFAULT_FSW_STRING
+
+  if (fsw) {
+    fsw.split(' ').forEach((word) => {
+      if (isValidFswString(word)) {
+        validFswStrings.push(word)
+        signWritingPreviewSign.value = validFswStrings.join(' ')
+      }
+    })
+  }
+}
+
 /**
  * It's used to save the event in the calendarEventStore.
  *
  * @returns Nothing.
  */
- function submit() {
+function submit() {
   calendarEventStore.saveCalendarEvent(calendarEvent.value)
   activateEventStore.activateCreateEvent()
 }
@@ -198,16 +248,21 @@ function parseMillisecondsIntoHoursAndMinutes(milliseconds: number): string {
           </label>
         </v-col>
         <v-col cols="9">
-          <input
-            class="input-title input libras"
-            id="title-libras"
-            type="text"
-            name=""
-            placeholder=" fsw"
-            :pattern="fsw_regex_string"
-            required
-            v-model="calendarEvent.events[0].libras"
-          />
+          <div class="input-title input libras">
+            <input
+              id="title-libras"
+              type="text"
+              name=""
+              placeholder=" fsw"
+              :pattern="fsw_regex_string"
+              required
+              v-model="calendarEvent.events[0].libras"
+              @input="showSignWritingComponentPreview($event)"
+            />
+            <div class="sw-preview" v-if="showSignwritingPreview">
+              <SignWriting :fsw="signWritingPreviewSign" :display="true" max-height="10" />
+            </div>
+          </div>
         </v-col>
       </v-row>
       <!---->
@@ -361,6 +416,21 @@ function parseMillisecondsIntoHoursAndMinutes(milliseconds: number): string {
 
       &:focus {
         outline: none;
+      }
+    }
+
+    .input {
+      .libras {
+        position: relative;
+        .sw-preview {
+          position: absolute;
+          width: 100%;
+          overflow: scroll;
+          padding: 0.5rem 0;
+          background-color: white;
+          border: 1px solid gray;
+          z-index: 1; // So it can sit on top of the parents elements.
+        }
       }
     }
 
