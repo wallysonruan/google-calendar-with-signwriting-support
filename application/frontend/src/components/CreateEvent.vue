@@ -437,6 +437,7 @@ function submit() {
           padding: 0.5rem 0;
           background-color: white;
           border: 1px solid gray;
+          color: gray;
           z-index: 1; // So it can sit on top of the parents elements.
         }
       }
