@@ -64,11 +64,6 @@ function triggerReRenderingOfDateComponents(componentKey: Ref<number>): void {
   componentKey.value += 1
 }
 
-function submit() {
-  calendarEventStore.saveCalendarEvent(calendarEvent.value)
-  activateEventStore.activateCreateEvent()
-}
-
 const fsw_regex_string = `^${re.sort}?(${re.box}${re.coord})?(${re.symbol}(${re.box})?${re.coord})+$`
 
 /**
@@ -119,6 +114,16 @@ function parseMillisecondsIntoHoursAndMinutes(milliseconds: number): string {
   var m = absoluteMinutes > 9 ? absoluteMinutes : '0' + absoluteMinutes
 
   return h + ':' + m
+}
+
+/**
+ * It's used to save the event in the calendarEventStore.
+ *
+ * @returns Nothing.
+ */
+ function submit() {
+  calendarEventStore.saveCalendarEvent(calendarEvent.value)
+  activateEventStore.activateCreateEvent()
 }
 </script>
 <template>
@@ -351,7 +356,12 @@ function parseMillisecondsIntoHoursAndMinutes(milliseconds: number): string {
     width: 100vw;
 
     input {
+      line-height: 2rem;
       width: 95%;
+
+      &:focus {
+        outline: none;
+      }
     }
 
     nav {
