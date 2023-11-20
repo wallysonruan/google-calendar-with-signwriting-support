@@ -151,9 +151,9 @@ function showSignWritingComponentPreview(event: InputEvent) {
 const DEFAULT_FSW_STRING =
   'M541x533S20322496x482S26606489x517S1d220460x468S18620523x467 M529x520S15a36502x505S20e00488x500S26a02472x493S14030496x480'
 const signWritingPreviewSign = ref<string>(DEFAULT_FSW_STRING)
+const signwritingPreviewKey = ref<number>(0)
 function fillSignWritingPreview(fsw: string) {
   let validFswStrings: string[] = []
-
   signWritingPreviewSign.value = DEFAULT_FSW_STRING
 
   if (fsw) {
@@ -161,6 +161,7 @@ function fillSignWritingPreview(fsw: string) {
       if (isValidFswString(word)) {
         validFswStrings.push(word)
         signWritingPreviewSign.value = validFswStrings.join(' ')
+        triggerComponentReRendering(signwritingPreviewKey)
       }
     })
   }
@@ -259,7 +260,7 @@ function submit() {
               v-model="calendarEvent.events[0].libras"
               @input="showSignWritingComponentPreview($event as InputEvent)"
             />
-            <div class="sw-preview" v-if="showSignwritingPreview">
+            <div class="sw-preview" v-if="showSignwritingPreview" :key="signwritingPreviewKey">
               <SignWriting :fsw="signWritingPreviewSign" :display="true" max-height="10" />
             </div>
           </div>
