@@ -257,7 +257,7 @@ function submit() {
               :pattern="fsw_regex_string"
               required
               v-model="calendarEvent.events[0].libras"
-              @input="showSignWritingComponentPreview($event)"
+              @input="showSignWritingComponentPreview($event as InputEvent)"
             />
             <div class="sw-preview" v-if="showSignwritingPreview">
               <SignWriting :fsw="signWritingPreviewSign" :display="true" max-height="10" />
