@@ -65,11 +65,12 @@ function triggerComponentReRendering(componentKey: Ref<number>): void {
   componentKey.value += 1
 }
 
-const fsw_regex_string = `^${re.sort}?(${re.box}${re.coord})?(${re.symbol}(${re.box})?${re.coord})+$`
+const fsw_regex = `${re.sort}?(${re.box}${re.coord})?(${re.symbol}(${re.box})?${re.coord})+`
+const regex_multiple_fsw_separated_by_empty_spaces_at_the_end = `^${fsw_regex}(\\s*)?((${fsw_regex})?(\\s*)?)*$`
 
 /**
  * REGEX:
- * - ^A?([BLMR][0-9]{3}x[0-9]{3})?(S[123][0-9a-f]{2}[0-5][0-9a-f]([BLMR])?[0-9]{3}x[0-9]{3})+$
+ * - ^A?([BLMR][0-9]{3}x[0-9]{3})?(S[123][0-9a-f]{2}[0-5][0-9a-f]([BLMR])?[0-9]{3}x[0-9]{3})+(\s*)?((A?([BLMR][0-9]{3}x[0-9]{3})?(S[123][0-9a-f]{2}[0-5][0-9a-f]([BLMR])?[0-9]{3}x[0-9]{3})+)?(\s*)?)*$
  *
  * The regex expression will look for the caracteristics below:
  *
@@ -88,11 +89,17 @@ const fsw_regex_string = `^${re.sort}?(${re.box}${re.coord})?(${re.symbol}(${re.
  * -  It must have either a re.symbol and a re.coord with a re.box between them or not;
  *    - REGEX: [...] S[123][0-9a-f]{2}[0-5][0-9a-f]([BLMR])?[0-9]{3}x[0-9]{3} [...]
  *
+ * - It could have one or more empty space at the end;
+ *    - REGEX: (\s*)?
+ *
+ * - It could have multiple recurrences of the pattern SIGN + EMPTY SPACE;
+ *    - REGEX: [...]((SIGN)?(EMPTY SPACE)?)*
+ *
  * @param fsw - A string to be tested against a regex that will say if it's a valid fsw or not.
  */
 function isValidFswString(fsw: string): boolean {
-  const fsw_regex = new RegExp(fsw_regex_string)
-  return fsw_regex.test(fsw)
+  const regex = new RegExp(regex_multiple_fsw_separated_by_empty_spaces_at_the_end)
+  return regex.test(fsw)
 }
 
 /**
@@ -255,7 +262,7 @@ function submit() {
               type="text"
               name=""
               placeholder=" fsw"
-              :pattern="fsw_regex_string"
+              :pattern="regex_multiple_fsw_separated_by_empty_spaces_at_the_end"
               required
               v-model="calendarEvent.events[0].libras"
               @input="showSignWritingComponentPreview($event as InputEvent)"
