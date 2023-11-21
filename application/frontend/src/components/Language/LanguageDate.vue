@@ -111,49 +111,49 @@ type calendarDayContainerData = {
 }
 
 const name_of_the_week_days: Record<number, calendarDayContainerData> = {
-  0: {
+  1: {
     name: {
       pt: 'Segunda-feira',
       libras: 'M544x518S30007482x483S10e21514x483S20600503x470',
       eng: 'Monday'
     }
   },
-  1: {
+  2: {
     name: {
       pt: 'Terça-feira',
       libras: 'AS18621S30007S20600M544x517S30007482x482S18621518x479S20600502x466',
       eng: 'Tuesday'
     }
   },
-  2: {
+  3: {
     name: {
       pt: 'Quarta-feira',
       libras: 'AS14421S30007S20600M547x518S30007482x483S14421518x474S20600495x468',
       eng: 'Wednesday'
     }
   },
-  3: {
+  4: {
     name: {
       pt: 'Quinta-feira',
       libras: 'AS11021S30007S20600M548x518S30007482x483S11021519x476S20600495x470',
       eng: 'Thursday'
     }
   },
-  4: {
+  5: {
     name: {
       pt: 'Sexta-feira',
       libras: 'M545x552S33b00482x483S10641507x506S26505522x539S26505532x529S20e00521x501',
       eng: 'Friday'
     }
   },
-  5: {
+  6: {
     name: {
       pt: 'Sábado',
       libras: 'M518x535S33b00482x483S21800471x520S20310493x520',
       eng: 'Saturday'
     }
   },
-  6: {
+  0: {
     name: {
       pt: 'Domingo',
       libras: 'M527x549S33b00482x483S10110511x501S2e500488x522',
