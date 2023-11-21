@@ -44,8 +44,8 @@ function isSameDayAsPreviousOne(days: Day[], index: number): boolean {
   const currentDay = new Date(days[index].date)
   const previousDay = new Date(days[index - 1].date)
 
-  // Always true if current and previous day are different.
-  return currentDay.getDay() === previousDay.getDay()
+  // Always true if current and previous day-of-the-month are different.
+  return currentDay.getDate() === previousDay.getDate()
 }
 </script>
 
