@@ -3,9 +3,10 @@ import type { calendarEventType } from '@/stores/calendarEvents'
 import { stores } from '@/stores/stores'
 import LanguageDate from './Language/LanguageDate.vue'
 import LanguageWrapper from './Language/LanguageWrapper.vue'
-import { ref, type Ref } from 'vue'
+import { ref } from 'vue'
 import { re } from '@sutton-signwriting/core/fsw'
 import SignWriting from './Language/SignWriting.vue'
+import triggerComponentReRendering from '@/assets/utils'
 
 const activateEventStore = stores.createEvent()
 const calendarEventStore = stores.calendarEvents()
@@ -49,20 +50,6 @@ function setInitialDate(value: any) {
   calendarEvent.value.date = new Date(value)
   triggerComponentReRendering(reRenderInitialDate)
   triggerComponentReRendering(reRenderFinalDate)
-}
-
-/**
- *
- * It's used to trigger a re-rendering of the components by changing their ":key" value.
- * Once the key is changed, Vue will throw away the current component and re-render it. In other words, Vue
- * will instantiate the component again.
- * @tutorial https://michaelnthiessen.com/force-re-render/#key-changing-to-force-a-component-refresh
- *
- * @param componentKey - The ref variable used by the component as its id.
- *
- */
-function triggerComponentReRendering(componentKey: Ref<number>): void {
-  componentKey.value += 1
 }
 
 const fsw_regex = `${re.sort}?(${re.box}${re.coord})?(${re.symbol}(${re.box})?${re.coord})+`
