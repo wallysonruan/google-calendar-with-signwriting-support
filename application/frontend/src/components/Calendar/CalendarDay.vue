@@ -12,8 +12,8 @@ const languageStore = stores.languages()
 const date_as_Date = new Date(props.date)
 // Returns the day of the week (from 0-6, being 0 the Monday)
 const day_of_the_week = date_as_Date.getDay()
-// Returns the number of the day (from 1-[29|30|31])
-const day = date_as_Date.getUTCDay()
+// Returns the number of the day-of-the-month (from 1-[29|30|31])
+const day = date_as_Date.getDate()
 </script>
 <template>
   <div class="day" :sw="languageStore.libras">
